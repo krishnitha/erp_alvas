@@ -280,6 +280,7 @@ session_start();
             <ul class="list-unstyled components">
                 <li>
                     <a href="student_login_view.php" style="color: black">IA Marks</a>
+                    <a href="student_login_view.php" style="color: black">Leave Details</a>
                 </li>
             </ul>
         </nav>
