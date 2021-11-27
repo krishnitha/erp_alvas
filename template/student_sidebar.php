@@ -14,7 +14,7 @@ session_start();
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../asset/style/bootstrap.min.css" />
-    <link rel="stylesheet" href="../asset/style/style_fac.css" />
+    <link rel="stylesheet" href="../asset/style/style_student.css" />
     <link rel="shortcut icon" href="../asset/img/1aiet-logo.png" />
     <title>Student | Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
@@ -25,7 +25,7 @@ session_start();
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../asset/style/bootstrap.min.css">
-    <link rel="stylesheet" href="../asset/style/style_fac.css">
+    <link rel="stylesheet" href="../asset/style/style_student.css">
     <link rel="shortcut icon" href="../asset/img/1aiet-logo.png" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
         integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous">
@@ -280,7 +280,23 @@ session_start();
             <ul class="list-unstyled components">
                 <li>
                     <a href="student_login_view.php" style="color: black">IA Marks</a>
-                    <a href="student_login_view.php" style="color: black">Leave Details</a>
+                    <li>
+                    <a href="#leaveSubmenu" data-toggle="collapse" style="color: black" aria-expanded="false"
+                        class="dropdown-toggle">Leave</a>
+                    <ul class="collapse list-unstyled" id="leaveSubmenu">
+                        <li>
+                            <a href="../leave_management/details.php" style="color: black; background:white">Details</a>
+                        </li>
+                        <li>
+                            <a href="#" style="color: black; background:white">Medical</a>
+                        </li>
+                        <li>
+                            <a href="../leave_management/event.php" style="color: black; background:white">Event</a>
+                        </li>
+                        <li>
+                            <a href="#" style="color: black; background:white">Placement</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
