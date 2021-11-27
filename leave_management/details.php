@@ -19,10 +19,13 @@ include("../template/student_sidebar.php");
                             <th>Detail</th>
                         </tr>
                         <?php
-                        
+
+                            $s='select * from students where usn="' . $_SESSION["username"] . '"';
+                            // echo $s;
+                            $res = $link->query($s);
+                            $res = mysqli_fetch_assoc($res);
                             $usn = $_SESSION["username"];
-                            $que = "select * from attendance where usn=\"$usn\"";
-                            // echo $que;
+                            $que = "select * from attendance where usn=\"$usn\" and sem=\"$res[semester]\"";
                             $result = $con->query($que);
                             foreach ($result as $row) {
                               

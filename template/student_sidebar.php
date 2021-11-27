@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -277,7 +278,7 @@ session_start();
                 </div>
             </div>
 
-            <ul class="list-unstyled components">
+            <ul class="list-unstyled components" >
                 <li>
                     <a href="student_login_view.php" style="color: black">IA Marks</a>
                     <li>
@@ -293,9 +294,23 @@ session_start();
                         <li>
                             <a href="../leave_management/event.php" style="color: black; background:white">Event</a>
                         </li>
+
+                        <?php 
+                            $s='select * from students where usn="' . $_SESSION["username"] . '"';
+                            // echo $s;
+                            $res = $link->query($s);
+                            $res = mysqli_fetch_assoc($res);
+                            if($res["semester"] == "7" || $res["semester"] == "8"){
+                                // echo $res["sem"];
+                        ?>
+
                         <li>
                             <a href="#" style="color: black; background:white">Placement</a>
                         </li>
+
+                        <?php 
+                      }
+                       ?>
                     </ul>
                 </li>
             </ul>
