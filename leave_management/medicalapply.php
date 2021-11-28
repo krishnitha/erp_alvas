@@ -1,54 +1,49 @@
 <?php
-require_once "../config.php";
-$con=$link;
+    require_once "../config.php";
+    $con=$link;
 
-include("../template/student_sidebar.php");
+    include("../template/student_sidebar.php");
 ?>
-
     
-        <h3 style="text-align:center">Enter The Medical Leave Details</h3>
+        <h4 style="text-align:center">Enter The Medical Leave Details</h4><br>
         <div style="margin-left:20%;margin-right:20%">
       		<form action="medicalapply.php" method="post">
         		<table   class="table table-responsive table-borderless">
         			<tr>
         				<th></th>
-                        <th style="width:20px"></th>
-        				<th ></th>
+                        <th></th>
+        				<th></th>
         			</tr>
         			<tr>
         				<td>Reason<br></td>
                         <td></td>
-                        <td> <input type = "text" class = "form-control" id = "name" placeholder = "Enter the Reason for leave">   
+                        <td> 
+                            <input type = "text" class = "form-control" id = "name" placeholder = "Enter the Reason for leave" required>   
         				</td>
-        				
         			</tr>
-                    <br>
-                    <tr>
-        				<td>Number of days leave taken <br></td>
-                        <td></td>
-                        <td> <input type="number" class="form-control" id="number"> 
-        				</td>
-        				
-        			</tr>
+
                     <tr>
                         <td> From <br></td>
                         <td></td>
-                        <td> <input type = "date" name="date">
+                        <td> 
+                            <input type = "date" name="date" class="form-control" required>
                         </td>
-                
                     </tr>
+
                     <tr>
                         <td>To <br></td>
                         <td></td>
-                        <td> <input type = "date" name="date">
-                        </td>
-                
+                        <td> <input type = "date" name="date" class="form-control" required></td>
                     </tr>
                     
                     <tr>
                         <td>Upload Document<br></td>
                         <td></td>
-                        <td> <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <td>
+                            <label class="label1" for="actual-btn">Choose File</label>
+                            <input type="hidden" name="MAX_FILE_SIZE" required value="100000">
+                            <span id="file-chosen">No file chosen</span>
+                            <input type="hidden" name="MAX_FILE_SIZE" value="100000">
                         </td>
                     </tr>
                 
