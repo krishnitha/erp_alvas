@@ -280,7 +280,7 @@ session_start();
 
             <ul class="list-unstyled components" >
                 <li>
-                    <a href="student_login_view.php" style="color: black">IA Marks</a>
+                    <a href="../student_profile/student_login_view.php" style="color: black">IA Marks</a>
                     <li>
                     <a href="#leaveSubmenu" data-toggle="collapse" style="color: black" aria-expanded="false"
                         class="dropdown-toggle">Leave</a>
@@ -296,7 +296,6 @@ session_start();
                         </li>
                         
                        
-                        
 
                         <?php 
                             $s='select * from students where usn="' . $_SESSION["username"] . '"';

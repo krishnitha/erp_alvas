@@ -6,9 +6,10 @@ include("../template/student_sidebar.php");
 ?>
 
     
-            <h3 style="text-align:center">Enter The placement Details</h3>
+        <h3 style="text-align:center">Enter The placement Details</h3>
+        <div style="margin-left:20%;margin-right:20%">
       		<form action="placementapply.php" method="post">
-        		<table   class="table table-responsive">
+        		<table   class="table table-responsive table-borderless">
         			<tr>
         				<th></th>
                         <th style="width:20px"></th>
@@ -59,6 +60,7 @@ include("../template/student_sidebar.php");
                     <input type="button" class="btn btn-info" value="Submit">
                 </div>
             </form>
+        </div>
 
 
 
