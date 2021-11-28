@@ -7,7 +7,7 @@ include("../template/student_sidebar.php");
 ?>
             <div>
                 
-                <h2 style="text-align:center">Leave Details</h2><br>
+                <h5 style="text-align:center">Leave Details</h5><br>
                 <table class="table table-responsive">
                     <tbody>
                         <tr>

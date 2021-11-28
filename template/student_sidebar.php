@@ -289,11 +289,14 @@ session_start();
                             <a href="../leave_management/details.php" style="color: black; background:white">Details</a>
                         </li>
                         <li>
-                            <a href="#" style="color: black; background:white">Medical</a>
+                            <a href="../leave_management/medical.php" style="color: black; background:white">Medical</a>
                         </li>
                         <li>
                             <a href="../leave_management/event.php" style="color: black; background:white">Event</a>
                         </li>
+                        
+                       
+                        
 
                         <?php 
                             $s='select * from students where usn="' . $_SESSION["username"] . '"';
@@ -305,7 +308,7 @@ session_start();
                         ?>
 
                         <li>
-                            <a href="#" style="color: black; background:white">Placement</a>
+                        <a href="../leave_management/placement.php" style="color: black; background:white">Placement</a>
                         </li>
 
                         <?php 
