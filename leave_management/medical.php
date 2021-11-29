@@ -7,11 +7,10 @@ include("../template/student_sidebar.php");
 <div>
     <h4 style="text-align:center">Medical Leave Details</h4><br>
 </div>
-<div>
+<div style="margin-left:5%;margin-right:5%">
     <table class="table table-responsive table-borderless">
         <tr>
         	<th>Applied On</th>
-            <th>No.of leaves</th>
         	<th>From</th>
             <th>To</th>
             <th>Document</th>

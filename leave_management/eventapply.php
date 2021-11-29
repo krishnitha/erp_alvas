@@ -76,9 +76,6 @@
             </form>
         </div>
 
-
-
-
 <?php
 include("../template/student-footer.php");
 ?>
