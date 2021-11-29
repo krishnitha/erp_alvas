@@ -5,6 +5,18 @@
     include("../template/student_sidebar.php");
 ?>
 
+        <style>
+            .label2 
+            {
+                background-color: rgb(50, 113, 124);
+                color:white;
+                padding: 0.5rem;
+                font-family: sans-serif;
+                border-radius: 0.3rem;
+                cursor: pointer;
+            }
+        </style>
+
         <h4 style="text-align:center">Enter The Event Details</h4><br>
         <div style="margin-left:20%;margin-right:20%">
       		<form action="eventapply.php" method="post">
@@ -47,7 +59,8 @@
                     <tr>
                         <td>Upload Document<br></td>
                         <td></td>
-                        <<td>
+                        <td>
+                            <input type="file" name="ufile" id="actual-btn" hidden required/>   
                             <label class="label1" for="actual-btn">Choose File</label>
                             <input type="hidden" name="MAX_FILE_SIZE" required value="100000">
                             <span id="file-chosen">No file chosen</span>
