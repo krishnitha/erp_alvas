@@ -60,7 +60,7 @@
                 
                 </table>
                 <div class="text-center">
-                    <input type="button" class="btn btn-info" value="Submit">
+                    <input type="submit" class="btn btn-info" value="Submit">
                 </div>
             </form>
         </div>
