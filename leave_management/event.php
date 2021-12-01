@@ -19,7 +19,7 @@ include("../template/student_sidebar.php");
     </table>
 </div>
 <div class="text-center"style="margin-top:30px">
-<a href="../leave_management/eventapply.php"><button  type="button" class="btn btn-info"> Apply New</button></a>
+<a ="../lhrefeave_management/eventapply.php"><button  type="button" class="btn btn-info"> Apply New</button></a>
 </div>
 <?php
 include("../template/student-footer.php");

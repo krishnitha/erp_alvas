@@ -39,7 +39,7 @@ include("../template/student_sidebar.php");
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td><button type="button" class="btn btn-info">Info</button></td>
+                                    <td><a href="../leave_management/leaveinfo.php"><button type="button" class="btn btn-info">Info</button></td>
                                 </tr>
 
 
