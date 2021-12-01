@@ -1,6 +1,10 @@
 <?php
 session_start();
-
+require_once "../config.php";
+$s='select * from students where usn="' . $_SESSION["username"] . '"';
+                            // echo $s;
+                            $res = $link->query($s);
+                            $res = mysqli_fetch_assoc($res);
 ?>
 
 <!DOCTYPE html>
@@ -294,17 +298,11 @@ session_start();
                         <li>
                             <a href="../leave_management/event.php" style="color: black; background:white">Event</a>
                         </li>
-                        <li>
-                        <a href="../leave_management/placement.php" style="color: black; background:white">Placement</a>
-                        </li>
+                       
                        
                         <?php
-                            /*$s='select * from students where usn="' . $_SESSION["username"] . '"';
-                            // echo $s;
-                            $res = $link->query($s);
-                            $res = mysqli_fetch_assoc($res);
+                            
                             if($res["semester"] == "7" || $res["semester"] == "8"){
-                                // echo $res["sem"];
                         ?>
 
                         <li>
@@ -312,8 +310,9 @@ session_start();
                         </li>
 
                         <?php 
-                      }*/
+                      }
                        ?>
+
                     </ul>
                 </li>
             </ul>

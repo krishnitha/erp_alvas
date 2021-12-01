@@ -7,7 +7,7 @@ include("../template/student_sidebar.php");
 <div>
     <h4 style="text-align:center">Placement Details</h4><br>
 </div>
-<div>
+<div style="margin-left:5%;margin-right:5%">
     <table class="table table-responsive table-borderless">
         <tr>
         	<th>Applied On</th>
