@@ -25,7 +25,7 @@ include("../template/student_sidebar.php");
                             $res = $link->query($s);
                             $res = mysqli_fetch_assoc($res);
                             $usn = $_SESSION["username"];
-                            $que = "select * from attendance where usn=\"" . $usn . "\" and sem=\"" . $res["semester"] . "\"";
+                            $que = "select * from attendance where usn=\"" . $usn . "\" and sem=\"" . $res["semester"] . "\" order by subject ASC";
                             // echo $que;
                             $result = $con->query($que);
                             foreach ($result as $row) {
