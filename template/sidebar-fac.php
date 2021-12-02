@@ -294,8 +294,29 @@ onReady(function() {
                             <a href="#iamarkSubmenu" data-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle">IA Marks</a>
                         </li>
-
                     </ul>
+                    <li>
+                        <a href="#leaveSubmenu" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle">Leave</a>
+                        <ul class="collapse list-unstyled" id="leaveSubmenu">
+                            <li>
+                                <a href="#" style="color: black; background:white">DL</a>
+                            </li>
+                            <li>
+                                <a href="#" style="color: black; background:white">Earned Leave</a>
+                            </li>
+                            <li>
+                                <a href="#" style="color: black; background:white">Casual Leave</a>
+                            </li>
+                            <li>
+                                <a href="#" style="color: black; background:white">OOD Leave</a>
+                            </li>
+                            <li>
+                                <a href="#" style="color: black; background:white">SCL Leave</a>
+                            </li>
+                        </ul>
+                    </li>
+        </nav>
                 </li>
 
                 <li>
