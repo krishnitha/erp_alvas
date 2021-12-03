@@ -31,7 +31,20 @@ include("../template/sidebar-fac.php");
                             <input type = "text" name="reason" class = "form-control" id = "reason" placeholder = "Enter the Reason for leave" required>   
         				</td>
         			</tr>
-
+                    <tr>
+        				<td>Number of days<br></td>
+                        <td></td>
+                        <td> 
+                            <input type="number" name="r_clear" class="form-control" min="0" required> 
+        				</td>
+        			</tr>
+                    <tr>
+                        <td>Date<br></td>
+                        <td></td>
+                        <td> 
+                            <input type = "date" name="cdate" class="form-control" required>
+                        </td>
+                    </tr>
                     <tr>
                         <td> From <br></td>
                         <td></td>
