@@ -6,7 +6,7 @@ $con=$link;
 include("../template/sidebar-fac.php");
 ?>
 <div class="text-center" style="margin-top:30px">
-    <a href="../Fac_leave_management/earnedleaveapply.php"><button  type="button" class="btn btn-info">Apply New</button></a>
+    <a href="../Fac_Leave_Management/sclleaveapply.php"><button  type="button" class="btn btn-info">Apply New</button></a>
 </div>
 <?php
 include("../template/footer-fac.php");

@@ -290,13 +290,13 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
                         class="dropdown-toggle">Leave</a>
                     <ul class="collapse list-unstyled" id="leaveSubmenu">
                         <li>
-                            <a href="../leave_management/details.php" style="color: black; background:white">Details</a>
+                            <a href="../student_leave_management/details.php" style="color: black; background:white">Details</a>
                         </li>
                         <li>
-                            <a href="../leave_management/medical.php" style="color: black; background:white">Medical</a>
+                            <a href="../student_leave_management/medical.php" style="color: black; background:white">Medical</a>
                         </li>
                         <li>
-                            <a href="../leave_management/event.php" style="color: black; background:white">Event</a>
+                            <a href="../student_leave_management/event.php" style="color: black; background:white">Event</a>
                         </li>
                        
                        
@@ -306,7 +306,7 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
                         ?>
 
                         <li>
-                        <a href="../leave_management/placement.php" style="color: black; background:white">Placement</a>
+                        <a href="../student_leave_management/placement.php" style="color: black; background:white">Placement</a>
                         </li>
 
                         <?php 

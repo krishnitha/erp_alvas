@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2021 at 03:43 PM
+-- Generation Time: Dec 02, 2021 at 10:29 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -21619,13 +21619,22 @@ INSERT INTO `students` (`adm_no`, `usn`, `batch`, `semester`, `section`, `lab_ba
 --
 
 CREATE TABLE `student_event_leave` (
-  `USN` varchar(15) NOT NULL,
-  `EVENT_NAME` char(50) NOT NULL,
-  `DATE` date DEFAULT NULL,
-  `APPLIED_DATE` date DEFAULT NULL,
-  `FROM_TIME` time(6) DEFAULT NULL,
-  `To_TIME` time(6) DEFAULT NULL
+  `usn` varchar(15) NOT NULL,
+  `sem` varchar(30) NOT NULL,
+  `event_name` char(50) NOT NULL,
+  `event_date` date DEFAULT NULL,
+  `applied_date` date DEFAULT NULL,
+  `from_time` time DEFAULT NULL,
+  `to_time` time DEFAULT NULL,
+  `doc_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_event_leave`
+--
+
+INSERT INTO `student_event_leave` (`usn`, `sem`, `event_name`, `event_date`, `applied_date`, `from_time`, `to_time`, `doc_name`) VALUES
+('4AL18CS039', '7', 'abc', '2021-12-01', '2021-12-02', '02:45:00', '02:44:00', '../leave_doc/event_doc/filipe2021.pdf');
 
 -- --------------------------------------------------------
 
@@ -21634,12 +21643,23 @@ CREATE TABLE `student_event_leave` (
 --
 
 CREATE TABLE `student_medical_leave` (
-  `USN` varchar(15) NOT NULL,
-  `APPLIED_DATE` date DEFAULT NULL,
-  `FROM_DATE` date DEFAULT NULL,
-  `TO_DATE` date DEFAULT NULL,
-  `STATUS` char(20) NOT NULL
+  `usn` varchar(15) DEFAULT NULL,
+  `sem` varchar(30) NOT NULL,
+  `reason` varchar(100) NOT NULL,
+  `applied_date` date DEFAULT NULL,
+  `from_date` date DEFAULT NULL,
+  `to_date` date DEFAULT NULL,
+  `doc_name` varchar(50) NOT NULL,
+  `status` char(20) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_medical_leave`
+--
+
+INSERT INTO `student_medical_leave` (`usn`, `sem`, `reason`, `applied_date`, `from_date`, `to_date`, `doc_name`, `status`) VALUES
+('4AL18CS039', '7', 'xyz', '2021-12-02', '2021-12-01', '2021-12-11', '../leave_doc/medical_doc/noise detection.pdf', 'pending'),
+('4AL18CS039', '7', 'aa', '2021-12-02', '2021-12-01', '2021-12-17', '../leave_doc/medical_doc/kumar2021.pdf', 'pending');
 
 -- --------------------------------------------------------
 
@@ -21648,14 +21668,24 @@ CREATE TABLE `student_medical_leave` (
 --
 
 CREATE TABLE `student_placement_leave` (
-  `USN` varchar(15) NOT NULL,
-  `COMPANY_NAME` varchar(100) NOT NULL,
-  `NO_OF_ROUNDS_CLEARED` int(10) DEFAULT NULL,
-  `DATE` date DEFAULT NULL,
-  `APPLIED_DATE` date DEFAULT NULL,
-  `FROM_TIME` time(6) DEFAULT NULL,
-  `TO_TIME` time(6) DEFAULT NULL
+  `usn` varchar(15) NOT NULL,
+  `sem` varchar(30) NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `rounds` int(10) DEFAULT NULL,
+  `place_date` date DEFAULT NULL,
+  `applied_date` date DEFAULT NULL,
+  `from_time` time DEFAULT NULL,
+  `to_time` time DEFAULT NULL,
+  `doc_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_placement_leave`
+--
+
+INSERT INTO `student_placement_leave` (`usn`, `sem`, `company_name`, `rounds`, `place_date`, `applied_date`, `from_time`, `to_time`, `doc_name`) VALUES
+('4AL18CS039', '7', 'n  ', 5, '2021-12-17', '2021-12-02', '02:10:00', '02:13:00', '../leave_doc/placement_doc/filipe2021.pdf'),
+('4AL18CS039', '7', 'xyz', 2, '2021-12-02', '2021-12-02', '02:43:00', '02:44:00', '../leave_doc/placement_doc/duangwongsa2021.pdf');
 
 -- --------------------------------------------------------
 
@@ -22951,19 +22981,19 @@ ALTER TABLE `students`
 -- Indexes for table `student_event_leave`
 --
 ALTER TABLE `student_event_leave`
-  ADD PRIMARY KEY (`USN`);
+  ADD KEY `usn` (`usn`);
 
 --
 -- Indexes for table `student_medical_leave`
 --
 ALTER TABLE `student_medical_leave`
-  ADD PRIMARY KEY (`USN`);
+  ADD KEY `fk_foreign_key_name` (`usn`);
 
 --
 -- Indexes for table `student_placement_leave`
 --
 ALTER TABLE `student_placement_leave`
-  ADD PRIMARY KEY (`USN`);
+  ADD KEY `usn` (`usn`);
 
 --
 -- Indexes for table `subjects`
@@ -23004,6 +23034,24 @@ ALTER TABLE `ia2_max_marks`
 --
 ALTER TABLE `ia3_max_marks`
   ADD CONSTRAINT `ia3_max_marks_ibfk_1` FOREIGN KEY (`sub_code`) REFERENCES `subjects` (`sub_code`);
+
+--
+-- Constraints for table `student_event_leave`
+--
+ALTER TABLE `student_event_leave`
+  ADD CONSTRAINT `student_event_leave_ibfk_1` FOREIGN KEY (`usn`) REFERENCES `students` (`usn`);
+
+--
+-- Constraints for table `student_medical_leave`
+--
+ALTER TABLE `student_medical_leave`
+  ADD CONSTRAINT `fk_foreign_key_name` FOREIGN KEY (`usn`) REFERENCES `students` (`usn`);
+
+--
+-- Constraints for table `student_placement_leave`
+--
+ALTER TABLE `student_placement_leave`
+  ADD CONSTRAINT `student_placement_leave_ibfk_1` FOREIGN KEY (`usn`) REFERENCES `students` (`usn`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
