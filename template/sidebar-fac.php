@@ -304,7 +304,7 @@ onReady(function() {
                                 <a href="#" style="color: black; background:white">DL</a>
                             </li>
                             <li>
-                                <a href="../leave_management/earnedleave.php" style="color: black; background:white">Earned Leave</a>
+                                <a href="../Fac_leave_management/earnedleave.php" style="color: black; background:white">Earned Leave</a>
                             </li>
                             <li>
                                 <a href="#" style="color: black; background:white">Casual Leave</a>

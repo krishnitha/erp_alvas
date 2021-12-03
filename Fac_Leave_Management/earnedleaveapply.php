@@ -1,10 +1,10 @@
 <?php
-    require_once "../config.php";
-    $con=$link;
+// require_once "../config.php";
+include("../template/fac-auth.php");
+$con=$link;
 
-    include("../template/student_sidebar.php");
-?>
-        <style>
+include("../template/sidebar-fac.php");
+?>      <style>
             .label2 
             {
                 background-color: rgb(50, 113, 124);
@@ -15,9 +15,9 @@
                 cursor: pointer;
             }
         </style>
-        <h4 style="text-align:center">Enter The Medical Leave Details</h4><br>
+        <h4 style="text-align:center">Apply for Earned Leave</h4><br>
         <div style="margin-left:20%;margin-right:20%">
-      		<form action="upload_medical.php" method="POST">
+      		<form action="upload_earnedleave.php" method="POST">
         		<table   class="table table-responsive table-borderless">
         			<tr>
         				<th></th>
@@ -83,6 +83,6 @@
             });
         </script>
     
-<?php
-include("../template/student-footer.php");
+    <?php
+include("../template/footer-fac.php");
 ?>
