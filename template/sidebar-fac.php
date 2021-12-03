@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -303,7 +304,7 @@ onReady(function() {
                                 <a href="#" style="color: black; background:white">DL</a>
                             </li>
                             <li>
-                                <a href="#" style="color: black; background:white">Earned Leave</a>
+                                <a href="../leave_management/earnedleave.php" style="color: black; background:white">Earned Leave</a>
                             </li>
                             <li>
                                 <a href="#" style="color: black; background:white">Casual Leave</a>
@@ -316,10 +317,7 @@ onReady(function() {
                             </li>
                         </ul>
                     </li>
-        </nav>
-                </li>
-
-                <li>
+                    <li>
                             <a href="#Gen_report" data-toggle="collapse" aria-expanded="false"
                                 class="dropdown-toggle">Generate Report</a>
                             <ul class="collapse list-unstyled" id="Gen_report">
