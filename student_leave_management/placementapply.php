@@ -91,7 +91,8 @@
                                 $errors[]= "Sorry, file already exists.";
                                 
                             }
-                            if(empty($errors))
+                            echo empty($errors);
+                            if(empty($errors) && 0)
                             {
                                 if(move_uploaded_file($tmpname,$uploadpath))
                                 {
@@ -107,7 +108,8 @@
                                     $que = "insert into student_placement_leave(usn,sem,company_name,rounds,place_date,applied_date,from_time,to_time,doc_name) values (\"" . $_SESSION['username'] . "\",
                                     \"" . $res["semester"] . "\",\"" . $Cname . "\",\"" . $round . "\",\"" . $Cdate . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
                                     $result = $con->query($que);
-                                    header("Location: ../student_leave_management/placement.php");
+                                    // header("Location: ../student_leave_management/placement.php");
+                                    echo '<script>window.location.replace("../student_leave_management/placement.php");</script>';
                                 }
                                 else
                                 {
