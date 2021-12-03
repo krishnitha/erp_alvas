@@ -1,9 +1,7 @@
 <?php
 require_once "../config.php";
 $con=$link;
-
 include("../template/student_sidebar.php");
-
 ?>
             <div>
                 
@@ -11,7 +9,6 @@ include("../template/student_sidebar.php");
                 <table class="table table-responsive table-borderless">
                     <tbody>
                         <tr>
-                           
                             <th>Subject</th>
                             <th>Present class</th>
                             <th>Total class</th>
@@ -19,7 +16,6 @@ include("../template/student_sidebar.php");
                             <th>Detail</th>
                         </tr>
                         <?php
-
                             $s='select * from students where usn="' . $_SESSION["username"] . '"';
                             // echo $s;
                             $res = $link->query($s);
@@ -29,18 +25,14 @@ include("../template/student_sidebar.php");
                             // echo $que;
                             $result = $con->query($que);
                             foreach ($result as $row) {
-                              
                         ?>
 
                                 <tr>
-                                    
-                                    <td>
-                                        <?php echo $row["subject"] ?>
-                                    </td>
+                                    <td><?php echo $row["subject"] ?></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td><a href="../leave_management/info.php"><button type="button" class="btn btn-info">Info</button></td>
+                                    <td><a href="../leave_management/info.php?sub=<?php echo $row["subject"]; ?>"><button type="button" class="btn btn-info">Info</button></td>
                                 </tr>
 
 
