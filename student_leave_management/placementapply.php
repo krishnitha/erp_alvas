@@ -3,12 +3,11 @@
     $con=$link;
     include("../template/student_sidebar.php");
 ?>
-
         <style>
             .label2 
             {
                 background-color: rgb(50, 113, 124);
-                color:white;
+                color: white;
                 padding: 0.5rem;
                 font-family: sans-serif;
                 border-radius: 0.3rem;
@@ -16,27 +15,27 @@
             }
         </style>
 
-        <h4 style="text-align:center">Enter The Event Details</h4><br>
+        <h4 style="text-align:center">Enter The placement Details</h4><br>
         <div style="margin-left:20%;margin-right:20%">
       		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
-        		<table   class="table table-responsive table-borderless">
+        		<table class="table table-responsive table-borderless">
         			<tr>
         				<th></th>
                         <th></th>
         				<th></th>
         			</tr>
         			<tr>
-        				<td>Event Name<br></td>
+        				<td>Company Name<br></td>
                         <td></td>
                         <td> 
-                            <input type = "text" name="Ename" class = "form-control" id = "name" placeholder = "Enter Event Name" required>   
+                            <input type = "text" name="cname" class = "form-control" id = "name" placeholder = "Enter Company Name" required>   
         				</td>
         			</tr>
                     <tr>
                         <td>Date<br></td>
                         <td></td>
                         <td> 
-                            <input type = "date" name="Edate" class="form-control" required>
+                            <input type = "date" name="cdate" class="form-control" required>
                         </td>
                     </tr>
                     <tr>
@@ -46,6 +45,7 @@
                             <input type="time" name="start" id="inputMDEx1" class="form-control" required>
                             <label for="inputMDEx1">Choose time</label>
                         </td>
+                       
                     </tr>
                     <tr>
                         <td>End Time<br></td>
@@ -55,6 +55,13 @@
                             <label for="inputMDEx1">Choose time</label>
                         </td>
                     </tr>
+                    <tr>
+        				<td>Rounds cleared<br></td>
+                        <td></td>
+                        <td> 
+                            <input type="number" name="r_clear" class="form-control" min="0" required> 
+        				</td>
+        			</tr>
                     <tr>
                         <td>Upload Document<br></td>
                         <td></td>
@@ -67,68 +74,70 @@
                             <?php
                             if(isset($_POST["Submit"]))
                             {
-                                $target_dir="../leave_doc/event_doc/";
-                                $filename=$_FILES["fileupload"]["name"];
-                                $tmpname=$_FILES["fileupload"]["tmp_name"];
-                                $filetype=$_FILES["fileupload"]["type"];
-                                $errors=[];
-                                $fileextensions=["pdf","jpeg","jpg","png"];
-                                $arr=explode(".",$filename);
-                                $ext=strtolower(end($arr));
-                                $uploadpath=$target_dir.basename($filename);
-                                if(!in_array($ext,$fileextensions))
+                            $target_dir="../leave_doc/placement_doc/";
+                            $filename=$_FILES["fileupload"]["name"];
+                            $tmpname=$_FILES["fileupload"]["tmp_name"];
+                            $filetype=$_FILES["fileupload"]["type"];
+                            $errors=[];
+                            $fileextensions=["pdf","jpeg","jpg","png"];
+                            $arr=explode(".",$filename);
+                            $ext=strtolower(end($arr));
+                            $uploadpath=$target_dir.basename($filename);
+                            if(!in_array($ext,$fileextensions))
+                            {
+                                $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
+                            }
+                            if (file_exists($filename)) {
+                                $errors[]= "Sorry, file already exists.";
+                                
+                            }
+                            if(empty($errors))
+                            {
+                                if(move_uploaded_file($tmpname,$uploadpath))
                                 {
-                                    $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
-                                }
-                                if (file_exists($filename)) {
-                                    $errors[]= "Sorry, file already exists.";
-                                }
-                                if(empty($errors))
-                                {
-                                    if(move_uploaded_file($tmpname,$uploadpath))
-                                    {
-                                        $s='select * from students where usn="' . $_SESSION["username"] . '"';
-                                        $res = $link->query($s);
-                                        $res = mysqli_fetch_assoc($res);
-                                        $ename = $_POST["Ename"];
-                                        $edate = $_POST["Edate"];
-                                        $date = date('Y-m-d');
-                                        $from = $_POST["start"];
-                                        $to = $_POST["end"];
-                                        $que = "insert into student_event_leave(usn,sem,event_name,event_date,applied_date,from_time,to_time,doc_name) values (\"" . $_SESSION['username'] . "\",
-                                        \"" . $res["semester"] . "\",\"" . $ename . "\",\"" . $edate . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
-                                        $result = $con->query($que);
-                                        header("Location: ../leave_management/event.php");
-                                    }
-                                    else
-                                    {
-                                        ?>
-                                            <label for="file-chosen">upload failed</label>
-                                        <?php
-                                    }
+                                    $s='select * from students where usn="' . $_SESSION["username"] . '"';
+                                    $res = $link->query($s);
+                                    $res = mysqli_fetch_assoc($res);
+                                    $Cname = $_POST["cname"];
+                                    $Cdate = $_POST["cdate"];
+                                    $date = date('Y-m-d');
+                                    $round = $_POST["r_clear"];
+                                    $from = $_POST["start"];
+                                    $to = $_POST["end"];
+                                    $que = "insert into student_placement_leave(usn,sem,company_name,rounds,place_date,applied_date,from_time,to_time,doc_name) values (\"" . $_SESSION['username'] . "\",
+                                    \"" . $res["semester"] . "\",\"" . $Cname . "\",\"" . $round . "\",\"" . $Cdate . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
+                                    $result = $con->query($que);
+                                    header("Location: ../student_leave_management/placement.php");
                                 }
                                 else
                                 {
-                                    foreach($errors as $value)
-                                    {
-                                ?>
-                                        <br>
-                                        <label for="actual-btn" style="color:red"><?php echo "$value"?></label>
-                                <?php
-                                    }
+                                    ?>
+                                        <label for="file-chosen">upload failed</label>
+                                    <?php
                                 }
                             }
+                            else
+                            {
+                                foreach($errors as $value)
+                                {
+                            ?>
+                                    <br>
+                                    <label for="actual-btn" style="color:red"><?php echo "$value"?></label>
+                            <?php
+                                }
+                            }
+                        }
                     ?>
                         </td>
                     </tr>
                 
                 </table>
-            
-                <div class="text-center">
-                    <input type="Submit" name ="Submit" class="btn btn-info" value="Submit">
+                <div class="text-center" style="margin-top:30px">
+                    <input type="Submit" name="Submit" class="btn btn-info" value="Submit">
                 </div>
             </form>
         </div>
+        
         <script>
             const actualBtn = document.getElementById('actual-btn');
 
@@ -148,7 +157,6 @@
                 });
             });
         </script>
-        
 
 <?php
 include("../template/student-footer.php");

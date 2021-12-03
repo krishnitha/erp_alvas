@@ -32,7 +32,7 @@ include("../template/student_sidebar.php");
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td><a href="../leave_management/info.php?sub=<?php echo $row["subject"]; ?>"><button type="button" class="btn btn-info">Info</button></td>
+                                    <td><a href="../student_leave_management/info.php?sub=<?php echo $row["subject"]; ?>"><button type="button" class="btn btn-info">Info</button></td>
                                 </tr>
 
 
