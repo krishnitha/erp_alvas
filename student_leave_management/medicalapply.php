@@ -88,7 +88,8 @@
                                     $que = "insert into student_medical_leave(usn,sem,reason,applied_date,from_date,to_date,doc_name) values (\"" . $_SESSION['username'] . "\",
                                     \"" . $res["semester"] . "\",\"" . $reason . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
                                     $result = $con->query($que);
-                                    header("Location: ../student_leave_management/medical.php");
+                                    //header("Location: ../student_leave_management/medical.php");
+                                    echo '<script>window.location.replace("../student_leave_management/medical.php");</script>';
                                 }
                                 else
                                 {

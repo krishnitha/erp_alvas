@@ -98,8 +98,8 @@
                                         $que = "insert into student_event_leave(usn,sem,event_name,event_date,applied_date,from_time,to_time,doc_name) values (\"" . $_SESSION['username'] . "\",
                                         \"" . $res["semester"] . "\",\"" . $ename . "\",\"" . $edate . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
                                         $result = $con->query($que);
-                                       
-                                        // echo '<script>window.location.replace("http://www.w3schools.com");</script>';
+                                        // header("Location: ../student_leave_management/event.php");
+                                        echo '<script>window.location.replace("../student_leave_management/event.php");</script>';
                                     }
                                     else
                                     {

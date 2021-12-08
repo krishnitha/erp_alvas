@@ -91,8 +91,7 @@
                                 $errors[]= "Sorry, file already exists.";
                                 
                             }
-                            echo empty($errors);
-                            if(empty($errors) && 0)
+                            if(empty($errors))
                             {
                                 if(move_uploaded_file($tmpname,$uploadpath))
                                 {
