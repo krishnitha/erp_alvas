@@ -301,19 +301,16 @@ onReady(function() {
                                     class="dropdown-toggle">Leave</a>
                         <ul class="collapse list-unstyled" id="leaveSubmenu">
                             <li>
-                                <a href="#" style="color: black; background:white">DL</a>
-                            </li>
-                            <li>
                                 <a href="../Fac_leave_management/earnedleave.php" style="color: black; background:white">Earned Leave</a>
                             </li>
                             <li>
-                                <a href="#" style="color: black; background:white">Casual Leave</a>
+                                <a href="../Fac_leave_management/casualleave.php" style="color: black; background:white">Casual Leave</a>
                             </li>
                             <li>
-                                <a href="#" style="color: black; background:white">OOD Leave</a>
+                                <a href="../Fac_leave_management/OOD_leave.php" style="color: black; background:white">OOD Leave</a>
                             </li>
                             <li>
-                                <a href="#" style="color: black; background:white">SCL Leave</a>
+                                <a href="../Fac_leave_management/sclleave.php" style="color: black; background:white">SCL Leave</a>
                             </li>
                         </ul>
                     </li>
