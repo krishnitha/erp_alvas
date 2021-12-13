@@ -1,5 +1,5 @@
 <?php
-// require_once "../config.php";
+require_once "../config.php";
 include("../template/fac-auth.php");
 $con=$link;
 
