@@ -1,7 +1,8 @@
 <?php
-require_once "../config.php";
+//require_once "../config.php";
+include("../template/fac-auth.php");
 $con=$link;
-include("../template/student_sidebar.php");
+include("../template/sidebar-fac.php");
 ?>
             <div>
                 
@@ -15,6 +16,16 @@ include("../template/student_sidebar.php");
                             <th>Section</th>
                             <th>View</th>
                         </tr>
+
+
+
+                        <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><button type="button" class="btn btn-info">Info</button></td>
+                        </tr>
                         
             </div>
                                
@@ -22,5 +33,7 @@ include("../template/student_sidebar.php");
                 </table>
 
 
-
+<?php
+    include("../template/footer-fac.php");
+?>
                

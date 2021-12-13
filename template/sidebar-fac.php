@@ -307,7 +307,7 @@ onReady(function() {
                                 <a href="../Fac_leave_management/casualleave.php" style="color: black; background:white">Casual Leave</a>
                             </li>
                             <li>
-                                <a href="../Fac_leave_management/OOD_leave.php" style="color: black; background:white">OOD Leave</a>
+                                <a href="#" style="color: black; background:white">OOD Leave</a>
                             </li>
                             <li>
                                 <a href="../Fac_leave_management/sclleave.php" style="color: black; background:white">SCL Leave</a>
@@ -409,7 +409,8 @@ onReady(function() {
 
                 <?php if ($hod == 1) { ?>
                 <li>
-                    <a href="../approvals/approvals.php">Approvals</a>
+                    <a href="../approvals/approval.php">Approvals</a>
+                    <a href ="../student_leave_management/hod_leaveApprove.php">Leave Approval</a>
                 </li>
                 <?php } ?>
             </ul>
