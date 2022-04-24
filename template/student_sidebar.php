@@ -2,9 +2,8 @@
 session_start();
 require_once "../config.php";
 $s='select * from students where usn="' . $_SESSION["username"] . '"';
-                            // echo $s;
-                            $res = $link->query($s);
-                            $res = mysqli_fetch_assoc($res);
+$res = $link->query($s);
+$res = mysqli_fetch_assoc($res);
 ?>
 
 <!DOCTYPE html>

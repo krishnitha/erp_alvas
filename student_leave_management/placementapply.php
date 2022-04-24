@@ -87,6 +87,7 @@
                             {
                                 $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
                             }
+                            
                             if (file_exists($filename)) {
                                 $errors[]= "Sorry, file already exists.";
                                 

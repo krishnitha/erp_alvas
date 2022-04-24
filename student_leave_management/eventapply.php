@@ -100,6 +100,7 @@
                                         $result = $con->query($que);
                                         // header("Location: ../student_leave_management/event.php");
                                         echo '<script>window.location.replace("../student_leave_management/event.php");</script>';
+                                        
                                     }
                                     else
                                     {

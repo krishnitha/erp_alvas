@@ -40,7 +40,22 @@ include("../template/student_sidebar.php");
                         <td><?php echo $row["reason"] ?></td>
                         <td><?php echo $row["from_date"] ?></td>
                         <td><?php echo $row["to_date"] ?></td>
-                        <td><?php echo $row["status"] ?></td>
+                        <td>
+                            <?php 
+                                if($row["status"]==1)
+                                {
+                                    echo "Accepted";
+                                }
+                                else if($row["status"]==2)
+                                {
+                                    echo "Rejected"; 
+                                }
+                                else
+                                {
+                                    echo "Pending";
+                                }
+                            ?>
+                        </td>
                         <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a>
                     </tr>
         <?php

@@ -72,7 +72,6 @@
                             }
                             if (file_exists($filename)) {
                                 $errors[]= "Sorry, file already exists.";
-                                
                             }
                             if(empty($errors))
                             {
