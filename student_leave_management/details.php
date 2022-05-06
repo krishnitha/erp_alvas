@@ -1,4 +1,6 @@
 <?php
+include("../template/stud_auth.php");
+error_reporting(0);
 require_once "../config.php";
 $con=$link;
 include("../template/student_sidebar.php");
@@ -10,13 +12,14 @@ include("../template/student_sidebar.php");
                     <tbody>
                         <tr>
                             <th>Subject</th>
-                            <th>Present class</th>
+                            <th>Classes Attended</th>
                             <th>Total class</th>
                             <th>Attendance %</th>
                             <th>Detail</th>
                         </tr>
                         <?php
-                            $s='select * from students where usn="' . $_SESSION["username"] . '"';
+                            echo $_SESSION['username'];
+                            $s='select * from students where usn="' . $_SESSION['username'] . '"';
                             // echo $s;
                             $res = $link->query($s);
                             $res = mysqli_fetch_assoc($res);

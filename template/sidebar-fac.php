@@ -406,7 +406,6 @@ onReady(function() {
                 </li>
                 <!-- dept admin list end -->
 
-
                 <?php if ($hod == 1) { ?>
                 <li>
                     <a href="../approvals/approvals.php">Approvals</a>
