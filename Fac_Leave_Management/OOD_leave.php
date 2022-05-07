@@ -13,6 +13,8 @@ include("../template/sidebar-fac.php");
                     <th>Date</th>
                     <th>Status</th>
                     <th>Document</th>
+                    <th>Document</th>
+
                    
 </tr>
 </table>
