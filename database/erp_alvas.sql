@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2021 at 10:29 PM
+-- Generation Time: May 07, 2022 at 08:15 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -6966,12 +6966,12 @@ INSERT INTO `co_po` (`faculty_id`, `sub`, `co`, `po1`, `po2`, `po3`, `po4`, `po5
 ('AEF06370', '', 'co4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'not approved', 'none'),
 ('AEF06370', '', 'co5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'not approved', 'none'),
 ('AEF06370', '', 'co6', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'not approved', 'none'),
-('AEF06451', '18CS72 - Big Data Analytics', 'co1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'waiting', 'Dr.Manjunath Kotari'),
-('AEF06451', '18CS72 - Big Data Analytics', 'co2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'waiting', 'Dr.Manjunath Kotari'),
-('AEF06451', '18CS72 - Big Data Analytics', 'co3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'waiting', 'Dr.Manjunath Kotari'),
-('AEF06451', '18CS72 - Big Data Analytics', 'co4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'waiting', 'Dr.Manjunath Kotari'),
-('AEF06451', '18CS72 - Big Data Analytics', 'co5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'waiting', 'Dr.Manjunath Kotari'),
-('AEF06451', '18CS72 - Big Data Analytics', 'co6', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'waiting', 'Dr.Manjunath Kotari'),
+('AEF06451', '18CS72 - Big Data Analytics', 'co1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'approved', 'Dr.Manjunath Kotari'),
+('AEF06451', '18CS72 - Big Data Analytics', 'co2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'approved', 'Dr.Manjunath Kotari'),
+('AEF06451', '18CS72 - Big Data Analytics', 'co3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'approved', 'Dr.Manjunath Kotari'),
+('AEF06451', '18CS72 - Big Data Analytics', 'co4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'approved', 'Dr.Manjunath Kotari'),
+('AEF06451', '18CS72 - Big Data Analytics', 'co5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'approved', 'Dr.Manjunath Kotari'),
+('AEF06451', '18CS72 - Big Data Analytics', 'co6', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'approved', 'Dr.Manjunath Kotari'),
 ('AEF4303', '18CS71 - Artificial Intelligence and Machine  Learning', 'co1', 'High', 'Moderate', 'High', 'Moderate', 'Moderate', 'Moderate', 'N/A', 'N/A', 'N/A', 'Moderate', 'Moderate', 'N/A', 'approved', 'Dr.Manjunath Kotari'),
 ('AEF4303', '18CS71 - Artificial Intelligence and Machine  Learning', 'co2', 'Moderate', 'N/A', 'N/A', 'Moderate', 'Moderate', 'Low', 'Low', 'N/A', 'High', 'High', 'High', 'Moderate', 'approved', 'Dr.Manjunath Kotari'),
 ('AEF4303', '18CS71 - Artificial Intelligence and Machine  Learning', 'co3', 'N/A', 'High', 'Moderate', 'Moderate', 'Low', 'Low', 'Moderate', 'N/A', 'Low', 'Low', 'High', 'N/A', 'approved', 'Dr.Manjunath Kotari'),
@@ -7441,6 +7441,22 @@ INSERT INTO `elective_maping` (`usn`, `sub_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faculty_casual_leave`
+--
+
+CREATE TABLE `faculty_casual_leave` (
+  `id` int(11) NOT NULL,
+  `faculty_name` varchar(50) NOT NULL,
+  `reason` varchar(1000) NOT NULL,
+  `applied_date` date NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `status` int(20) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `faculty_details`
 --
 
@@ -7680,6 +7696,30 @@ CREATE TABLE `faculty_ppr_details` (
   `faculty_ppr_issue` varchar(50) DEFAULT NULL,
   `faculty_ppr_issn` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty_scl`
+--
+
+CREATE TABLE `faculty_scl` (
+  `id` int(11) NOT NULL,
+  `faculty_name` varchar(50) NOT NULL,
+  `reason` varchar(1000) NOT NULL,
+  `applied_date` date NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `doc_name` varchar(100) NOT NULL,
+  `status` int(20) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `faculty_scl`
+--
+
+INSERT INTO `faculty_scl` (`id`, `faculty_name`, `reason`, `applied_date`, `from_date`, `to_date`, `doc_name`, `status`) VALUES
+(1, 'Shilpa', 'fever', '2022-05-07', '2022-05-06', '2022-05-08', '../leave_doc/scl_doc/Isha cv.pdf', 0);
 
 -- --------------------------------------------------------
 
@@ -21619,6 +21659,7 @@ INSERT INTO `students` (`adm_no`, `usn`, `batch`, `semester`, `section`, `lab_ba
 --
 
 CREATE TABLE `student_event_leave` (
+  `id` int(11) NOT NULL,
   `usn` varchar(15) NOT NULL,
   `sem` varchar(30) NOT NULL,
   `event_name` char(50) NOT NULL,
@@ -21626,15 +21667,16 @@ CREATE TABLE `student_event_leave` (
   `applied_date` date DEFAULT NULL,
   `from_time` time DEFAULT NULL,
   `to_time` time DEFAULT NULL,
-  `doc_name` varchar(100) NOT NULL
+  `doc_name` varchar(100) NOT NULL,
+  `status` int(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `student_event_leave`
 --
 
-INSERT INTO `student_event_leave` (`usn`, `sem`, `event_name`, `event_date`, `applied_date`, `from_time`, `to_time`, `doc_name`) VALUES
-('4AL18CS039', '7', 'abc', '2021-12-01', '2021-12-02', '02:45:00', '02:44:00', '../leave_doc/event_doc/filipe2021.pdf');
+INSERT INTO `student_event_leave` (`id`, `usn`, `sem`, `event_name`, `event_date`, `applied_date`, `from_time`, `to_time`, `doc_name`, `status`) VALUES
+(1, '4AL18CS039', '7', 'abc', '2021-12-01', '2021-12-02', '02:45:00', '02:44:00', '../leave_doc/event_doc/filipe2021.pdf', 0);
 
 -- --------------------------------------------------------
 
@@ -21643,6 +21685,7 @@ INSERT INTO `student_event_leave` (`usn`, `sem`, `event_name`, `event_date`, `ap
 --
 
 CREATE TABLE `student_medical_leave` (
+  `id` int(11) NOT NULL,
   `usn` varchar(15) DEFAULT NULL,
   `sem` varchar(30) NOT NULL,
   `reason` varchar(100) NOT NULL,
@@ -21650,16 +21693,17 @@ CREATE TABLE `student_medical_leave` (
   `from_date` date DEFAULT NULL,
   `to_date` date DEFAULT NULL,
   `doc_name` varchar(50) NOT NULL,
-  `status` char(20) NOT NULL DEFAULT 'pending'
+  `status` int(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `student_medical_leave`
 --
 
-INSERT INTO `student_medical_leave` (`usn`, `sem`, `reason`, `applied_date`, `from_date`, `to_date`, `doc_name`, `status`) VALUES
-('4AL18CS039', '7', 'xyz', '2021-12-02', '2021-12-01', '2021-12-11', '../leave_doc/medical_doc/noise detection.pdf', 'pending'),
-('4AL18CS039', '7', 'aa', '2021-12-02', '2021-12-01', '2021-12-17', '../leave_doc/medical_doc/kumar2021.pdf', 'pending');
+INSERT INTO `student_medical_leave` (`id`, `usn`, `sem`, `reason`, `applied_date`, `from_date`, `to_date`, `doc_name`, `status`) VALUES
+(1, '4AL18CS039', '7', 'xyz', '2021-12-02', '2021-12-01', '2021-12-11', '../leave_doc/medical_doc/noise detection.pdf', 1),
+(2, '4AL18CS039', '7', 'aa', '2021-12-02', '2021-12-01', '2021-12-17', '../leave_doc/medical_doc/kumar2021.pdf', 2),
+(3, '4AL18CS039', '7', 'fever', '2022-05-06', '2022-05-08', '2022-05-10', '../leave_doc/medical_doc/leave letter.pdf', 1);
 
 -- --------------------------------------------------------
 
@@ -21668,6 +21712,7 @@ INSERT INTO `student_medical_leave` (`usn`, `sem`, `reason`, `applied_date`, `fr
 --
 
 CREATE TABLE `student_placement_leave` (
+  `id` int(11) NOT NULL,
   `usn` varchar(15) NOT NULL,
   `sem` varchar(30) NOT NULL,
   `company_name` varchar(100) NOT NULL,
@@ -21676,16 +21721,17 @@ CREATE TABLE `student_placement_leave` (
   `applied_date` date DEFAULT NULL,
   `from_time` time DEFAULT NULL,
   `to_time` time DEFAULT NULL,
-  `doc_name` varchar(100) NOT NULL
+  `doc_name` varchar(100) NOT NULL,
+  `status` int(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `student_placement_leave`
 --
 
-INSERT INTO `student_placement_leave` (`usn`, `sem`, `company_name`, `rounds`, `place_date`, `applied_date`, `from_time`, `to_time`, `doc_name`) VALUES
-('4AL18CS039', '7', 'n  ', 5, '2021-12-17', '2021-12-02', '02:10:00', '02:13:00', '../leave_doc/placement_doc/filipe2021.pdf'),
-('4AL18CS039', '7', 'xyz', 2, '2021-12-02', '2021-12-02', '02:43:00', '02:44:00', '../leave_doc/placement_doc/duangwongsa2021.pdf');
+INSERT INTO `student_placement_leave` (`id`, `usn`, `sem`, `company_name`, `rounds`, `place_date`, `applied_date`, `from_time`, `to_time`, `doc_name`, `status`) VALUES
+(1, '4AL18CS039', '7', 'n  ', 5, '2021-12-17', '2021-12-02', '02:10:00', '02:13:00', '../leave_doc/placement_doc/filipe2021.pdf', 0),
+(2, '4AL18CS039', '7', 'xyz', 2, '2021-12-02', '2021-12-02', '02:43:00', '02:44:00', '../leave_doc/placement_doc/duangwongsa2021.pdf', 0);
 
 -- --------------------------------------------------------
 
@@ -22894,6 +22940,12 @@ ALTER TABLE `elective_maping`
   ADD PRIMARY KEY (`usn`,`sub_name`);
 
 --
+-- Indexes for table `faculty_casual_leave`
+--
+ALTER TABLE `faculty_casual_leave`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `faculty_details`
 --
 ALTER TABLE `faculty_details`
@@ -22910,6 +22962,12 @@ ALTER TABLE `faculty_mapping`
 --
 ALTER TABLE `faculty_ppr_details`
   ADD KEY `faculty_id` (`faculty_id`);
+
+--
+-- Indexes for table `faculty_scl`
+--
+ALTER TABLE `faculty_scl`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faculty_workshop_details`
@@ -22981,18 +23039,21 @@ ALTER TABLE `students`
 -- Indexes for table `student_event_leave`
 --
 ALTER TABLE `student_event_leave`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `usn` (`usn`);
 
 --
 -- Indexes for table `student_medical_leave`
 --
 ALTER TABLE `student_medical_leave`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_foreign_key_name` (`usn`);
 
 --
 -- Indexes for table `student_placement_leave`
 --
 ALTER TABLE `student_placement_leave`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `usn` (`usn`);
 
 --
@@ -23006,6 +23067,40 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `faculty_casual_leave`
+--
+ALTER TABLE `faculty_casual_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `faculty_scl`
+--
+ALTER TABLE `faculty_scl`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `student_event_leave`
+--
+ALTER TABLE `student_event_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `student_medical_leave`
+--
+ALTER TABLE `student_medical_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `student_placement_leave`
+--
+ALTER TABLE `student_placement_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

@@ -39,13 +39,6 @@ include("../template/sidebar-fac.php");
         				</td>
         			</tr>
                     <tr>
-                        <td>Date<br></td>
-                        <td></td>
-                        <td> 
-                            <input type = "date" name="cdate" class="form-control" required>
-                        </td>
-                    </tr>
-                    <tr>
                         <td> From <br></td>
                         <td></td>
                         <td> 
@@ -58,18 +51,6 @@ include("../template/sidebar-fac.php");
                         <td></td>
                         <td> <input type = "date" name="to_date" class="form-control" required></td>
                     </tr>
-                    <tr>
-                        <td>Upload Document<br></td>
-                        <td></td>
-                        <td>
-                            <input type="file" name="ufile" id="actual-btn" hidden required/>
-                            <label class="label2" for="actual-btn">Choose File</label>
-                            <input type="hidden" name="MAX_FILE_SIZE" required value="100000">
-                            <span id="file-chosen">No file chosen</span>
-                            <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-                        </td>
-                    </tr>
-                
                 </table>
                 <div class="text-center">
                     <input type="submit" name="Submit" class="btn btn-info" value="Submit">
