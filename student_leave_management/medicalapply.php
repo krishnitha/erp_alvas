@@ -1,7 +1,6 @@
 <?php
     require_once "../config.php";
     $con=$link;
-
     include("../template/student_sidebar.php");
 ?>
         <style>
@@ -70,7 +69,7 @@
                             {
                                 $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
                             }
-                            if (file_exists($filename)) {
+                            if (file_exists($target_dir . $filename)) {
                                 $errors[]= "Sorry, file already exists.";
                             }
                             if(empty($errors))

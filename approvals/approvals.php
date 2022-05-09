@@ -8,6 +8,9 @@
     $qs = 'select distinct sub from co_pso where to_hod="' . $_SESSION["username"] . '" and approval="waiting"';
     $ress = $link -> query($qs);
 
+    $ql = 'select * FROM student_medical_leave as s WHERE status = 0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
+    $resl = $link -> query($ql);
+
 ?>
 
 
@@ -136,27 +139,51 @@
             }
             ?>   
     </div>
+
+    <div class="row mt-5">
+        <h1 style="font-family: 'Gabriela', serif;" >Student Leave Approval</h1>
+        <?php  
+        if( mysqli_num_rows($resl) != 0){
+            foreach($resl as $r){ ?>
+            <h4 style="margin-top: 50px;">USN : <?php echo $r["usn"] ?></h4>
+            <table class="table table-responsive table-striped mt-3">
+                <tbody>
+                    <tr class="" >
+                        <td scope="col" style="width: 1%;">Reason</td>
+                        <td scope="col" style="width: 1%;">:</td>
+                        <td scope="col" style="width: 85%;" ><?php echo $r["reason"] ?></td>
+                    </tr>
+                    <tr class="" >
+                        <td scope="col" style="width: 1%;">From</td>
+                        <td scope="col" style="width: 1%;">:</td>
+                        <td scope="col" style="width: 85%;" ><?php echo $r["from_date"] ?></td>
+                    </tr>
+                    <tr class="" >
+                        <td scope="col" style="width: 1%;">To</td>
+                        <td scope="col" style="width: 1%;">:</td>
+                        <td scope="col" style="width: 85%;" ><?php echo $r["to_date"] ?></td>
+                    </tr>
+                    <tr class="" >
+                        <td scope="col" style="width: 1%;">Document</td>
+                        <td scope="col" style="width: 1%;">:</td>
+                        <td scope="col" style="width: 85%;" ><a href="<?php echo $r["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <form action="approve_student_medical.php" method="post">
+                <input type="text" name="id" value="<?php echo $r['id'] ?>" hidden>
+                <input type="submit" class="btn btn-success" name ="approve" value="Approve">
+                <input type="submit" class="btn btn-danger" style="margin-left: 40px;" name ="reject" value="Reject">
+            </form>
+            
+            <?php
+            }}
+            else{
+                echo '<h5> No Approvals Needed</h5>';
+            }
+            ?>   
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
     include "../template/footer-fac.php";

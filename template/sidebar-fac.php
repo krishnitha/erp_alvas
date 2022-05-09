@@ -406,11 +406,9 @@ onReady(function() {
                 </li>
                 <!-- dept admin list end -->
 
-
                 <?php if ($hod == 1) { ?>
                 <li>
-                    <a href="../approvals/approval.php">Approvals</a>
-                    <a href ="../student_leave_management/hod_leaveApprove.php">Leave Approval</a>
+                    <a href="../approvals/approvals.php">Approvals</a>
                 </li>
                 <?php } ?>
             </ul>
