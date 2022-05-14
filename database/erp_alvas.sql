@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: May 06, 2022 at 05:39 PM
+=======
+-- Generation Time: May 07, 2022 at 08:15 AM
+>>>>>>> 65e0e43ee911ec45e282367509fc2f3fe5efe92b
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -7441,6 +7445,22 @@ INSERT INTO `elective_maping` (`usn`, `sub_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faculty_casual_leave`
+--
+
+CREATE TABLE `faculty_casual_leave` (
+  `id` int(11) NOT NULL,
+  `faculty_name` varchar(50) NOT NULL,
+  `reason` varchar(1000) NOT NULL,
+  `applied_date` date NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `status` int(20) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `faculty_details`
 --
 
@@ -7680,6 +7700,30 @@ CREATE TABLE `faculty_ppr_details` (
   `faculty_ppr_issue` varchar(50) DEFAULT NULL,
   `faculty_ppr_issn` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty_scl`
+--
+
+CREATE TABLE `faculty_scl` (
+  `id` int(11) NOT NULL,
+  `faculty_name` varchar(50) NOT NULL,
+  `reason` varchar(1000) NOT NULL,
+  `applied_date` date NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `doc_name` varchar(100) NOT NULL,
+  `status` int(20) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `faculty_scl`
+--
+
+INSERT INTO `faculty_scl` (`id`, `faculty_name`, `reason`, `applied_date`, `from_date`, `to_date`, `doc_name`, `status`) VALUES
+(1, 'Shilpa', 'fever', '2022-05-07', '2022-05-06', '2022-05-08', '../leave_doc/scl_doc/Isha cv.pdf', 0);
 
 -- --------------------------------------------------------
 
@@ -22900,6 +22944,12 @@ ALTER TABLE `elective_maping`
   ADD PRIMARY KEY (`usn`,`sub_name`);
 
 --
+-- Indexes for table `faculty_casual_leave`
+--
+ALTER TABLE `faculty_casual_leave`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `faculty_details`
 --
 ALTER TABLE `faculty_details`
@@ -22916,6 +22966,12 @@ ALTER TABLE `faculty_mapping`
 --
 ALTER TABLE `faculty_ppr_details`
   ADD KEY `faculty_id` (`faculty_id`);
+
+--
+-- Indexes for table `faculty_scl`
+--
+ALTER TABLE `faculty_scl`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faculty_workshop_details`
@@ -23021,6 +23077,21 @@ ALTER TABLE `users`
 --
 
 --
+<<<<<<< HEAD
+=======
+-- AUTO_INCREMENT for table `faculty_casual_leave`
+--
+ALTER TABLE `faculty_casual_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `faculty_scl`
+--
+ALTER TABLE `faculty_scl`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+>>>>>>> 65e0e43ee911ec45e282367509fc2f3fe5efe92b
 -- AUTO_INCREMENT for table `student_event_leave`
 --
 ALTER TABLE `student_event_leave`
