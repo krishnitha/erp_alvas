@@ -16,7 +16,6 @@ include("../template/sidebar-fac.php");
             }
         </style>
         <h4 style="text-align:center">Apply for Casual Leave</h4><br>
-        <p><?php echo $_SESSION["username"]?></p>
         <div style="margin-left:20%;margin-right:20%">
       		<form action="upload_casualleave.php" method="POST">
         		<table   class="table table-responsive table-borderless">

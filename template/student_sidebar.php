@@ -301,7 +301,7 @@ $res = mysqli_fetch_assoc($res);
                        
                         <?php
                             
-                            if($res["semester"] == "7" || $res["semester"] == "8"){
+                            if($res["semester"] == "6" || $res["semester"] == "7" || $res["semester"] == "8"){
                         ?>
 
                         <li>
