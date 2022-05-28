@@ -10,7 +10,13 @@ $qs = 'select distinct sub from co_pso where to_hod="' . $_SESSION["username"] .
 $ress = $link->query($qs);
 
 $ql = 'select * FROM student_medical_leave as s WHERE status = 0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
-$resl = $link -> query($ql);
+$resm = $link -> query($ql);
+
+$qe = 'select * FROM student_event_leave as s WHERE status = 0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
+$rese = $link -> query($qe);
+
+$qp = 'select * FROM student_placement_leave as s WHERE status = 0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
+$resp = $link -> query($qp);
 
 ?>
 
@@ -222,9 +228,10 @@ $resl = $link -> query($ql);
         </div>
         <div class="tab-pane fade" id="student" role="tabpanel" aria-labelledby="student-tab">
             <div class="row">
+            <h4 style="text-align:center;margin-top: 30px;">Medical Leave</h4>
             <?php  
-                if( mysqli_num_rows($resl) != 0){
-                    foreach($resl as $r){ 
+                if( mysqli_num_rows($resm) != 0){
+                    foreach($resm as $r){ 
                         $st = 'select * from students where usn = "' . $r["usn"] . '"';
                         $s = $link->query($st);
                         $s2 = mysqli_fetch_assoc($s);
@@ -277,24 +284,24 @@ $resl = $link -> query($ql);
                     <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">
                         <tbody>
                             <tr class="" >
-                                <td scope="col" style="width: 1%;">Reason</td>
+                                <td scope="col" style="width: 10%;">Reason</td>
                                 <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["reason"] ?></td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["reason"] ?></td>
                             </tr>
                             <tr class="" >
-                                <td scope="col" style="width: 1%;">From</td>
+                                <td scope="col" style="width: 10%;">From</td>
                                 <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["from_date"] ?></td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["from_date"] ?></td>
                             </tr>
                             <tr class="" >
-                                <td scope="col" style="width: 1%;">To</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["to_date"] ?></td>
+                                <td scope="col" style="width: 10%;">To</td>
+                                <td scope="col" style="width: 10%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["to_date"] ?></td>
                             </tr>
                             <tr class="" >
-                                <td scope="col" style="width: 1%;">Document</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><a href="<?php echo $r["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
+                                <td scope="col" style="width: 10%;">Document</td>
+                                <td scope="col" style="width: 10%;">:</td>
+                                <td scope="col" style="width: 80%;" ><a href="<?php echo $r["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -305,21 +312,16 @@ $resl = $link -> query($ql);
                     </form>
                 <hr style="margin-top:20px;">
             <?php
-            }}
+                }
+            }
             else{
                 echo '<h5> No Approvals Needed</h5>';
             }
             ?>   
-            </div>
-        </div>
-        <div class="tab-pane fade" id="faculty" role="tabpanel" aria-labelledby="faculty-tab">
-            <div class="row">
-                <p>casual leave</p>
-    --------------------------------------------------------------------------
-        make changes for casual leave
+            <h4 style="text-align:center;margin-top: 40px;">Event Leave</h4>
             <?php  
-                if( mysqli_num_rows($resl) != 0){
-                    foreach($resl as $r){ 
+                if( mysqli_num_rows($rese) != 0){
+                    foreach($rese as $r){ 
                         $st = 'select * from students where usn = "' . $r["usn"] . '"';
                         $s = $link->query($st);
                         $s2 = mysqli_fetch_assoc($s);
@@ -340,172 +342,177 @@ $resl = $link -> query($ql);
                             Section : <span class="value"><?php echo $s2["section"] ?></span>
                         </div>
                     </div>
-                    
-                    <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">
+                    <h6 style="margin-top:25px;"><b>Available Attendance</b></h6>
+                    <table class="table table-responsive table-borderless" style="width:35%;">
                         <tbody>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">Reason</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["reason"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">From</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["from_date"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">To</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["to_date"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">Document</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><a href="<?php echo $r["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
+                            <tr>
+                            <?php
+                                $que1='select * from students where usn="' .  $r["usn"] . '"';
+                                $rstd = $link->query($que1);
+                                $rsd = mysqli_fetch_assoc($rstd);
+                                $que2 = "select * from attendance_new where usn=\"" .  $r["usn"] . "\" and sem=\"" . $rsd["semester"] . "\"";
+                                $result4 = $link->query($que2);
+                                foreach ($result4 as $row) {
+                                    $position = strpos($row["sub"], '-');        
+                            ?>
+                                <td><?php echo substr($row["sub"], 0, $position)?></td>
+                            <?php
+                                }
+                            ?>
+                                </tr>
+                            <tr>
+                            <?php
+                                foreach ($result4 as $row) {       
+                            ?>
+                                <td style="text-align:center;"><?php echo $row["att_avg"] ?></td>
+                            <?php
+                                }
+                            ?>
                             </tr>
                         </tbody>
                     </table>
-                    <form action="approve_student_medical.php" method="post">
+                    <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">
+                        <tbody>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">Event Name</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["event_name"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">Event Date</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["event_date"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">From</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["from_time"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">To</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["to_time"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">Document</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><a href="<?php echo $r["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form action="approve_student_event.php" method="post">
                         <input type="text" name="id" value="<?php echo $r['id'] ?>" hidden>
                         <input type="submit" class="btn btn-success" name ="approve" value="Approve">
                         <input type="submit" class="btn btn-danger" style="margin-left: 40px;" name ="reject" value="Reject">
                     </form>
                 <hr style="margin-top:20px;">
             <?php
-            }}
-            else{
-                echo '<h5> No Approvals Needed</h5>';
+                }
             }
-            ?>
-            --------------------------------------------------------------------   
-            <p>OOD</p>
-            ----------------------------------------------------------------------
-            make changes for OOD
-            <?php  
-                if( mysqli_num_rows($resl) != 0){
-                    foreach($resl as $r){ 
-                        $st = 'select * from students where usn = "' . $r["usn"] . '"';
-                        $s = $link->query($st);
-                        $s2 = mysqli_fetch_assoc($s);
-                    ?>
-                    <div class="row" style="margin-top: 30px;">
-                        <div class="col col-lg-4 col-12 label mt-2">
-                            USN : <span class="value"><?php echo  $r["usn"] ?></span>
-                        </div>
-                        <div class="col col-lg-4 col-12 label mt-2">
-                            Name : <span class="value"><?php echo $s2["fname"] ?></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-lg-4 col-12 label mt-2">
-                            Semester : <span class="value"><?php echo $s2["semester"] ?></span>
-                        </div>
-                        <div class="col col-lg-4 col-12 label mt-2">
-                            Section : <span class="value"><?php echo $s2["section"] ?></span>
-                        </div>
-                    </div>
-                   
-                    <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">
-                        <tbody>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">Reason</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["reason"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">From</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["from_date"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">To</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["to_date"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">Document</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><a href="<?php echo $r["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <form action="approve_student_medical.php" method="post">
-                        <input type="text" name="id" value="<?php echo $r['id'] ?>" hidden>
-                        <input type="submit" class="btn btn-success" name ="approve" value="Approve">
-                        <input type="submit" class="btn btn-danger" style="margin-left: 40px;" name ="reject" value="Reject">
-                    </form>
-                <hr style="margin-top:20px;">
-            <?php
-            }}
-            else{
-                echo '<h5> No Approvals Needed</h5>';
-            }
-            ?>    
-            --------------------------------------------------------------------------------------------
-            <p>Scl</p>
-            --------------------------------------------------------------------------------------------
-            make changes for SCL
-            <?php  
-                if( mysqli_num_rows($resl) != 0){
-                    foreach($resl as $r){ 
-                        $st = 'select * from students where usn = "' . $r["usn"] . '"';
-                        $s = $link->query($st);
-                        $s2 = mysqli_fetch_assoc($s);
-                    ?>
-                    <div class="row" style="margin-top: 30px;">
-                        <div class="col col-lg-4 col-12 label mt-2">
-                            USN : <span class="value"><?php echo  $r["usn"] ?></span>
-                        </div>
-                        <div class="col col-lg-4 col-12 label mt-2">
-                            Name : <span class="value"><?php echo $s2["fname"] ?></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-lg-4 col-12 label mt-2">
-                            Semester : <span class="value"><?php echo $s2["semester"] ?></span>
-                        </div>
-                        <div class="col col-lg-4 col-12 label mt-2">
-                            Section : <span class="value"><?php echo $s2["section"] ?></span>
-                        </div>
-                    </div>
-                    
-                    <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">
-                        <tbody>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">Reason</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["reason"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">From</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["from_date"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">To</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><?php echo $r["to_date"] ?></td>
-                            </tr>
-                            <tr class="" >
-                                <td scope="col" style="width: 1%;">Document</td>
-                                <td scope="col" style="width: 1%;">:</td>
-                                <td scope="col" style="width: 85%;" ><a href="<?php echo $r["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <form action="approve_student_medical.php" method="post">
-                        <input type="text" name="id" value="<?php echo $r['id'] ?>" hidden>
-                        <input type="submit" class="btn btn-success" name ="approve" value="Approve">
-                        <input type="submit" class="btn btn-danger" style="margin-left: 40px;" name ="reject" value="Reject">
-                    </form>
-                <hr style="margin-top:20px;">
-            <?php
-            }}
             else{
                 echo '<h5> No Approvals Needed</h5>';
             }
             ?>   
-            ---------------------------------------------------------------------------------------------
+            <h4 style="text-align:center;margin-top: 40px;">Placement Leave</h4>
+            <?php  
+                if( mysqli_num_rows($resp) != 0){
+                    foreach($resp as $r){ 
+                        $st = 'select * from students where usn = "' . $r["usn"] . '"';
+                        $s = $link->query($st);
+                        $s2 = mysqli_fetch_assoc($s);
+                    ?>
+                    <div class="row" style="margin-top: 30px;">
+                        <div class="col col-lg-4 col-12 label mt-2">
+                            USN : <span class="value"><?php echo  $r["usn"] ?></span>
+                        </div>
+                        <div class="col col-lg-4 col-12 label mt-2">
+                            Name : <span class="value"><?php echo $s2["fname"] ?></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-lg-4 col-12 label mt-2">
+                            Semester : <span class="value"><?php echo $s2["semester"] ?></span>
+                        </div>
+                        <div class="col col-lg-4 col-12 label mt-2">
+                            Section : <span class="value"><?php echo $s2["section"] ?></span>
+                        </div>
+                    </div>
+                    <h6 style="margin-top:25px;"><b>Available Attendance</b></h6>
+                    <table class="table table-responsive table-borderless" style="width:35%;">
+                        <tbody>
+                            <tr>
+                            <?php
+                                $que1='select * from students where usn="' .  $r["usn"] . '"';
+                                $rstd = $link->query($que1);
+                                $rsd = mysqli_fetch_assoc($rstd);
+                                $que2 = "select * from attendance_new where usn=\"" .  $r["usn"] . "\" and sem=\"" . $rsd["semester"] . "\"";
+                                $result4 = $link->query($que2);
+                                foreach ($result4 as $row) {
+                                    $position = strpos($row["sub"], '-');        
+                            ?>
+                                <td><?php echo substr($row["sub"], 0, $position)?></td>
+                            <?php
+                                }
+                            ?>
+                                </tr>
+                            <tr>
+                            <?php
+                                foreach ($result4 as $row) {       
+                            ?>
+                                <td style="text-align:center;"><?php echo $row["att_avg"] ?></td>
+                            <?php
+                                }
+                            ?>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">
+                        <tbody>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">Company Name</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["company_name"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">Date</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["place_date"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">rounds cleared</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["rounds"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">From</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["from_time"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">To</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["to_time"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">Document</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><a href="<?php echo $r["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form action="approve_student_placement.php" method="post">
+                        <input type="text" name="id" value="<?php echo $r['id'] ?>" hidden>
+                        <input type="submit" class="btn btn-success" name ="approve" value="Approve">
+                        <input type="submit" class="btn btn-danger" style="margin-left: 40px;" name ="reject" value="Reject">
+                    </form>
+                <hr style="margin-top:20px;">
+            <?php
+                }
+            }
+            else{
+                echo '<h5> No Approvals Needed</h5>';
+            }
+            ?>   
             </div>
         </div>
     </div>
