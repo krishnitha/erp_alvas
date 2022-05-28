@@ -1,6 +1,7 @@
 <?php 
 require_once "../config.php";
 include("../template/admin-auth.php");
+                        error_reporting(0);
 
 include("../template/sidebar-admin.php");
 
@@ -15,6 +16,7 @@ include("../template/sidebar-admin.php");
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>';
+                      
                       
                     }
                     else if(isset($_SESSION["popup"]) && $_SESSION["popup"] == 2){
@@ -45,7 +47,7 @@ include("../template/sidebar-admin.php");
                 <label for="Branch">Branch:</label>
                     <select name="branch" id="" class="form-control">
                         
-                        <option id="Branch" selected>Branch </option>
+                        <option id="Branch" selected>Branch</option>
                         <?php
                                 foreach($result as $r)
                                 {
@@ -76,6 +78,15 @@ include("../template/sidebar-admin.php");
                     <div style="display: flex;" class="p-0 m-0">
                         <label for="elective"> Elective : </label>
                         <input id="elective" type="checkbox" name="elective" style="width: 20px; height: 20px;">
+                    </div>
+                <!-- </div> -->
+            </div>
+            <div class="col">
+                
+                <!-- <div class="form-group"> -->
+                    <div style="display: flex;" class="p-0 m-0">
+                        <label for="elective"> Lab : </label>
+                        <input id="elective" type="checkbox" name="lab" style="width: 20px; height: 20px;">
                     </div>
                 <!-- </div> -->
             </div>

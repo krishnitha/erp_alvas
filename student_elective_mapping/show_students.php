@@ -1,5 +1,6 @@
 <?php
     require_once "config.php";
+        error_reporting(0);
 
     $q = 'select * from students where semester = "' . $_POST['sem'] . '" and section = "' . $_POST['sec'] . '" and branch = "' . $_POST['dept'] . '" order by usn';
     echo $q;

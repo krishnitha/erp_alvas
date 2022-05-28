@@ -1,6 +1,7 @@
 <?php 
 require_once "../config.php";
 include("../template/fac-auth.php");
+                        error_reporting(0);
 
 include("../template/sidebar-fac.php");
 
@@ -35,7 +36,7 @@ include("../template/sidebar-fac.php");
                     $result1=$link->query($q1);
                     ?>
 <div class="container">
-    <form action="../add_sub_proc.php" method="POST">
+    <form action="add_sub_proc.php" method="POST">
         <div class="row" style="align-items: center;
     justify-content: center;
     align-content: center;

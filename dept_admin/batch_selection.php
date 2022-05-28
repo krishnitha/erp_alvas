@@ -2,6 +2,7 @@
 $q = "select distinct batch from students";
 $q2 = "select distinct branch from students";
 $result = $con->query($q);
+error_reporting(0);
 $result2 = $con->query($q2);
 //session_start();
 include("../template/fac-auth.php");

@@ -1,13 +1,12 @@
 <?php
 require_once "../config.php";
 include("../template/fac-auth.php");
+                                                                                            error_reporting(0);
 
 include("../template/sidebar-fac.php");
 
 ?>
 <!DOCTYPE html>
-
-
 
 
 

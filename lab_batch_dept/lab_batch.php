@@ -1,5 +1,6 @@
 <?php 
 include("../template/fac-auth.php"); 
+error_reporting(0);
 require_once "../config.php";
  include("../template/sidebar-fac.php");
 $q = "select distinct batch from students";

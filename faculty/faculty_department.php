@@ -2,14 +2,15 @@
 
     include_once "../template/admin-auth.php";
     include_once "../template/sidebar-admin.php";
-    require_once "../config.php";
+error_reporting(0);
+require_once "../config.php";
     
-    $q1="select distinct faculty_dept from faculty_details";
+    $q1="select distinct faculty_dept from faculty_details order by faculty_dept";
     
     $res1=$link->query($q1);
 
 ?>
-<form action="faculty_view_details.php" method="post">
+<form action="session.php" method="post">
         <div class="row">
             
             <div class="col-md-4 mt-4">

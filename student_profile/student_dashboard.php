@@ -1,10 +1,13 @@
 <?php
-include("../template/student_sidebar.php");
+include("../template/stud_auth.php");
+error_reporting(0);
+include(
+"../template/student_sidebar.php");
 ?>
 <?php
     // include "template/admin-auth.php";
     require_once '../config.php';
-
+    // echo $_SESSION["username"];
     $q1 = 'select branch, semester from students where usn = "' . $_SESSION['username'] . '"';
     $r1 = mysqli_fetch_assoc($link->query($q1));
     $branch = $r1['branch'];
@@ -25,6 +28,16 @@ include("../template/student_sidebar.php");
         $q2 = 'select total1 from ia_marks1 where sub = "' . $subcode[$i] . ' - ' . $sub[$i] . '" and usn = "' . $_SESSION['username'] . ' "';
         $marks[$i] = mysqli_fetch_assoc($link->query($q2))['total1'] ?? 0;
     }
+
+    // Notification check
+
+    
+
+    // Notification check
+
+
+
+
 ?>
 <style>
     #Back-btn{display: none;}

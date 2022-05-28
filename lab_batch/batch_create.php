@@ -3,6 +3,8 @@
 
 <?php require_once("../config.php") ?>
 <?php
+error_reporting(0);
+
     if(isset($_POST["branch"])){
     $branch = $_POST["branch"];
     $batch = $_POST["batch"];

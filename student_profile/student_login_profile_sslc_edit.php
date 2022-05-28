@@ -1,12 +1,16 @@
 <?php
-session_start();
-echo $_SESSION["adm_no"];
+require_once "../config.php";
+$con=$link;
+error_reporting(0);
+include(
+"../template/stud_auth.php");
+include("../template/student_sidebar.php");
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,10 +33,10 @@ echo $_SESSION["adm_no"];
             font-size: 12px;
         }
     </style>
-</head>
+</head> -->
 
 <body>
-    <style>
+    <!-- <style>
         body,
         html,
         .wraper {
@@ -49,11 +53,11 @@ echo $_SESSION["adm_no"];
             display: none;
         }
     </style>
-    </style>
-    <div class="wrapper">
+    </style> -->
+    <!-- <div class="wrapper"> -->
         <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
+        <!-- <nav id="sidebar"> -->
+            <!-- <div class="sidebar-header">
                 <div style="margin-left: 50px;">
                     <a href="student_dashboard.php">
                         <img src="../asset/img/1aiet-logo.png" style="height: 10vh; " class="img-fluid ml-auto" alt="" srcset="">
@@ -72,10 +76,10 @@ echo $_SESSION["adm_no"];
             </ul>
 
 
-        </nav>
+        </nav> -->
 
         <!-- Page Content  -->
-        <div id="content">
+        <!-- <div id="content">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -93,9 +97,9 @@ echo $_SESSION["adm_no"];
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle btn btn-primary" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" style="border-radius: 50%; color: #fff" aria-expanded="false">
 
-                                    <?php echo $_SESSION["username"][-3]  ?>
-                                    <?php echo $_SESSION["username"][-2]  ?>
-                                    <?php echo $_SESSION["username"][-1]  ?>
+                                    <?php // echo $_SESSION["username"][-3]  ?>
+                                    <?php //echo $_SESSION["username"][-2]  ?>
+                                    <?php //echo $_SESSION["username"][-1]  ?>
 
                                 </a>
                                 <div class="dropdown-menu" style="position: absolute; left: -150%;">
@@ -107,15 +111,15 @@ echo $_SESSION["adm_no"];
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </nav> -->
             <!-- page content start -->
             <div>
-                sahxjsahs
+                <!-- sahxjsahs -->
                 <?php
-                $con = mysqli_connect("localhost", "root", "", "erp_alvas");
-                if (mysqli_connect_error()) {
-                    echo "error";
-                } else {
+                // $con = mysqli_connect("localhost", "root", "", "erp_alvas");
+                // if (mysqli_connect_error()) {
+                //     echo "error";
+                // } else {
                     $admission_no = $_SESSION["admission_no"];
 
                     $que = "select * from sslc_details where adm_no=\"$admission_no\"";
@@ -131,40 +135,40 @@ echo $_SESSION["adm_no"];
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="sslc_reg_no">Register Number :</label>
-                                    <input type="text" name="sslc_reg_no" class="form-control" id="sslc_reg_no" required value=<?php echo $r["sslc_reg_no"] ?>>
+                                    <input type="text" name="sslc_reg_no" class="form-control" id="sslc_reg_no" required value="<?php echo $r["sslc_reg_no"] ?>">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="sslc_school">School :</label>
-                                    <input type="text" name="sslc_school" class="form-control" id="sslc_school" value=<?php echo $r["sslc_school"] ?>>
+                                    <input type="text" name="sslc_school" class="form-control" id="sslc_school" value="<?php echo $r["sslc_school"] ?>">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="sslc_board_university">Board/University :</label>
-                                    <input type="text" name="sslc_board_university" class="form-control" id="sslc_board_university" value=<?php echo $r["sslc_board_university"] ?>>
+                                    <input type="text" name="sslc_board_university" class="form-control" id="sslc_board_university" value="<?php echo $r["sslc_board_university"] ?>">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="sslc_year">Year of Pass :</label>
-                                    <input type="text" name="sslc_year" class="form-control" id="sslc_year" value=<?php echo $r["sslc_year"] ?>>
+                                    <input type="text" name="sslc_year" class="form-control" id="sslc_year" value="<?php echo $r["sslc_year"] ?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="sslc_max_marks">Maximum Marks :</label>
-                                    <input type="text" name="sslc_max_marks" class="form-control" id="sslc_max_marks" value=<?php echo $r["sslc_max_marks"] ?>>
+                                    <input type="text" name="sslc_max_marks" class="form-control" id="sslc_max_marks" value="<?php echo $r["sslc_max_marks"] ?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="sslc_obtained_marks">Obtained Marks :</label>
-                                    <input type="text" name="sslc_obtained_marks" class="form-control" id="sslc_obtained_marks" value=<?php echo $r["sslc_obtained_marks"] ?>>
+                                    <input type="text" name="sslc_obtained_marks" class="form-control" id="sslc_obtained_marks" value="<?php echo $r["sslc_obtained_marks"] ?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="sslc_percentage">Percentage :</label>
-                                    <input type="text" name="sslc_percentage" class="form-control" id="sslc_percentage" value=<?php echo $r["sslc_percentage"] ?>>
+                                    <input type="text" name="sslc_percentage" class="form-control" id="sslc_percentage" value="<?php echo $r["sslc_percentage"] ?>">
                                 </div>
                             </div>
                             <button type="submit">update</button>
                         </form>
                 <?php
                     }
-                } ?>
+               // } ?>
 
 
 

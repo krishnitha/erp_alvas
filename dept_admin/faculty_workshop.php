@@ -2,6 +2,7 @@
 require_once "../config.php";
 include("../template/fac-auth.php");
 include("../template/sidebar-fac.php");
+                                                                                error_reporting(0);
 
 ?>
 

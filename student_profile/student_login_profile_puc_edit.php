@@ -1,10 +1,15 @@
 <?php
-session_start();
+require_once "../config.php";
+    error_reporting(0);
+    $con = $link;
+include("../template/stud_auth.php");
+include("../template/student_sidebar.php");
+//session_start();
 
 ?>
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -50,9 +55,9 @@ session_start();
         }
     </style>
     </style>
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
+    <div class="wrapper"> -->
+<!-- Sidebar  -->
+<!-- <nav id="sidebar">
             <div class="sidebar-header">
                 <div style="margin-left: 50px;">
                     <a href="student_dashboard.php">
@@ -72,10 +77,10 @@ session_start();
             </ul>
 
 
-        </nav>
+        </nav> -->
 
-        <!-- Page Content  -->
-        <div id="content">
+<!-- Page Content  -->
+<!-- <div id="content">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -91,13 +96,16 @@ session_start();
                                 <a class="nav-link" href="#" onclick="alert('notificaions')"><i class="fas fa-bell"></i></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle btn btn-primary" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" style="border-radius: 50%; color: #fff" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle btn btn-primary" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" style="border-radius: 50%; color: #fff" aria-expanded="false"> -->
 
-                                    <?php echo $_SESSION["username"][-3]  ?>
-                                    <?php echo $_SESSION["username"][-2]  ?>
-                                    <?php echo $_SESSION["username"][-1]  ?>
+<?php // echo $_SESSION["username"][-3]  
+?>
+<?php //echo $_SESSION["username"][-2]  
+?>
+<?php //echo $_SESSION["username"][-1]  
+?>
 
-                                </a>
+<!-- </a>
                                 <div class="dropdown-menu" style="position: absolute; left: -150%;">
                                     <a class="nav-link" href="./student_login_profile_view.php"><i class="fa fa-user" ><span style="margin-left:20%;">Profile</span></i></a>
                                     <a class="nav-link" href="../reset-password.php"><i class="fas fa-key p-1"> Reset Password</i></a>
@@ -107,174 +115,139 @@ session_start();
                         </ul>
                     </div>
                 </div>
-            </nav>
-            <!-- page content start -->
-            <div>
+            </nav> -->
+<!-- page content start -->
+<div>
 
-                <?php
-                $con = mysqli_connect("localhost", "root", "", "erp_alvas");
-                if (mysqli_connect_error()) {
-                    echo "error";
-                } else {
-                    $admission_no = $_SESSION["adm_no"];
-                   
-                    $que = "select * from puc_details where adm_no=\"$admission_no\"";
-                    $re = $con->query($que);
+    <?php
+    // $con = mysqli_connect("localhost", "root", "", "erp_alvas");
+    // if (mysqli_connect_error()) {
+    //     echo "error";
+    // } else {
+    $admission_no = $_SESSION["adm_no"];
 
-                    foreach ($re as $r) {
-                ?>
-                 <form action="update_profile_puc_details.php" method="post">
+    $que = "select * from puc_details where adm_no=\"$admission_no\"";
+    $re = $con->query($que);
 
-                        <h4>PU Details :</h4><br>
-                        <div class="form-row">
-                        <div class="form-group col-md-4">
-                                <label for="puc_reg_no">Admission Number:</label>
-                                <input type="text" name="adm_no" class="form-control" id="puc_reg_no"
-                                value=<?php echo $admission_no?>
-                                >
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="puc_reg_no">Register Number :</label>
-                                <input type="text" name="puc_reg_no" class="form-control" id="puc_reg_no"
-                                value=<?php echo $r["puc_reg_no"]?>
-                                >
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="puc_collage">College :</label>
-                                <input type="text" name="puc_collage" class="form-control" id="puc_collage"
-                                value=<?php echo $r["puc_school"]?>
-                                >
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="puc_board_university">Board/University :</label>
-                                <input type="text" name="puc_board_university" class="form-control" id="puc_board_university"
-                                value=<?php echo $r["puc_board_university"]?>
-                                >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="puc_year">Year of Pass :</label>
-                                <input type="text" name="puc_year" class="form-control" id="puc_year"
-                                value=<?php echo $r["puc_year"]?>
-                                >
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="puc_max_marks">Maximum Marks :</label>
-                                <input type="text" name="puc_max_marks" class="form-control" id="puc_max_marks"
-                                value=<?php echo $r["puc_max_marks"]?>
-                                >
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="puc_obtained_marks">Obtained Marks :</label>
-                                <input type="text" name="puc_obtained_marks" class="form-control" id="puc_obtained_marks"
-                                value=<?php echo $r["puc_obtained_marks"]?>
-                                >
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="puc_percentage">Percentage :</label>
-                                <input type="text" name="puc_percentage" class="form-control" id="puc_percentage"
-                                value=<?php echo $r["puc_percentage"]?>
-                                >
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <h6>Physics :</h6>
-                                <label for="puc_phy_max_marks">Maximum Marks :</label>
-                                <input type="text" name="puc_phy_max_marks" class="form-control" id="puc_phy_max_marks"
-                                value=<?php echo $r["puc_phy_max_marks"]?>
-                                >
-                                <label for="puc_phy_obtained_marks">Obtained Marks :</label>
-                                <input type="text" name="puc_phy_obtained_marks" class="form-control" id="puc_phy_obtained_marks"
-                                value=<?php echo $r["puc_phy_obtained_marks"]?>
-                                >
-                            </div>
-                            <div class="form-group col-md-3">
-                                <h6>Chemistry :</h6>
-                                <label for="puc_che_max_marks">Maximum Marks :</label>
-                                <input type="text" name="puc_che_max_marks" class="form-control" id="puc_che_max_marks"
-                                value=<?php echo $r["puc_che_max_marks"]?>
-                                >
-                                <label for="puc_che_obtained_marks">Obtained Marks :</label>
-                                <input type="text" name="puc_che_obtained_marks" class="form-control" id="puc_che_obtained_marks"
-                                value=<?php echo $r["puc_che_obtained_marks"]?>
-                                >
+    foreach ($re as $r) {
+    ?>
+        <form action="update_profile_puc_details.php" method="post">
 
-                            </div>
-                            <div class="form-group col-md-3">
-                                <h6>Mathematics :</h6>
-                                <label for="puc_maths_max_marks">Maximum Marks :</label>
-                                <input type="text" name="puc_maths_max_marks" class="form-control" id="puc_maths_max_marks"
-                                value=<?php echo $r["puc_maths_max_marks"]?>
-                                >
-                                <label for="puc_maths_obtained_marks">Obtained Marks :</label>
-                                <input type="text" name="puc_maths_obtained_marks" class="form-control" id="puc_maths_obtained_marks"
-                                value=<?php echo $r["puc_maths_obtained_marks"]?>
-                                >
-
-                            </div>
-                            <div class="form-group col-md-3">
-                                <h6>Bio/CS/E/S :</h6>
-                                <label for="puc_elective_max_marks">Maximum Marks :</label>
-                                <input type="text" name="puc_elective_max_marks" class="form-control" id="puc_elective_max_marks"
-                                value=<?php echo $r["puc_elective_max_marks"]?>
-                                >
-                                <label for="puc_elective_obtained_marks">Obtained Marks :</label>
-                                <input type="text" name="puc_elective_obtained_marks" class="form-control" id="puc_elective_obtained_marks">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <h6>English :</h6>
-                                <label for="puc_eng_max_marks">Maximum Marks :</label>
-                                <input type="text" name="puc_eng_max_marks" class="form-control" id="puc_eng_max_marks"
-                                value=<?php echo $r["puc_eng_max_marks"]?>
-                                >
-                                <label for="puc_eng_obtained_marks">Obtained Marks :</label>
-                                <input type="text" name="puc_eng_obtained_marks" class="form-control" id="puc_eng_obtained_marks"
-                                value=<?php echo $r["puc_eng_obtained_marks"]?>
-                                >
-
-                            </div>
-                            <div class="form-group col-md-6">
-
-                                <label for="puc_sub_total_marks">Total Marks :</label>
-                                <input type="text" name="puc_sub_total_marks" class="form-control" id="puc_sub_total_marks"
-                                value=<?php echo $r["puc_sub_total_marks"]?>
-                                >
-                                <br><br>
-                               
-                                <button type="submit" class="btn btn-primary" style="float: right;">Update</button>
-                               
-
-                            </div>
-                        </div>
-                        </form>
-
-                <?php
-                    }
-                } ?>
-
-
-
-
-
+            <h4>PU Details :</h4><br>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="puc_reg_no">Admission Number:</label>
+                    <input type="text" name="adm_no" class="form-control" id="puc_reg_no" value="<?php echo $admission_no ?>" readonly>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="puc_reg_no">Register Number :</label>
+                    <input type="text" name="puc_reg_no" class="form-control" id="puc_reg_no" value="<?php echo $r["puc_reg_no"] ?>">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="puc_collage">College :</label>
+                    <input type="text" name="puc_collage" class="form-control" id="puc_collage" value="<?php echo $r["puc_school"] ?>">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="puc_board_university">Board/University :</label>
+                    <input type="text" name="puc_board_university" class="form-control" id="puc_board_university" value="<?php echo $r["puc_board_university"] ?>">
+                </div>
             </div>
-            <!-- page content end -->
-        </div>
-    </div>
-    <script src="../asset/style/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar').toggleClass('active');
-            });
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="puc_year">Year of Pass :</label>
+                    <input type="text" name="puc_year" class="form-control" id="puc_year" value="<?php echo $r["puc_year"] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="puc_max_marks">Maximum Marks :</label>
+                    <input type="text" name="puc_max_marks" class="form-control" id="puc_max_marks" value="<?php echo $r["puc_max_marks"] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="puc_obtained_marks">Obtained Marks :</label>
+                    <input type="text" name="puc_obtained_marks" class="form-control" id="puc_obtained_marks" value="<?php echo $r["puc_obtained_marks"] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="puc_percentage">Percentage :</label>
+                    <input type="text" name="puc_percentage" class="form-control" id="puc_percentage" value="<?php echo $r["puc_percentage"] ?>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <h6>Physics :</h6>
+                    <label for="puc_phy_max_marks">Maximum Marks :</label>
+                    <input type="text" name="puc_phy_max_marks" class="form-control" id="puc_phy_max_marks" value="<?php echo $r["puc_phy_max_marks"] ?>">
+                    <label for="puc_phy_obtained_marks">Obtained Marks :</label>
+                    <input type="text" name="puc_phy_obtained_marks" class="form-control" id="puc_phy_obtained_marks" value="<?php echo $r["puc_phy_obtained_marks"] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <h6>Chemistry :</h6>
+                    <label for="puc_che_max_marks">Maximum Marks :</label>
+                    <input type="text" name="puc_che_max_marks" class="form-control" id="puc_che_max_marks" value="<?php echo $r["puc_che_max_marks"] ?>">
+                    <label for="puc_che_obtained_marks">Obtained Marks :</label>
+                    <input type="text" name="puc_che_obtained_marks" class="form-control" id="puc_che_obtained_marks" value="<?php echo $r["puc_che_obtained_marks"] ?>">
+
+                </div>
+                <div class="form-group col-md-3">
+                    <h6>Mathematics :</h6>
+                    <label for="puc_maths_max_marks">Maximum Marks :</label>
+                    <input type="text" name="puc_maths_max_marks" class="form-control" id="puc_maths_max_marks" value="<?php echo $r["puc_maths_max_marks"] ?>">
+                    <label for="puc_maths_obtained_marks">Obtained Marks :</label>
+                    <input type="text" name="puc_maths_obtained_marks" class="form-control" id="puc_maths_obtained_marks" value="<?php echo $r["puc_maths_obtained_marks"] ?>">
+
+                </div>
+                <div class="form-group col-md-3">
+                    <h6>Bio/CS/E/S :</h6>
+                    <label for="puc_elective_max_marks">Maximum Marks :</label>
+                    <input type="text" name="puc_elective_max_marks" class="form-control" id="puc_elective_max_marks" value="<?php echo $r["puc_elective_max_marks"] ?>">
+                    <label for="puc_elective_obtained_marks">Obtained Marks :</label>
+                    <input type="text" name="puc_elective_obtained_marks" class="form-control" id="puc_elective_obtained_marks" value="<?php echo $r["puc_elective_obtained_marks"] ?>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <h6>English :</h6>
+                    <label for="puc_eng_max_marks">Maximum Marks :</label>
+                    <input type="text" name="puc_eng_max_marks" class="form-control" id="puc_eng_max_marks" value="<?php echo $r["puc_eng_max_marks"] ?>">
+                    <label for="puc_eng_obtained_marks">Obtained Marks :</label>
+                    <input type="text" name="puc_eng_obtained_marks" class="form-control" id="puc_eng_obtained_marks" value="<?php echo $r["puc_eng_obtained_marks"] ?>">
+
+                </div>
+                <div class="form-group col-md-6">
+
+                    <label for="puc_sub_total_marks">Total Marks :</label>
+                    <input type="text" name="puc_sub_total_marks" class="form-control" id="puc_sub_total_marks" value="<?php echo $r["puc_sub_total_marks"] ?>">
+                    <br><br>
+
+                    <button type="submit" class="btn btn-primary" style="float: right;">Update</button>
+
+
+                </div>
+            </div>
+        </form>
+
+    <?php
+    }
+    // } 
+    ?>
+
+
+
+
+
+</div>
+<!-- page content end -->
+</div>
+</div>
+<script src="../asset/style/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').toggleClass('active');
         });
-    </script>
+    });
+</script>
 </body>
 
 </html>

@@ -1,12 +1,8 @@
 <?php
 
-$con = mysqli_connect("localhost","root", "", "erp_alvas");
-if(mysqli_connect_error())
-{
-	echo " database Error";
-}
-else
-{
+require_once "../config.php";
+$con = $link;
+
     session_start();
 	$faculty_dept=$_POST['faculty_dept'];
 	
@@ -62,5 +58,5 @@ else
 		// Closing tag
 		fclose($output);
 	}
-}
+
 ?>

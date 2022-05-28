@@ -9,9 +9,11 @@ $r = mysqli_fetch_assoc($res);
 // echo $r["faculty_id"];
 $ii = $link->query('select max(id) from hod');
 $idd = mysqli_fetch_assoc($ii);
-echo $idd['max(id)'];
-$q2 = 'INSERT INTO `hod`(`id`, `faculty_id`, `name`, `branch`) VALUES('. $idd['max(id)']+1 .',"'. $r["faculty_id"] .'","'. $name .'", "'. $branch .'")';
-// echo $q2;
+// echo $idd['max(id)'];
+$id1=(int)$idd['max(id)'] +1;
+$q2 = 'INSERT INTO `hod`(`id`, `faculty_id`, `name`, `branch`) VALUES('. $id1 .',"'. $r["faculty_id"] .'","'. $name .'", "'. $branch .'")';
+// echo "<br>";
+echo  $q2;
 try {
     $link->query($q2);
     $goin = 1;;

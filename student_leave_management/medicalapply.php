@@ -1,7 +1,6 @@
 <?php
     require_once "../config.php";
     $con=$link;
-
     include("../template/student_sidebar.php");
 ?>
         <style>
@@ -70,9 +69,8 @@
                             {
                                 $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
                             }
-                            if (file_exists($filename)) {
+                            if (file_exists($target_dir . $filename)) {
                                 $errors[]= "Sorry, file already exists.";
-                                
                             }
                             if(empty($errors))
                             {
@@ -88,7 +86,8 @@
                                     $que = "insert into student_medical_leave(usn,sem,reason,applied_date,from_date,to_date,doc_name) values (\"" . $_SESSION['username'] . "\",
                                     \"" . $res["semester"] . "\",\"" . $reason . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
                                     $result = $con->query($que);
-                                    header("Location: ../student_leave_management/medical.php");
+                                    //header("Location: ../student_leave_management/medical.php");
+                                    echo '<script>window.location.replace("../student_leave_management/medical.php");</script>';
                                 }
                                 else
                                 {

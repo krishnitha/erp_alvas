@@ -1,6 +1,8 @@
 <?php
 include("../template/fac-auth.php");
-include("../template/sidebar-fac.php");
+error_reporting(0);
+include(
+"../template/sidebar-fac.php");
 // echo $_SESSION['username'];
 // Initialize the session
 // session_start();

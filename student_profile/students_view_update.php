@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Fields</title>
-</head>
-
-<body>
     <?php
-    
-    $con = mysqli_connect("localhost", "root", "", "erp_alvas");
-    if (mysqli_connect_error()) {
-        echo "Not Connected";
-    } else {
-        session_start();
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    include("../template/stud_auth.php");
+    include("../template/student_sidebar.php");
+    require_once "../config.php";
+    $con=$link;
         $_SESSION["adm_no"] = $_POST['adm_no'];
 
         $_SESSION["usn"] = $_POST['usn'];
@@ -85,16 +76,11 @@
         permanent_house_no_name =\"" . $_SESSION["permanent_house_no_name"] . "\" ,  
         permanent_post_village =\"" . $_SESSION["permanent_post_village"] . "\" ,  
         permanent_pin_code =\"" . $_SESSION["permanent_pin_code"] . "\"  where adm_no =\"" . $_SESSION["adm_no"] . "\"";
-
-        if ($con->query($q)) {
-            
-        echo  $_SESSION["permanent_pin_code"];
-             header("Location: student_login_profile_view.php");
-        } else {
-            echo "<h1>failed</h1>";
+        
+        if($con->query($q)){
+            // header("Location: student_login_profile_view.php");
+            echo '<script>window.location.replace("student_login_profile_view.php");</script>';
+            // echo "<script>windows.location.replace('student_login_profile_view.php')</script>";
         }
-    }
+    //}
     ?>
-</body>
-
-</html>

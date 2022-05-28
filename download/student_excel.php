@@ -1,9 +1,6 @@
 <?php
-
-$con = mysqli_connect("localhost", "root", "", "erp_alvas");
-if (mysqli_connect_error()) {
-	echo " database Error";
-} else {
+require_once "../config.php";
+$con = $link;
 
 	$q1 = "select distinct batch from students";
 	$q2 = "select distinct branch from students";
@@ -206,7 +203,6 @@ if (mysqli_connect_error()) {
 				});
 			});
 		</script>
-	<?php } ?>
 	</body>
 
 	</html>

@@ -2,6 +2,7 @@
 // session_start();
     include("../template/fac-auth.php");
     include("../template/sidebar-fac.php");
+error_reporting(0);
     
     require_once "config1.php";
     
@@ -13,6 +14,17 @@
      $result1 = $con->query($q2);
      $result2 = $con->query($q3);
      $faculty_name = $_SESSION["username"];
+     if(isset($_SESSION["check_error"]) && $_SESSION["check_error"] == 1){
+        $_SESSION["check_error"] = 0;
+        echo '<div style="width:50%;" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Subject and semester doesnot match</strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+      
+      
+    }
 
 ?>
 
@@ -27,14 +39,14 @@
         <select class="form-control" name="sub" id="sub" aria-label="Default select example">
             <option value="" selected disabled>Select Subject</option>
             <?php 
-                $qt = "select a.sub_name, a.sub_code from faculty_mapping b, subjects a where b.faculty_name = \"" . $faculty_name . "\" and b.sub_name = a.sub_name";
+                $qt = "select a.sub_name, a.sub_code,a.lab from faculty_mapping b, subjects a where b.faculty_name = \"" . $faculty_name . "\" and b.sub_name = a.sub_name";
                 $resultst = $con->query($qt);
                 echo $qt;
                 foreach($resultst as $r){
-                                                    
+                if($r['lab'] != 1){                                 
             ?>
             <option class="form-control" value="<?php echo $r["sub_code"] . " - " . $r["sub_name"] ?>"><?php echo $r["sub_code"] . " - " . $r["sub_name"] ?></option>
-            <?php  } ?>
+            <?php  } } ?>
             </select>
     </div>
         <div class="col">
@@ -71,7 +83,7 @@
         <div class="col">
         <label for="sub">Section</label>
             <select name="sec" class="form-control" >
-                <option  selected>Select Section </option>
+                <option  selected disabled>Select Section </option>
                 <?php
                     
                     foreach($result2 as $r){

@@ -2,7 +2,8 @@
 
     include_once "../template/admin-auth.php";
     include_once "../template/sidebar-admin.php";
-    require_once "../config.php";
+error_reporting(0);
+require_once "../config.php";
     $q="select distinct batch from students";
     $q1="select distinct branch from students";
     $res=$link->query($q);

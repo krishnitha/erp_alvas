@@ -1,5 +1,6 @@
 <?php 
 include("../template/admin-auth.php");
+error_reporting(0);
 
 include("../template/sidebar-admin.php");
 

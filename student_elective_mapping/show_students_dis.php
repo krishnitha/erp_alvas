@@ -2,6 +2,7 @@
 //  echo $q1;
 //session_start();
 include("../template/admin-auth.php");
+                    error_reporting(0);
 
 include("../template/sidebar-admin.php");
 $val = $_SESSION['view_flag'];

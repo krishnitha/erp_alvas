@@ -3,6 +3,7 @@
 include_once "../template/fac-auth.php";
 include_once "../template/sidebar-fac.php";
 require_once "../config.php";
+error_reporting(0);
 
 $dept = mysqli_fetch_assoc($link->query('select faculty_dept from faculty_details where faculty_name = "' . $_SESSION['username'] . '"'))['faculty_dept'];
 ?>
@@ -33,20 +34,20 @@ $dept = mysqli_fetch_assoc($link->query('select faculty_dept from faculty_detail
             <?php } ?>
         </select>
     </div>
-    <div class="form-group col-md-4 mt-3">
+    <!-- <div class="form-group col-md-4 mt-3">
         <select class="form-control" name="sub" id="sub" aria-label="Default select example">
             <option value="" selected disabled>Select Subject</option>
             <?php 
-                $qt = "select a.sub_name, a.sub_code from faculty_mapping b, subjects a where b.faculty_name = \"" . $_SESSION['username'] . "\" and b.sub_name = a.sub_name";
+                $qt = "select a.sub_name, a.sub_code, a.lab from faculty_mapping b, subjects a where b.faculty_name = \"" . $_SESSION['username'] . "\" and b.sub_name = a.sub_name";
                 $resultst = $link->query($qt);
-                echo $qt;
+                // echo $qt;
                 foreach($resultst as $r){
-                                                    
+                    if($r['lab'] != 1){                
             ?>
             <option class="form-control" value="<?php echo $r["sub_code"] . " - " . $r["sub_name"] ?>"><?php echo $r["sub_code"] . " - " . $r["sub_name"] ?></option>
-            <?php  } ?>
+            <?php } } ?>
             </select>
-</div>
+</div> -->
 <!-- <div class="form-group col-md-4">
         <select  class="form-control mt-3" name="ia" id="">
         <option selected disabled>Select IA</option>
@@ -57,8 +58,8 @@ $dept = mysqli_fetch_assoc($link->query('select faculty_dept from faculty_detail
 </div> -->
     <div class="form-group col-md-4">
         
-        <label for=""> startdate </label>
-        <input id="startdate" class="form-control" type="date" name="startdate">
+        
+        <input id="startdate"  class="form-control mt-3" type="date" name="startdate">
     </div>
     
     <div class="form-group col-md-4">

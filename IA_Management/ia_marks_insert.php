@@ -1,8 +1,8 @@
 <?php
 require_once "config1.php";
 
-session_start();
-$branch = $_SESSION["branch"];
+// session_start();
+    $branch = $_SESSION["branch"];
     $sec = $_SESSION["sec"];
     $sem = $_SESSION["sem"];
     $sub = $_SESSION["sub"];
@@ -32,23 +32,41 @@ foreach($_POST["att"] as $d)
     $link->query($q4); 
 }
 for($i = 1; $i <= $cc; $i++){
-    $total1 = (($_POST["1a" . $i]+$_POST["1b" . $i]+$_POST["1c" . $i])>($_POST["2a" . $i]+$_POST["2b" . $i]+$_POST["2c" . $i]))?($_POST["1a" . $i]+$_POST["1b" . $i]+$_POST["1c" . $i]):($_POST["2a" . $i]+$_POST["2b" . $i]+$_POST["2c" . $i]);
+    // echo  intval($_POST["1a" . $i] ?? 0);
+    // echo "<br>";
+    $total1 = ((intval($_POST["1a" . $i] ?? 0))+(intval($_POST["1b" . $i] ?? 0))+(intval($_POST["1c" . $i] ?? 0)))>((intval($_POST["2a" . $i] ?? 0))+(intval($_POST["2b" . $i] ?? 0))+(intval($_POST["2c" . $i] ?? 0)))?((intval($_POST["1a" . $i] ?? 0))+(intval($_POST["1b" . $i] ?? 0))+(intval($_POST["1c" . $i] ?? 0))):((intval($_POST["2a" . $i] ?? 0))+(intval($_POST["2b" . $i] ?? 0))+(intval($_POST["2c" . $i] ?? 0)));
 
-    $total2 = (($_POST["3a" . $i]+$_POST["3b" . $i]+$_POST["3c" . $i])>($_POST["4a" . $i]+$_POST["4b" . $i]+$_POST["4c" . $i]))?($_POST["3a" . $i]+$_POST["3b" . $i]+$_POST["3c" . $i]):($_POST["4a" . $i]+$_POST["4b" . $i]+$_POST["4c" . $i]);
-    // echo $
-    $q="update ia_marks1 set 1a=\"" . $_POST["1a" . $i]  . "\"
-                                    ,1b=\"" . $_POST["1b" . $i]  . "\"
-                                    ,1c=\"" . $_POST["1c" . $i]  . "\"
-                                    ,2a=\"" . $_POST["2a" . $i]  . "\"
-                                    ,2b=\"" . $_POST["2b" . $i]  . "\"
-                                    ,2c=\"" . $_POST["2c" . $i]  . "\"
-                                    ,3a=\"" . $_POST["3a" . $i]  . "\"
-                                    ,3b=\"" . $_POST["3b" . $i]  . "\"
-                                    ,3c=\"" . $_POST["3c" . $i]  . "\"
-                                    ,4a=\"" . $_POST["4a" . $i]  . "\"
-                                    ,4b=\"" . $_POST["4b" . $i]  . "\"
-                                    ,4c=\"" . $_POST["4c" . $i]  . "\"
-                                    ,total1=\"" . ($total1+$total2) . "\"
+    $total2 = ((intval($_POST["3a" . $i] ?? 0))+(intval($_POST["3b" . $i] ?? 0))+(intval($_POST["3c" . $i] ?? 0)))>((intval($_POST["4a" . $i] ?? 0))+(intval($_POST["4b" . $i] ?? 0))+(intval($_POST["4c" . $i] ?? 0)))?((intval($_POST["3a" . $i] ?? 0))+(intval($_POST["3b" . $i] ?? 0))+(intval($_POST["3c" . $i] ?? 0))):((intval($_POST["4a" . $i] ?? 0))+(intval($_POST["4b" . $i] ?? 0))+(intval($_POST["4c" . $i] ?? 0)));
+// echo $_POST["1a1"];
+    $vv = array();
+    $vv[] = !empty($_POST['1a' . $i]) ? $_POST['1a' . $i] : "NULL";
+    $vv[] = !empty($_POST['1b' . $i]) ? $_POST['1b' . $i] : "NULL";
+    $vv[] = !empty($_POST['1c' . $i]) ? $_POST['1c' . $i] : "NULL";
+    
+    $vv[] = !empty($_POST['2a' . $i]) ? $_POST['2a' . $i] : "NULL";
+    $vv[] = !empty($_POST['2b' . $i]) ? $_POST['2b' . $i] : "NULL";
+    $vv[] = !empty($_POST['2c' . $i]) ? $_POST['2c' . $i] : "NULL";
+    
+    $vv[] = !empty($_POST['3a' . $i]) ? $_POST['3a' . $i] : "NULL";
+    $vv[] = !empty($_POST['3b' . $i]) ? $_POST['3b' . $i] : "NULL";
+    $vv[] = !empty($_POST['3c' . $i]) ? $_POST['3c' . $i] : "NULL";
+    
+    $vv[] = !empty($_POST['4a' . $i]) ? $_POST['4a' . $i] : "NULL";
+    $vv[] = !empty($_POST['4b' . $i]) ? $_POST['4b' . $i] : "NULL";
+    $vv[] = !empty($_POST['4c' . $i]) ? $_POST['4c' . $i] : "NULL";
+    $q="update ia_marks1 set 1a=" . $vv[0]  . "
+                                    ,1b=" . $vv[1]  . "
+                                    ,1c=" . $vv[2]  . "
+                                    ,2a=" . $vv[3]  . "
+                                    ,2b=" . $vv[4]  . "
+                                    ,2c=" . $vv[5]  . "
+                                    ,3a=" . $vv[6]  . "
+                                    ,3b=" . $vv[7]  . "
+                                    ,3c=" . $vv[8]  . "
+                                    ,4a=" . $vv[9]  . "
+                                    ,4b=" . $vv[10]  . "
+                                    ,4c=" . $vv[11]  . "
+                                    ,total1=" . ($total1+$total2) . "
                                     where usn = \""  . $_POST["usn" . $i] . "\" and branch = \"" . $branch . "\" and sec = \"" . $sec . "\" and sem = \"" . $sem . "\" and sub = \"" . $sub . "\"";
     $reuslt=$con->query($q);
     // echo $q . "<br>";

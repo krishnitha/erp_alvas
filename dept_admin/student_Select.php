@@ -1,6 +1,7 @@
 <?php 
 
 include("../template/fac-auth.php");
+error_reporting(0);
 
 include("../template/sidebar-fac.php");
     require_once "../config.php";
@@ -12,7 +13,8 @@ include("../template/sidebar-fac.php");
 ?>
 
 <div class="container">
-    <form action="student_view_details.php" method="post">
+    <form action="session1.php" method="post">
+    <!-- <form action="student_view_details.php" method="post"> -->
         <div class="row">
             
             <div class="col-md-4 mt-4">

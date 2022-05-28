@@ -2,7 +2,9 @@
 
 include_once "../template/admin-auth.php";
 include_once "../template/sidebar-admin.php";
-$q1 = 'select * from hod';
+error_reporting(0);
+$q1
+= 'select * from hod';
 $result = $link->query($q1);
 
 

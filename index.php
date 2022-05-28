@@ -1,7 +1,8 @@
 <?php
 // Initialize the session
-session_start();
+// session_start();
 
+require_once "config.php";
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -12,7 +13,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
  
 // Include config file
-require_once "config.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -121,11 +121,49 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
 
     <style>
-    @media only screen and (min-width:321px) and (max-width:768px) {
+    #eye {
+        cursor: pointer;
+        position: absolute;
+        left: 85%;
+        padding-left: 20px;
+        margin-right: 10px;
+    }
 
-        .eye {
-            cursor:pointer;position: absolute;left: 85%;margin-right:10px;"
+    @media screen and (max-width: 1024px) {
+        
+        #eye{
+            left:80%;
         }
+
+    }
+    
+    @media screen and (max-width: 430px) {
+        
+        #eye{
+            margin-left:27px;
+        }
+
+    }
+    @media screen and (max-width: 770px) {
+        
+        #eye{
+            
+            left:73%;
+        }
+    }
+        @media screen and (max-width: 330px) {
+        
+        #eye{
+            left:65%;
+        }
+
+    }
+    @media screen and (max-width: 379px) {
+        
+        #eye{
+            margin-left:20px;
+        }
+
     }
     </style>
 
@@ -156,9 +194,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <input id="password" type="password" placeholder="Password" name="password"
                                     class="in form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                                 <i class="fa fa-key fa-lg pr-5 pt-2"></i>
-                                <i class="fa fa-eye eye fa-lg pr-5 pt-2"
-                                    style="cursor:pointer;position: absolute;left: 85%;padding-left: 20px;margin-right:10px;"
-                                    id="eye" onclick="show_password();"></i>
+                                <i class="fa fa-eye eye fa-lg pr-5 pt-2" id="eye" onclick="show_password();"></i>
                                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
                             </div>
                             <button type="submit">Login</button>

@@ -44,8 +44,26 @@ if (isset($_FILES['file'])) {
 					if($r1['adm_no']==$r[0] && $r1['usn']==$r[1]&& $r1['branch']==$r[3] && $r1['sem']==$r[4] && $r1['sec']==$r[5] && $r1['sub']==$r[6])
 					{
 						
-						$q="UPDATE `ia_marks2` SET `1a`='". $r[7] ."',`1b`='". $r[8] ."',`1c`='". $r[9] ."',`2a`='". $r[10] ."',`2b`='". $r[11] ."',`2c`='". $r[12] ."',`3a`='". $r[13] ."',`3b`='". $r[14] ."',`3c`='". $r[15] ."',`4a`='". $r[16] ."',`4b`='". $r[17] ."',`4c`='". $r[18] ."',`total2`='". $r[19] ."' WHERE  adm_no= '". $r[0] ."'and `branch`='" . $r[3] . "' and `sem`='" . $r[4] . "' and `sec`='" . $r[5] . "' and `sub`='" . $r[6] . "'";
-						//echo $q;
+						$vv = array();
+						$vv[] = !empty($r[7]) ? $r[7] : "NULL";
+						$vv[] = !empty($r[8]) ? $r[8] : "NULL";
+						$vv[] = !empty($r[9]) ? $r[9] : "NULL";
+						
+						$vv[] = !empty($r[10]) ? $r[10] : "NULL";
+						$vv[] = !empty($r[11]) ? $r[11] : "NULL";
+						$vv[] = !empty($r[12]) ? $r[12] : "NULL";
+						
+						$vv[] = !empty($r[13]) ? $r[13] : "NULL";
+						$vv[] = !empty($r[14]) ? $r[14] : "NULL";
+						$vv[] = !empty($r[15]) ? $r[15] : "NULL";
+						
+						$vv[] = !empty($r[16]) ? $r[16] : "NULL";
+						$vv[] = !empty($r[17]) ? $r[17] : "NULL";
+						$vv[] = !empty($r[18]) ? $r[18] : "NULL";
+						
+						// $q="UPDATE ia_marks1 SET 1a='". $vv[1] ."',`1b`='". $vv[2] ."',`1c`='". $vv[3] ."',`2a`='". $vv[4] ."',`2b`='". $vv[5] ."',`2c`='". $vv[6] ."',`3a`='". $vv[7] ."',`3b`='". $vv[8] ."',`3c`='". $vv[9] ."',`4a`='". $vv[10] ."',`4b`='". $vv[11] ."',`4c`='". $vv[12] ."',`total1`='". $r[19] ."' WHERE  adm_no= '". $r[0] ."' and `branch`='" . $r[3] . "' and `sem`='" . $r[4] . "' and `sec`='" . $r[5] . "' and `sub`='" . $r[6] . "'";
+						$q = 'update ia_marks2 set 1a = ' . $vv[0] . ', 1b = ' . $vv[1] . ', 1c = ' . $vv[2] . ', 2a = ' . $vv[3] . ', 2b = ' . $vv[4] . ', 2c = ' . $vv[5] . ', 3a = ' . $vv[6] . ', 3b = ' . $vv[7] . ', 3c = ' . $vv[8] . ', 4a = ' . $vv[9] . ', 4b = ' . $vv[10] . ', 4c = ' . $vv[11] . ', total2 = 0 where adm_no = "' . $r[0] . '" and branch = "' . $r[3] . '" and sem = "' . $r[4] . '" and sec = "' . $r[5] . '" and sub = "' . $r[6] . '"';
+						// echo $q;
 						$result=$con->query($q);
 						 
 

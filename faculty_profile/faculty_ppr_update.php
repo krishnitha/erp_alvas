@@ -3,7 +3,7 @@ require_once '../config.php';
 $con = $link;
     session_start();
     //paper presentation details
-    $id = $_POST['id'];
+    $paper_id = $_POST["paper_id"];
     $faculty_id = $_POST['faculty_id'];
     $faculty_ppr_type = $_POST['faculty_ppr_type'];
     $faculty_ppr_year= $_POST['faculty_ppr_year'];
@@ -23,12 +23,12 @@ $con = $link;
          faculty_ppr_jourrnal= \"" . $faculty_ppr_jourrnal . "\",
          faculty_ppr_pub_date= \"" . $faculty_ppr_pub_date . "\",
          faculty_ppr_volume=\"" . $faculty_ppr_volume . "\",
-         faculty_ppr_issue= \"" . $faculty_ppr_issue . "\",
-         faculty_ppr_issn= \"" . $faculty_ppr_issn . "\"  WHERE faculty_id=\"" . $_SESSION["username"] . "\" and id = $id";
+         faculty_ppr_issue= \"" . $faculty_ppr_issue . "\", 
+         faculty_ppr_issn= \"" . $faculty_ppr_issn . "\"  WHERE  faculty_id = \"" . $faculty_id . " \" and paper_id = $paper_id ";
     
 
 
-
+echo $q4;
 
 
 
@@ -39,3 +39,4 @@ $con = $link;
         echo "ppr Details Not Recorded";
     }
 
+?>

@@ -1,20 +1,32 @@
 <?php
 
 require_once '../config.php';
+include("../template/fac-auth.php");
+error_reporting(0);
+include(
+"../template/sidebar-fac.php");
+// session_start();
 $con = $link;
 
-	
-	$q1 = "select distinct sub from ia_marks1";
+	$q_sub = 'select * from faculty_mapping where faculty_name = "' . $_SESSION['username'] . '"';
+	$sub_fac = mysqli_fetch_assoc($link->query($q_sub))['sub_name'];
+	// echo $sub_fac;
+	$q_sub2 = 'select * from subjects where sub_name = "' . $sub_fac . '"';
+	$sub_fac2 = mysqli_fetch_assoc($link->query($q_sub2))['sub_code'];
+	$sub_sub_code = implode(' - ', [$sub_fac2, $sub_fac]);
+	// echo $sub_sub_code;
+	// $q1 = 'select * from ia_marks1 where sub = "' . $sub_sub_code . '"';
 	//$q2 = "select distinct branch from ia_marks1";
 	$q3 = "select distinct sem from ia_marks1";
 	$q4 = "select distinct sec from ia_marks1";
+	$q5 = "select distinct branch from ia_marks1";
 
-	$result1 = $con->query($q1);
+	// $result1 = $con->query($q1);
+	
 	//$result2 = $con->query($q2);
 	$result3 = $con->query($q3);
 	$result4 = $con->query($q4);
-	include("../template/fac-auth.php");
-	include("../template/sidebar-fac.php");
+	$result5 = $con->query($q5);
 ?>
 
 
@@ -26,7 +38,15 @@ $con = $link;
 							<div class="row">
 								<div class="col-md-1"></div>
 
-
+								<div class=" form-group col-md-2">
+									<select class="form-control" name="branch" id="branch" aria-label="Default select example">
+										<option value="selected">Branch</option>
+										<?php foreach ($result5 as $r5) { ?>
+											<option class="form-control" value="<?php echo $r5["branch"] ?>"><?php echo $r5["branch"] ?></option>
+											<!-- <option class="form-control" value="2019">2019</option> -->
+										<?php } ?>
+									</select>
+								</div>
 								<div class=" form-group col-md-2">
 									<select class="form-control" name="sem" id="sem" aria-label="Default select example">
 										<option value="selected">Semester</option>
@@ -49,11 +69,15 @@ $con = $link;
 								<div class=" form-group col-md-2">
 									<select class="form-control" name="sub" id="sub" aria-label="Default select example">
 										<option value="selected">Subject</option>
-										<?php foreach ($result1 as $r) { ?>
-											<option class="form-control" value="<?php echo $r["sub"] ?>"><?php echo $r["sub"] ?></option>
-											<!-- <option class="form-control" value="2019">2019</option> -->
-										<?php } ?>
-
+											<?php 
+                                    $qt = "select a.sub_name, a.sub_code, a.lab from faculty_mapping b, subjects a where b.faculty_name = \"" . $_SESSION['username'] . "\" and b.sub_name = a.sub_name";
+                                    $resultst = $link->query($qt);
+                                    echo $qt;
+                                    foreach($resultst as $r){
+                                                   if($r['lab'] != 1){                      
+                                    ?>
+                                 <option class="form-control" value="<?php echo $r["sub_code"] . " - " . $r["sub_name"] ?>"><?php echo $r["sub_code"] . " - " . $r["sub_name"] ?></option>
+                                 <?php  } } ?>
 
 									</select>
 								</div>

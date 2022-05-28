@@ -1,6 +1,7 @@
 <?php require_once "config.php";
 $q = "select distinct batch from students";
 $q2 = "select distinct branch from students";
+error_reporting(0);
 $result = $con->query($q);
 $result2 = $con->query($q2);
 //session_start();

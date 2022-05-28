@@ -1,6 +1,7 @@
 <?php
 
 require_once '../config.php';
+error_reporting(0);
 session_start();
 
 $q = 'select faculty_email from faculty_details where faculty_name = "' . $_SESSION['username'] . '"';

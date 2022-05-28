@@ -1,21 +1,27 @@
-<?php session_start() ?>
+<?php 
+require_once "../config.php";
+$con=$link;
+error_reporting(0);
+include(
+"../template/stud_auth.php");
+include("../template/student_sidebar.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<!-- <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+</head> -->
 <body>
     <?php
-    $con = mysqli_connect("localhost","root","","erp_alvas");
-    if(mysqli_connect_error())
-    {
-        echo "ERROR";
-    }
-    else
-    {
+    // $con = mysqli_connect("localhost","root","","erp_alvas");
+    // if(mysqli_connect_error())
+    // {
+    //     echo "ERROR";
+    // }
+    // else
+    // {
         
 
     
@@ -69,7 +75,7 @@
             puc_eng_obtained_marks =\"" .  $_SESSION["puc_eng_obtained_marks"] . "\" 
             where adm_no =\"" .  $_SESSION["adm_no"] . "\" 
             ";
-            echo $q;
+            // echo $q;
          
            
 
@@ -98,10 +104,11 @@
             //                                        )";
 
             if ($con->query($q)) {
-                    header("Location: student_login_profile_view.php");
+                    //  header("Location: student_login_profile_view.php");
+                    echo '<script>window.location.replace("student_login_profile_view.php");</script>';
                     
              } else {
-                    echo "<h1>PUC failed</h1>";
+                    echo "<h1>PUC details  failed to update</h1>";
              }
     
            
@@ -114,7 +121,7 @@
 
 
 
-}
+// }
 
     ?>
     

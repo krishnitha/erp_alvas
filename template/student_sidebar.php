@@ -2,9 +2,8 @@
 session_start();
 require_once "../config.php";
 $s='select * from students where usn="' . $_SESSION["username"] . '"';
-                            // echo $s;
-                            $res = $link->query($s);
-                            $res = mysqli_fetch_assoc($res);
+$res = $link->query($s);
+$res = mysqli_fetch_assoc($res);
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +18,7 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../asset/style/bootstrap.min.css" />
-    <link rel="stylesheet" href="../asset/style/style_student.css" />
+    <link rel="stylesheet" href="../asset/style/style_fac.css" />
     <link rel="shortcut icon" href="../asset/img/1aiet-logo.png" />
     <title>Student | Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
@@ -30,7 +29,7 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../asset/style/bootstrap.min.css">
-    <link rel="stylesheet" href="../asset/style/style_student.css">
+    <link rel="stylesheet" href="../asset/style/style_fac.css">
     <link rel="shortcut icon" href="../asset/img/1aiet-logo.png" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
         integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous">
@@ -63,17 +62,16 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
         </div>
     </div>
     <style>
-        *
-        {
-            transition: 0.7s ease-in-out !important;
-        }
+    * {
+        transition: 0.7s ease-in-out !important;
+    }
+
     .dropdown-toggle::after {
         display: none;
-
     }
 
     .dropdown-menu[data-bs-popper] {
-        left: -250%;
+        left: -360%;
         animation: show 500ms;
     }
 
@@ -95,6 +93,18 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
         text-transform: uppercase;
     }
 
+    .alert-read {
+        color: #fff;
+        background-color: #ce93d8;
+        border-color: #ffffff00;
+    }
+
+    .alert-unread {
+        color: #fff;
+        background-color: #AB47BC;
+        border-color: #8b8b8b9c;
+    }
+
     @keyframes show {
         0% {
             opacity: 30%;
@@ -103,14 +113,20 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
         100% {
             opacity: 100%;
         }
+
     }
 
     #sidebar ul li.active>a,
     a[aria-expanded="true"] {
         background: transparent
     }
-    #sidebar ul.components { border: none !important;}
+
+    #sidebar ul.components {
+        border: none !important;
+    }
+
     /* loading screen */
+
     .load-container {
         padding: 0;
         margin: 0;
@@ -173,6 +189,188 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
             transform: rotate(0deg);
         }
 
+        .dropdown-menu[data-bs-popper] {
+            left: -360%;
+            animation: show 500ms;
+        }
+
+        .avatar {
+            background-color: #ffe6b8;
+            color: orange;
+            border: 2px solid orange;
+            padding: 13px;
+            border-radius: 50%;
+            margin: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            text-align: center;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            animation: show 1s;
+            text-transform: uppercase;
+        }
+
+        .alert-read {
+            color: #fff;
+            background-color: #ce93d8;
+            border-color: #ffffff00;
+        }
+
+        .alert-unread {
+            color: #fff;
+            background-color: #AB47BC;
+            border-color: #8b8b8b9c;
+        }
+
+        @keyframes show {
+            0% {
+                opacity: 30%;
+            }
+            
+            .yinyang {
+                position: relative;
+                background: #fff;
+                height: 100px;
+                width: 100px;
+                border-radius: 50%;
+                background-image: linear-gradient(to left, #fff, #fff 50%, #000 50%, #000);
+                animation: roll 2s linear infinite;
+                animation-direction: reverse;
+            }
+        }
+
+        #sidebar ul li.active>a,
+        a[aria-expanded="true"] {
+            background: transparent
+        }
+
+        #sidebar ul.components {
+            border: none !important;
+        }
+
+        /* loading screen */
+
+        .load-container {
+            padding: 0;
+            margin: 0;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: radial-gradient(#7d59b6bf, #4447ad);
+            z-index: 99999999999999;
+        }
+
+        .circle {
+            margin-top: 3rem;
+            box-sizing: border-box;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            padding-left: 50px;
+            background-image: linear-gradient(to left, #fff, #fff 50%, #000 50%, #000);
+            animation: roll 10s linear infinite;
+        }
+
+        .yinyang {
+            position: relative;
+            background: #fff;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-image: linear-gradient(to left, #fff, #fff 50%, #000 50%, #000);
+            animation: roll 4s linear infinite;
+            animation-direction: reverse;
+        }
+
+        .yinyang:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translatex(-50%);
+            background: #fff;
+            border: 18px solid #000;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .yinyang:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translatex(-50%);
+            background: #000;
+            border: 18px solid #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        @keyframes roll {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        .loader {
+            position: absolute;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            background: #efefef88;
+            text-align: center;
+            font-family: sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        p {
+            opacity: .55;
+        }
+
+        .wrapper {
+            /* filter: drop-shadow(0 0 0.75rem #7d888c); */
+        }
+
+        /* loading screen */
+
+        a {
+            text-decoration: none;
+        }
+
+        body,
+        html,
+        .wraper {
+            background-image: url("../asset/img/bg.png") !important;
+            height: 100vh !important;
+            width: 100vw !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            height: 100% !important;
+            align-content: center !important;
+            justify-content: center;
+        }
+
+        #content {
+            width: 100%;
+            padding: 20 px;
+            min-height: 100 vh;
+            transition: all 0.3s;
+        }
+
+        ul ul a {
+            background-color: #dddddd;
+            color: black;
+        }
+
         to {
             transform: rotate(-360deg);
         }
@@ -195,10 +393,11 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
     }
 
     .wrapper {
-        filter: drop-shadow(0 0 0.75rem #7d888c);
+        /* filter: drop-shadow(0 0 0.75rem #7d888c); */
     }
 
     /* loading screen */
+
     a {
         text-decoration: none;
     }
@@ -222,6 +421,11 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
         padding: 20 px;
         min-height: 100 vh;
         transition: all 0.3s;
+    }
+
+    ul ul a {
+        background-color: #dddddd;
+        color: black;
     }
 
     .student-navbar {
@@ -282,10 +486,42 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
                 </div>
             </div>
 
-            <ul class="list-unstyled components" >
+            <ul class="list-unstyled components">
+                <!-- <li>
+                    <a href="../forum/student_feeds.php" style="color: black"> Forum </a>
+                </li> -->
+                <li>
+                    <a href="../student_profile/student_dashboard.php" style="color: black"> Home </a>
+
+                </li>
                 <li>
                     <a href="../student_profile/student_login_view.php" style="color: black">IA Marks</a>
-                    <li>
+                </li>
+                <li>
+                    <a href="../assignment/student_assignment_view.php" style="color: black">Assignment </a>
+                </li>
+                <li>
+                    <a style="color:black;" href="#feedback" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Feedback</a>
+                    <ul style="color:black;" class="collapse list-unstyled" id="feedback">
+                        <!-- <li>
+                                <a href="../feedback/course_end_subject.php" id="">Course end</a>
+                            </li>
+                            <li>
+                                <a href="https://www.google.com/search?q=courseend" id="co_po">Course wise</a>
+                            </li> -->
+                        <li>
+                            <a href="../feedback/curriculum_stud.php" id="">Curriculum Feedback</a>
+                        </li>
+                        <li>
+                                <a href="../feedback/course_wise2.php" id="">Course wise 2</a>
+                        </li>
+                        <li>
+                                <a href="../feedback/course_end_subject.php" id="">Course End Feedback</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="#leaveSubmenu" data-toggle="collapse" style="color: black" aria-expanded="false"
                         class="dropdown-toggle">Leave</a>
                     <ul class="collapse list-unstyled" id="leaveSubmenu">
@@ -302,7 +538,7 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
                        
                         <?php
                             
-                            if($res["semester"] == "7" || $res["semester"] == "8"){
+                            if($res["semester"] == "6" || $res["semester"] == "7" || $res["semester"] == "8"){
                         ?>
 
                         <li>
@@ -317,6 +553,10 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
                 </li>
             </ul>
         </nav>
+        <?php
+            $q_note = 'select * from notification where usn = "' . $_SESSION['username'] . '";';
+            $count = mysqli_num_rows($link -> query($q_note));
+        ?>
 
         <!-- Page Content  -->
         <div id="content">
@@ -335,7 +575,7 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
                         </div>
 
                         <div class="row">
-                        <div id="Back-btn" class="col">
+                            <div id="Back-btn" class="col">
                                 <button class="btn" onclick="window.history.back();">
                                     <i class="fa fa-lg fa-arrow-left"></i>
                                 </button>
@@ -345,15 +585,19 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
                                     <a class="nav-link dropdown-toggle p-0 m-0" data-bs-toggle="dropdown" href="#"
                                         role="button" aria-haspopup="true" aria-expanded="false">
                                         <php ?>
-                                            <Span class="p-0 m-0 avatar"
+                                            <Span class="p-0 m-0 avatar border border-danger"
                                                 style="color:orange; font-size:18px; font-weight:bold;">
                                                 <?php
-                                        $user = $_SESSION['username'];
-                                        echo $user[-3];
-                                        echo $user[-2];
-                                        echo $user[-1];
-                                        ?>
+                                                $user = $_SESSION['username'];
+                                                echo $user[-3];
+                                                echo $user[-2];
+                                                echo $user[-1];
+                                                ?>
+
                                             </Span>
+                                            <span class="bg-success border border-light rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Notification" style="z-index: 9999;position: absolute; top: 0px;padding: 5px;">
+
+                                            </span>
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class=" dropdown-item"
@@ -361,18 +605,105 @@ $s='select * from students where usn="' . $_SESSION["username"] . '"';
                                             <i class="fas fa-users  p-2"></i> Profile </a>
                                         <a class="dropdown-item" href="../student_profile/reset-password.php"> <i
                                                 class="fas fa-key  p-2"></i>Reset Password</a>
-                                        <a class=" dropdown-item" href="#" onclick="alert('notificaions')"><i
-                                                class="fas fa-bell p-2"></i> Notifications </a>
+                                        <a class=" dropdown-item dropdown-toggle" data-bs-toggle="notification"
+                                            role="button" onclick="notify();" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <i class="fas fa-bell p-2 "></i> Notifications <span
+                                                class="badge bg-danger bg-sm"><?php echo $count ?></span> </a>
                                         <div class="dropdown-divider"></div>
                                         <a class=" dropdown-item" href="../logout.php"><i class="fas fa-power-off p-2">
                                                 Logout</i></a>
                                     </div>
+                                    <!--  -->
+
+                                    <!--  -->
                                 </li>
+
                                 <!-- </ul> -->
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
+            <script>
+            function notify() {
+                var z = document.getElementById("notification");
+                console.log(z);
+                if (z.style.display !== "none") {
+                    z.style.display = "none"
+                } else {
+                    z.style.display = "block"
+                }
+
+            }
+            notify();
+            </script>
             <!-- page content start -->
+            <div class="container" id="notification"
+                style="position:fixed;right:1%;display:none;transition:height 0.4s;">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 d-none d-sm-block"> </div>
+                    <div class="col-md-6 col-sm-12"
+                        style="background-color: #fff;box-shadow: 0px 1px 16px 8px #bac2c5;border:1px solid transparent;border-radius:10px;">
+                        <div style="max-height:400px; overflow:scroll;overflow-x: hidden;">
+                            <div class="row m-2 mt-4">
+                                <div class="col blockquote"> <strong> Notifications </strong></div>
+                                <div class="col"></div>
+                                <div class="col">
+                                    <button style="color: #000; background: transparent; float:right; border:none;"
+                                        onclick="notify()" class="btn btn-secondary"><i
+                                            class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="row m-2 p-2">
+                                <!--  -->
+                                <?php
+                                $q_not = 'select * from notification where usn = "' . $_SESSION['username'] . '"';
+                                $r_not = $link->query($q_not);
+
+                                date_default_timezone_set('Asia/Kolkata');
+                                $current_date = date('Y-m-d');
+                                foreach ($r_not as $rr) {
+                                    if ($rr['end_date'] == $current_date) {
+                                        $link->query('delete from notification where usn = "' . $_SESSION['username'] . '" and id = "' . $rr['id'] . '"');
+                                        // echo '<script>window.location.replace("student_profile/student_dashboard.php.php");</script>';
+                                    }
+                                }
+                                // Set the new timezone
+                                date_default_timezone_set('Asia/Kolkata');
+                                $date = date('Y-m-d');
+                                $notif = "SELECT * FROM `notification` where usn = \"" . $_SESSION['username'] . "\"";
+                                // echo $notif;
+                                $result = $link->query($notif);
+                                foreach ($result as $row) {
+                                    // echo $row['created_date'];
+                                ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <a style="text-decoration: none"
+                                        href="<?php echo $row['redirect']; ?>"><strong><?php echo $row['content']; ?></strong></a>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                                <?php
+                                }
+                                ?>
+
+                                <!-- <div class="alert alert-success alert-dismissible fade show alert-unread" role="alert">
+                                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div> -->
+                                <!--  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>

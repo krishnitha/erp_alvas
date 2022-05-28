@@ -4,7 +4,7 @@ $con = $link;
 	$sub=$_POST['sub'];
 	$sem=$_POST['sem'];
 	$sec=$_POST['sec'];
-	//$branch=$_POST['branch'];
+	$branch=$_POST['branch'];
 
 
 
@@ -32,7 +32,7 @@ $con = $link;
 		if($sec=="all")
 		{
 				// SQL query to fetch data from our table
-		$query = "select adm_no,usn,name,branch,sem,sec,sub,1a,1b,1c,2a,2b,2c,3a,3b,3c,4a,4b,4c,total1 from ia_marks2 where sem=\"" . $sem . "\" and sub=\"" . $sub . "\" ;" ;
+		$query = "select adm_no,usn,name,branch,sem,sec,sub,1a,1b,1c,2a,2b,2c,3a,3b,3c,4a,4b,4c,total2 from ia_marks2 where sem=\"" . $sem . "\" and sub=\"" . $sub . "\" and branch=\"" . $branch . "\"  ;" ;
 		
 
 		}
@@ -43,7 +43,7 @@ $con = $link;
 		
 		
 		// SQL query to fetch data from our table
-		$query = "select adm_no,usn,name,branch,sem,sec,sub,1a,1b,1c,2a,2b,2c,3a,3b,3c,4a,4b,4c,total1 from ia_marks2 where sem=\"" . $sem . "\" and sub=\"" . $sub . "\" and sec=\"" . $sec . "\" ;" ;
+		$query = "select adm_no,usn,name,branch,sem,sec,sub,1a,1b,1c,2a,2b,2c,3a,3b,3c,4a,4b,4c,total2 from ia_marks2 where sem=\"" . $sem . "\" and sub=\"" . $sub . "\" and sec=\"" . $sec . "\" and branch=\"" . $branch . "\" ;" ;
 		}
 		// Result
 		$result = mysqli_query($con, $query);

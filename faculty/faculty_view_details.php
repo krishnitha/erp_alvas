@@ -37,7 +37,9 @@ include("../template/sidebar-admin.php");
     //     echo "error";
     // } else {
 
-    $que = "select * from faculty_details where faculty_dept=\"" . $_POST["branch"] . "\"";
+    // $_SESSION['dept'] = $_POST["branch"] ?? "";
+    // echo $_SESSION['dept'];
+    $que = "select * from faculty_details where faculty_dept=\"" . $_SESSION['dept'] . "\"";
 
     $result = $con->query($que);
     $con1 = 0;
@@ -46,7 +48,7 @@ include("../template/sidebar-admin.php");
 
     ?>
 
-        <form action="student_update_details.php" method="POST">
+        <form action="faculty_update.php" method="POST">
 
             <div class="row " style="background: #FFFFFF;border: 1px solid #ECF0FA; box-shadow: 0 2px 4px 0 rgba(7,17,55,0.06);  border-radius: 4px; border-radius: 4px;padding:1.5% ;margin-top: 1%;">
                 <div class="form-group col-md-2">
@@ -57,12 +59,12 @@ include("../template/sidebar-admin.php");
                 </div>
                 <div class="form-group col-md-2">
                     <label for="faculty_name">Faculty Name :</label>
-                    <input type="text" name="faculty_name" class="form-control" id="faculty_name" required value=<?php echo
-                                                                                                                    $row["faculty_name"]; ?>>
+                    <input type="text" name="faculty_name" class="form-control" id="faculty_name" required value="<?php echo
+                                                                                                                    $row["faculty_name"]; ?>"">
                 </div>
 
 
-                <div class="container">
+                <div class=" container">
                     <div class="row">
                         <div class="form-group col-sm-5 col-md-3">
                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#facultyModal<?php echo $con1 ?>">Faculty Details</button>
@@ -133,7 +135,7 @@ include("../template/sidebar-admin.php");
                 </button>
             </div>
             <div class="modal-body ">
-                <form action="faculty_upadte.php" method="POST">
+                <form action="faculty_update.php" method="POST">
 
                     <div class="row" style="margin-bottom:2% ;">
                         <div class="col-12 col-lg-12">
@@ -152,8 +154,8 @@ include("../template/sidebar-admin.php");
                         <div class="col col-12  col-lg-6">
                             <div class="mb-3">
                                 <label for="faculty_dept" class="form-label">Department<span style="color: red;">*</span></label></label>
-                                <input type="text" class="form-control" id="faculty_dept" name="faculty_dept" placeholder="Enter your Department" required value=<?php echo $row["faculty_dept"]
-                                                                                                                                                                    ?>>
+                                <input type="text" class="form-control" id="faculty_dept" name="faculty_dept" placeholder="Enter your Department" required value="<?php echo $row["faculty_dept"]
+                                                                                                                                                                    ?>">
                             </div>
                         </div>
 
@@ -163,8 +165,8 @@ include("../template/sidebar-admin.php");
                         <div class="col col-12  col-lg-6">
                             <div class="mb-3">
                                 <label for="faculty_qulfy" class="form-label">Qualification<span style="color: red;">*</span></label></label>
-                                <input type="text" class="form-control" id="faculty_qulfy" name="faculty_qulfy" placeholder="Enter your Qualification" required value=<?php echo
-                                                                                                                                                                        $row["faculty_qulfy"] ?>>
+                                <input type="text" class="form-control" id="faculty_qulfy" name="faculty_qulfy" placeholder="Enter your Qualification" required value="<?php echo
+                                                                                                                                                                        $row["faculty_qulfy"] ?>">
                             </div>
                         </div>
                         <div class="col col-12  col-lg-6">
@@ -315,15 +317,15 @@ include("../template/sidebar-admin.php");
                     <div class="row">
                         <div class="col-lg-4 col-12">
                             <div class="mb-3">
-                                <label for="faculty_phd_reg" class="form-label">Registration date<span style="color: red;">*</span></label></label>
-                                <input type="date" class="form-control" id="faculty_phd_reg" name="faculty_phd_reg" placeholder="Enter your department" required value=<?php echo
-                                                                                                                                                                        $row["faculty_phd_reg"] ?>>
+                                <!-- <label for="faculty_phd_reg" class="form-label">Registration date<span style="color: red;">*</span></label></label> -->
+                                <input type="date" class="form-control" id="faculty_phd_reg" name="faculty_phd_reg" placeholder="Enter your department" value=<?php echo
+                                                                                                                                                                $row["faculty_phd_reg"] ?>>
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
                             <div class="mb-3">
-                                <label for="faculty_phd_status" class="form-label">Current Status<span style="color: red;">*</span></label></label>
-                                <input type="text" class="form-control" id="faculty_phd_status" name="faculty_phd_status" placeholder="Enter your current status" required value=<?php echo $row["faculty_phd_status"] ?>>
+                                <!-- <label for="faculty_phd_status" class="form-label">Current Status<span style="color: red;">*</span></label></label> -->
+                                <input type="text" class="form-control" id="faculty_phd_status" name="faculty_phd_status" placeholder="Enter your current status" value=<?php echo $row["faculty_phd_status"] ?>>
                             </div>
                         </div>
 
@@ -331,51 +333,51 @@ include("../template/sidebar-admin.php");
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="mb-3">
-                                <label for="faculty_phd_guide" class="form-label">Guide Name<span style="color: red;">*</span></label></label>
-                                <input type="text" class="form-control" id="faculty_phd_guide" name="faculty_phd_guide" placeholder="Enter guide name" required value=<?php echo $row["faculty_phd_guide"]
-                                                                                                                                                                        ?>>
+                                <!-- <label for="faculty_phd_guide" class="form-label">Guide Name<span style="color: red;">*</span></label></label> -->
+                                <input type="text" class="form-control" id="faculty_phd_guide" name="faculty_phd_guide" placeholder="Enter guide name" value=<?php echo $row["faculty_phd_guide"]
+                                                                                                                                                                ?>>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
                             <div class="mb-3">
-                                <label for="faculty_phd_topic" class="form-label">Topic of research<span style="color: red;">*</span></label></label>
-                                <input type="text" class="form-control" id="faculty_phd_topic" name="faculty_phd_topic" placeholder="Enter research topic" required value=<?php echo
-                                                                                                                                                                            $row["faculty_phd_topic"] ?>>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12">
-                            <div class="mb-3">
-                                <label for="faculty_phd_domain" class="form-label">Research Domain<span style="color: red;">*</span></label></label>
-                                <input type="text" class="form-control" id="faculty_phd_domain" name="faculty_phd_domain" placeholder="Enter domain" required value=<?php echo
-                                                                                                                                                                    $row["faculty_phd_domain"] ?>>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-12">
-                            <div class="mb-3">
-                                <label for="faculty_phd_center" class="form-label">University/research center<span style="color: red;">*</span></label></label>
-                                <input type="text" class="form-control" name="faculty_phd_center" id="faculty_phd_center" placeholder="Enter research center" required value=<?php
-                                                                                                                                                                                echo $row["faculty_phd_center"] ?>>
+                                <!-- <label for="faculty_phd_topic" class="form-label">Topic of research<span style="color: red;">*</span></label></label> -->
+                                <input type="text" class="form-control" id="faculty_phd_topic" name="faculty_phd_topic" placeholder="Enter research topic" value=<?php echo
+                                                                                                                                                                    $row["faculty_phd_topic"] ?>>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
+
                         <div class="col-lg-6 col-12">
                             <div class="mb-3">
-                                <label for="faculty_phd_yoj" class="form-label">Year of joining<span style="color: red;">*</span></label></label>
-                                <input type="number" class="form-control" id="faculty_phd_yoj" name="faculty_phd_yoj" placeholder="Enter joining year" required value=<?php echo $row["faculty_phd_yoj"]
-                                                                                                                                                                        ?>>
+                                <!-- <label for="faculty_phd_domain" class="form-label">Research Domain<span style="color: red;">*</span></label></label> -->
+                                <input type="text" class="form-control" id="faculty_phd_domain" name="faculty_phd_domain" placeholder="Enter domain" value=<?php echo
+                                                                                                                                                            $row["faculty_phd_domain"] ?>>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
                             <div class="mb-3">
-                                <label for="faculty_phd_complition" class="form-label">Year of completion<span style="color: red;">*</span></label></label>
-                                <input type="number" class="form-control" id="faculty_phd_complition" name="faculty_phd_complition" placeholder="Enter completion" required value=<?php
-                                                                                                                                                                                    echo $row["faculty_phd_complition"] ?>>
+                                <!-- <label for="faculty_phd_center" class="form-label">University/research center<span style="color: red;">*</span></label></label> -->
+                                <input type="text" class="form-control" name="faculty_phd_center" id="faculty_phd_center" placeholder="Enter research center" value=<?php
+                                                                                                                                                                    echo $row["faculty_phd_center"] ?>>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="mb-3">
+                                <!-- <label for="faculty_phd_yoj" class="form-label">Year of joining<span style="color: red;">*</span></label></label> -->
+                                <input type="number" class="form-control" id="faculty_phd_yoj" name="faculty_phd_yoj" placeholder="Enter joining year" value=<?php echo $row["faculty_phd_yoj"]
+                                                                                                                                                                ?>>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="mb-3">
+                                <!-- <label for="faculty_phd_complition" class="form-label">Year of completion<span style="color: red;">*</span></label></label> -->
+                                <input type="number" class="form-control" id="faculty_phd_complition" name="faculty_phd_complition" placeholder="Enter completion" value=<?php
+                                                                                                                                                                            echo $row["faculty_phd_complition"] ?>>
                             </div>
                         </div>
 
@@ -410,71 +412,79 @@ include("../template/sidebar-admin.php");
                 </button>
             </div>
             <div class="modal-body ">
-                <form action="">
-                    <?php
-                    $q = "select * from faculty_ppr_details where faculty_id=\"" . $faculty_id . "\"";
-                    $result1 = $con->query($q);
-                    foreach ($result1 as $ro) {
-                    ?>
+
+                <?php
+                $q = "select * from faculty_ppr_details where faculty_id=\"" . $faculty_id . "\"";
+
+                $result1 = $con->query($q);
+                foreach ($result1 as $ro) {
+                ?>
+                    <form action="faculty_ppr_update.php" method="POST">
+                        <input type="text" name="paper_id" id="" value=<?php echo $ro["paper_id"]; ?> hidden >
                         <div class="row" style="margin-bottom:2% ;">
                             <div class="col-12 col-lg-12">
                                 <label for="faculty_id">Faculty Id :</label>
                                 <input readonly type="text" name="faculty_id" class="form-control" id="faculty_id" value=<?php echo $ro["faculty_id"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_ppr_type" class="col-md-3 col-form-label">Paper Detail :</label>
-                            <div class="col-md-9">
 
+
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="faculty_ppr_type">Paper Type :</label>
                                 <input type="text" name="faculty_ppr_type" class="form-control" id="faculty_ppr_type" value=<?php echo $ro["faculty_ppr_type"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_ppr_year" class="col-md-3 col-form-label">Year :</label>
-                            <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="faculty_ppr_year">Year :</label>
                                 <input type="text" name="faculty_ppr_year" class="form-control" id="faculty_ppr_year" value=<?php echo $ro["faculty_ppr_year"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_ppr_title" class="col-md-3 col-form-label">Title :</label>
-                            <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="faculty_ppr_title">Title :</label>
                                 <input type="text" name="faculty_ppr_title" class="form-control" id="faculty_ppr_title" value=<?php echo $ro["faculty_ppr_title"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_ppr_jourrnal" class="col-md-3 col-form-label">Journal :</label>
-                            <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="faculty_ppr_jourrnal">Journal :</label>
                                 <input type="text" name="faculty_ppr_jourrnal" class="form-control" id="faculty_ppr_jourrnal" value=<?php echo $ro["faculty_ppr_jourrnal"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_ppr_pub_date" class="col-md-3 col-form-label">Publish Date :</label>
-                            <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="faculty_ppr_pub_date">Publish Date :</label>
                                 <input type="text" name="faculty_ppr_pub_date" class="form-control" id="faculty_ppr_pub_date" value=<?php echo $ro["faculty_ppr_pub_date"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_ppr_volume" class="col-md-3 col-form-label">Volume :</label>
-                            <div class="col-md-9">
-                                <input type="text" name="faculty_ppr_volume	" class="form-control" id="faculty_ppr_volume	" value=<?php echo $ro["faculty_ppr_volume"]; ?>>
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="faculty_ppr_volume">Volume :</label>
+                                <input type="text" name="faculty_ppr_volume" class="form-control" id="faculty_ppr_volume	" value=<?php echo $ro["faculty_ppr_volume"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_ppr_issue" class="col-md-3 col-form-label">Issue :</label>
-                            <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="faculty_ppr_issue">Issue :</label>
                                 <input type="text" name="faculty_ppr_issue" class="form-control" id="faculty_ppr_issue" value=<?php echo $ro["faculty_ppr_issue"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_ppr_issn" class="col-md-3 col-form-label">ISSN :</label>
-                            <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="faculty_ppr_issn">ISSN :</label>
                                 <input type="text" name="faculty_ppr_issn" class="form-control" id="faculty_ppr_issn" value=<?php echo $ro["faculty_ppr_issn"]; ?>>
                             </div>
                         </div>
-                    <?php } ?>
-                    <button type="submit" class="btn btn-success" style="float:right;">Update</button>
+                        <div class="row">
+                            <div class="col-md-9"></div>
+                            <button type="submit" class="btn btn-success col-md-3">Update</button>
+                        </div>
 
-                </form>
+                    </form>
+                <?php } ?>
+
             </div>
 
         </div>
@@ -492,43 +502,53 @@ include("../template/sidebar-admin.php");
                 </button>
             </div>
             <div class="modal-body ">
-                <form action="">
-                    <?php
-                    $q1 = "select * from faculty_workshop_details where faculty_id=\"" . $faculty_id . "\"";
-                    $result2 = $con->query($q1);
-                    foreach ($result2 as $ro1) {
-                    ?>
+                <?php
+                $q1 = "select * from faculty_workshop_details where faculty_id=\"" . $faculty_id . "\"";
+                // echo $q1;
+                $result2 = $con->query($q1);
+                foreach ($result2 as $ro1) {
+                ?>
+                    <form action="faculty_workshop_update.php" method="post">
+                        <input type="text" name="workshop_id" id="" value=<?php echo $ro1["workshop_id"]; ?> hidden>
                         <div class="row" style="margin-bottom:2% ;">
                             <div class="col-12 col-lg-12">
                                 <label for="faculty_id">Faculty Id :</label>
                                 <input readonly type="text" name="faculty_id" class="form-control" id="faculty_id" value=<?php echo $ro1["faculty_id"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_workshop_name" class="col-md-3 col-form-label">Name :</label>
-                            <div class="col-md-9">
 
+                        <div class="row">
+                            <div class="form-group col-12 col-lg-12">
+                                <label for="faculty_workshop_name">Name :</label>
                                 <input type="text" name="faculty_workshop_name" class="form-control" id="faculty_workshop_name" value=<?php echo $ro1["faculty_workshop_name"]; ?>>
+
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_workshop_title" class="col-md-3 col-form-label">Title :</label>
-                            <div class="col-md-9">
+
+
+                        <div class="row">
+                            <div class="form-group col-12 col-lg-12">
+                                <label for="faculty_workshop_title">Title :</label>
                                 <input type="text" name="faculty_workshop_title" class="form-control" id="faculty_workshop_title" value=<?php echo $ro1["faculty_workshop_title"]; ?>>
                             </div>
                         </div>
-                        <div class="form-group form-inline">
-                            <label for="faculty_workshop_no_of_days" class="col-md-3 col-form-label">No. of Days :</label>
-                            <div class="col-md-9">
+                        <div class="row">
+                            <div class="form-group col-12 col-lg-12">
+                                <label for="faculty_workshop_no_of_days">No. of Days :</label>
                                 <input type="text" name="faculty_workshop_no_of_days" class="form-control" id="faculty_workshop_no_of_days" value=<?php echo $ro1["faculty_workshop_no_of_days"];
                                                                                                                                                     ?>>
                             </div>
                         </div>
-                    <?php } ?>
+                        <div class="row">
+                            <div class="col-md-9"></div>
+                            <button type="submit" class="btn btn-success col-md-3" style="float:right;">Update</button>
+                        </div>
+                    </form>
+                <?php } ?>
 
-                    <button type="submit" class="btn btn-success" style="float:right;">Update</button>
-                </form>
+
             </div>
+
 
         </div>
     </div>

@@ -1,7 +1,9 @@
 <?php 
     include_once "../template/admin-auth.php";
     include_once "../template/sidebar-admin.php";
-    $q1 = 'select * from faculty_details';
+error_reporting(0);
+    $q1 =
+'select * from faculty_details';
     $res = $link->query($q1);
     $q2 = 'select * from dept_pso';
     $res1 = $link->query($q2);

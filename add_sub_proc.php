@@ -9,13 +9,18 @@ $con = $link;
     $sub_code = $_POST['sub_code'];
 
     $elective = 0;
+    $lab = 0;
     // echo $_POST['elective'];
     if(!empty($_POST['elective'])){
     if($_POST['elective'] == 'on')
         $elective = 1;
     }
+    if(!empty($_POST['lab'])){
+    if($_POST['lab'] == 'on')
+        $elective = 1;
+    }
 
-    $q = "insert into subjects (`sub_name`,`sub_code`,`elective`,`branch`,`sem`) values(\"" . $sub_name . "\",\"" . $sub_code . "\",\"" . $elective . "\",\"" . $branch . "\",\"" . $sem . "\")";
+    $q = "insert into subjects (`sub_name`,`sub_code`,`elective`,`branch`,`sem`,`lab`) values(\"" . $sub_name . "\",\"" . $sub_code . "\",\"" . $elective . "\",\"" . $branch . "\",\"" . $sem . "\",\"" . $lab . "\")";
     // echo $q;
     try{
         $con ->query($q);

@@ -1,6 +1,8 @@
 <?php 
 include("../template/admin-auth.php");
-include("../template/sidebar-admin.php");
+error_reporting(0);
+include(
+"../template/sidebar-admin.php");
 $q = 'select * from dept_pso';
 $result = $link->query($q);
 

@@ -1,6 +1,7 @@
 <?php
 
 require_once '../config.php';
+    error_reporting(0);
 
 $con = $link;
 
@@ -15,9 +16,8 @@ $result1 = $con->query($q1);
 
 <?php
 require_once "../config.php";
-include("../template/admin-auth.php");
-
-include("../template/sidebar-admin.php");
+include("../template/fac-auth.php");
+include("../template/sidebar-fac.php");
 
 ?>
 <div class="container">
@@ -37,7 +37,7 @@ include("../template/sidebar-admin.php");
     //     echo "error";
     // } else {
 
-    $que = "select * from faculty_details";
+    $que = "select * from faculty_details where faculty_dept=\"" . $_POST["branch"] . "\"";
 
     $result = $con->query($que);
     $con1 = 0;
@@ -57,27 +57,27 @@ include("../template/sidebar-admin.php");
                 </div>
                 <div class="form-group col-md-2">
                     <label for="faculty_name">Faculty Name :</label>
-                    <input type="text" name="faculty_name" class="form-control" id="faculty_name" required value=<?php echo
-                                                                                                                    $row["faculty_name"]; ?>>
+                    <input type="text" name="faculty_name" style="width: <?php echo strlen($row['faculty_name']) ?>em;" class="form-control" id="faculty_name" required value="<?php echo
+                                                                                                                    $row["faculty_name"]; ?>"">
                 </div>
 
 
                 <div class="container">
                     <div class="row">
-                        <div class="form-group col-sm-5 col-md-3">
+                        <div class="form-group col-sm-5 col-md-3 mt-2">
                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#facultyModal<?php echo $con1 ?>">Faculty Details</button>
                         </div>
-                        <div class="form-group col-sm-4 col-md-3">
+                        <div class="form-group col-sm-4 col-md-3 mt-2">
                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#workshopModal<?php echo $con1 ?>">
                                 Workshop
                             </button>
                         </div>
-                        <div class="form-group col-sm-6 col-md-3">
+                        <div class="form-group col-sm-6 col-md-3 mt-2">
                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#paperModal<?php echo $con1 ?>">
                                 Paper Details
                             </button>
                         </div>
-                        <div class="form-group col-sm-6 col-md-3">
+                        <div class="form-group col-sm-6 col-md-3 mt-2">
                             <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#exampleModalCenter<?php echo $con1 ?>">
                                 <i class="fas fa-trash"></i>
                             </button>
@@ -153,7 +153,7 @@ include("../template/sidebar-admin.php");
                             <div class="mb-3">
                                 <label for="faculty_dept" class="form-label">Department<span style="color: red;">*</span></label></label>
                                 <input type="text" class="form-control" id="faculty_dept" name="faculty_dept" placeholder="Enter your Department" required value=<?php echo $row["faculty_dept"]
-                                                                                                                                                                    ?>>
+                                                                                                                                                                    ?> readonly>
                             </div>
                         </div>
 
@@ -180,7 +180,7 @@ include("../template/sidebar-admin.php");
                         <div class="col col-12  col-lg-6">
                             <div class="mb-3">
                                 <label for="faculty_email" class="form-label">Mail Id<span style="color: red;">*</span></label></label>
-                                <input class="form-control" type="email" id="faculty_email" name="faculty_email" placeholder="name@example.com" required value=<?php echo $row["faculty_email"] ?>>
+                                <input class="form-control" type="email" id="faculty_email" name="faculty_email" placeholder="name@example.com" required value=<?php echo $row["faculty_email"] ?> readonly>
                             </div>
                         </div>
                         <div class="col col-12  col-lg-6">

@@ -1,4 +1,5 @@
-<?php 
+<?php
+error_reporting(0);
 include "../template/fac-auth.php";
 include("../template/sidebar-fac.php");
         require_once "config.php"; ?>
@@ -26,16 +27,20 @@ include("../template/sidebar-fac.php");
             <label for="sub" class="ml-5">Select Subject:</label>
             <select name="sub" id="sub" class="form-control">
                 <option selected disabled>Select Subject</option>
-                <?php
-                    foreach($result3 as $res3){
-                ?>
-                <option value="<?php echo $res3["sub"] ?>"><?php echo $res3["sub"] ?></option>
+                <?php 
+                $qt = "select a.sub_name, a.sub_code from faculty_mapping b, subjects a where b.faculty_name = \"" . $_SESSION['username'] . "\" and b.sub_name = a.sub_name";
+                $resultst = $con->query($qt);
+                // echo $qt;
+                foreach($resultst as $r){
+                                                    
+            ?>
+                <option value="<?php echo $r["sub_code"] . " - " . $r["sub_name"] ?>"><?php echo $r["sub_code"] . " - " . $r["sub_name"] ?></option>
                 <?php } ?>
             </select>
         </div>
         <div class="col col-4 col-md-4 col-lg-4">
             
-            <button type="submit" class="btn btn-info mt-4" id="nn" name="co_sub">LOAD</button>
+            <button type="submit" class="btn btn-info mt-4" id="nn" name="co_sub">SUBMIT</button>
         </div>
     </div>
     

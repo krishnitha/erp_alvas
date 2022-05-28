@@ -1,6 +1,7 @@
 <?php
 require_once "../config.php";
 include("../template/admin-auth.php");
+error_reporting(0);
 
 include("../template/sidebar-admin.php");
 
@@ -30,7 +31,7 @@ if (isset($_SESSION["popup"]) && $_SESSION["popup"] == 1) {
 
 $con =  $link;
 $q1 = "select faculty_name from faculty_details";
-$q2 = "select sub_name from subjects";
+$q2 = "select * from subjects order by branch";
 $result1 = $con->query($q1);
 $result2 = $con->query($q2);
 
@@ -83,7 +84,7 @@ $result2 = $con->query($q2);
                 ?>
                     <option value="<?php echo $r2["sub_name"]; ?>">
                         <?php
-                        echo $r2["sub_name"];
+                        echo $r2["sub_name"] . ' - ' . $r2['branch'];
                         ?>
                     </option>
 

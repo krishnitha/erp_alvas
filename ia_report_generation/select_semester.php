@@ -1,7 +1,7 @@
 <?php 
-
 include_once "../template/fac-auth.php";
 include_once "../template/sidebar-fac.php";
+error_reporting(0);
 require_once "../config.php";
 
 $dept = mysqli_fetch_assoc($link->query('select faculty_dept from faculty_details where faculty_name = "' . $_SESSION['username'] . '"'))['faculty_dept'];
@@ -20,7 +20,6 @@ $dept = mysqli_fetch_assoc($link->query('select faculty_dept from faculty_detail
                 <option value="<?php echo $r['semester'] ?>"><?php echo $r['semester'] ?></option>
             <?php } ?>
         </select>
-        
     </div>
     <div class="form-group col-md-4 mt-3">
         <select class="form-control" name="sec" id="">
@@ -40,6 +39,7 @@ $dept = mysqli_fetch_assoc($link->query('select faculty_dept from faculty_detail
         <option value="1">IA 1</option>
         <option value="2">IA 2</option>
         <option value="3">IA 3</option>
+        <option value="4">Consolidated</option>
     </select>
 </div>
     
@@ -54,8 +54,17 @@ $dept = mysqli_fetch_assoc($link->query('select faculty_dept from faculty_detail
      </div>
        
 </form>
-
-
+<a hidden href="<?php echo '../uploads/ia_report_generated_'  . $dept . '.xlsx' ?>" download id="down"></a>
+<?php
+    $down = $_SESSION['down'] ?? 0;
+    if($down == 1){ ?>
+        <script>
+            document.getElementById('down').click();
+           <?php $_SESSION['down'] = 0; ?>
+        </script>
+    <?php
+    }
+?>
 
 
 

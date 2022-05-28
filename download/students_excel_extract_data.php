@@ -1,12 +1,6 @@
 <?php
-
-$con = mysqli_connect("localhost","root", "", "erp_alvas");
-if(mysqli_connect_error())
-{
-	echo " database Error";
-}
-else
-{
+require_once "../config.php";
+$con = $link;
 	$batch=$_POST['batch'];
 	$sem=$_POST['sem'];
 	$sec=$_POST['sec'];
@@ -63,5 +57,5 @@ else
 		// Closing tag
 		fclose($output);
 	}
-}
+
 ?>

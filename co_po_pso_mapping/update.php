@@ -20,7 +20,7 @@
         $co=$_POST['co' . $i];
         
         $qu = 'update co_po set po1="' . $po1 . '", po2="' . $po2 . '",po3="' . $po3 . '",po4="' . $po4 . '",po5 = "' . $po5 . '", po6 = "' . $po6 . '",po7 = "' . $po7 . '",po8 = "' . $po8 . '",po9 = "' . $po9 . '",po10 = "' . $po10 . '",po11 = "' . $po11 . '",po12 ="' . $po12 . '",approval="not approved",to_hod="" where faculty_id ="' . $fid . '" and  sub = "' . $sub . '" and co = "' . $co . '"';
-        echo $qu;
+        // echo $qu;
         $con->query($qu);
     }
 

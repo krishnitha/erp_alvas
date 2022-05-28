@@ -1,6 +1,7 @@
 <?php 
 require_once "../config.php";
 include("../template/fac-auth.php");
+                    error_reporting(0);
 
 include("../template/sidebar-fac.php");
 
@@ -9,9 +10,9 @@ include("../template/sidebar-fac.php");
 
                     <?php
                     $con = $link;
-                    
+                    $branch=$_POST["branch"];
 
-                        $q = "select * from subjects";
+                        $q = "select * from subjects where branch=\"" . $branch . "\"";
                         if ($con->query($q)) {
                         } else {
                             echo "error";

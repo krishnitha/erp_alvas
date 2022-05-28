@@ -1,6 +1,7 @@
 <?php 
 require_once "../config.php";
 include("../template/admin-auth.php");
+                    error_reporting(0);
 
 include("../template/sidebar-admin.php");
 
@@ -9,9 +10,10 @@ include("../template/sidebar-admin.php");
 
                     <?php
                     $con = $link;
-                    
+                    $branch=$_POST["branch"];
 
-                        $q = "select * from subjects";
+                        $q = "select * from subjects where branch=\"" . $branch . "\"";
+                        // echo $q;
                         if ($con->query($q)) {
                         } else {
                             echo "error";

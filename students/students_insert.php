@@ -1,6 +1,7 @@
 <?php
 require_once "../config.php";
 include("../template/admin-auth.php");
+                    error_reporting(0);
 
 include("../template/sidebar-admin.php");
 
@@ -37,11 +38,50 @@ include("../template/sidebar-admin.php");
         }
     </style>
     <div class="row">
-        <div class="col-sm-10"></div>
-        <div class="col-sm-1 ml-2 mb-2 ">
-            <a href="../upload/students_upload/examples/04-upload_and_convert_to_html.php" class="btn btn-primary import-btn"> Import </a>
+            <!-- <div class="col">
+                                <h2>Add Faculty Details</h2>
+                            </div> -->
+            <!-- <div class="col">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalimport">
+                    New Import
+                </button>
+            </div> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalimport" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Import</h5>
+                            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                                <span style="font-size: 25px;" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="../upload_ia_marks/student.php" method="post" enctype="multipart/form-data">
+                                <input type="file" class="form-control-file" name="xl" id="fileToUpload" accept=".xlsx">
+                                <!-- only xlsx files are accetped -->
+                                <br>
+                                <input class="btn btn-primary" type="submit" value="Upload" name="submit">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalimport">
+                    Import
+                </button>
+                <!-- <button type="file">Upload</button> -->
+            </div>
         </div>
-    </div>
 
     <div class="container">
         <form action="stu_insert_process.php" method="POST">
@@ -73,22 +113,27 @@ include("../template/sidebar-admin.php");
                     <input type="text" name="lname" class="form-control" id="lname">
                 </div>
             </div>
+            
+            <?php
+                $q="select distinct batch from students";
+                $q1="select distinct branch from students";
+                $res=$link->query($q);
+                $res1=$link->query($q1);
+            ?>
 
             <div class="form-group">
                 <label for="branch">Branch :</label>
                 <select name="branch" id="branch" class="custom-select">
-                    <option selected></option>
-                    <option value="1">Civil</option>
-                    <option value="2">Mechanical</option>
-                    <option value="3">Computer Science & Engg.</option>
-                    <option value="4">Computer Science & Design</option>
-                    <option value="5">Agriculture</option>
-                    <option value="6">Electronic & Communication</option>
-                    <option value="7">Artifical Intelligence & Machine Learning</option>
-                    <option value="8">Information Science & Engg.</option>
+                     <option selected disabled>Select Branch</option>
+                    <?php
+                        foreach($res1 as $r){
+                    ?>
+                    <option value="<?php echo $r["branch"] ?>"><?php echo $r["branch"] ?></option>
+                    <?php } ?>
                 </select>
                 <!-- <input type="text" name="branch" class="form-control" id="branch"> -->
             </div>
+            
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="kcet">K-CET Rank :</label>

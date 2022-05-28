@@ -25,7 +25,7 @@ else if((preg_match($pattern, $_SESSION["username"]))){
 
 }
 else{
-    
+    // echo "sksd";
     header("Location: dashboard/fac_dashboard.php");
 }
 

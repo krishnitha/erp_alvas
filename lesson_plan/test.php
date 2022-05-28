@@ -100,11 +100,13 @@ else{
 $docObj = new DocxConversion("../uploads/" . $doc_file);
 $docText= $docObj->convertToText();
 
+// print_r($docText);
 $vtb = explode("Textbooks:",$docText);
 
 $viewtb = explode("Reference Books:",$vtb[1]);
 
 $vtu_co = explode("Course Outcomes:",$docText);
+// print_r($vtu_co);
 $vtu_cos = explode("Question Paper Pattern:",$vtu_co[1]);
 
 $v_co = array_fill(0, 6, 0);
@@ -140,7 +142,7 @@ foreach($textBooks as $t){
 
 // print_r($v_co);
 
-// print_r($vtu_cos_separation);
+// print_r($vtu_cos_separation);`
 
 $q_co = 'select sub from co';
 $r_co = $con->query($q_co);

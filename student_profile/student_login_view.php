@@ -1,7 +1,9 @@
 <?php
 require_once "../config.php";
 $con=$link;
-
+error_reporting(0);
+include(
+"../template/stud_auth.php");
 include("../template/student_sidebar.php");
 
 ?>

@@ -13,17 +13,13 @@
         public function call()
         {
             //instantiate a new Sms Rest Client with argument api,senderID,base_URL.
-            $sms     = new Sms('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '<Sender_ID>', '<SMS_provider_URL>');
+            $sms     = new Sms('Ae1fddd8783f7323fdd22bf035f789c2a', 'ALVASF', 'https://api-alerts.kaleyra.com/v1/?api_key=Ae1fddd8783f7323fdd22bf035f789c2a');
             $dlr_url = '<Delivered_Trigger_URL>?sent={sent}&delivered={delivered}&msgid={msgid}&sid={sid}&status={status}&reference={reference}&custom1={custom1}&custom2={custom2}';
 
-            $obj = $sms->sendSms('<Mobile_Number>', 'hello', [
-                //'dlr_url' => $dlr_url,
-                //'time'    => '2017-06-11 11:17:55 AM',
-                //'unicode' => '1',
-                //'flash' => '1',
-                //'format'  => 'json',
-                //'port'    => '8223',
-                ]);
+            $arr = array_fill(0, 40, 0);
+            // $a = array_fill(0)
+            $obj = $sms->sendSms('7892448120', 
+            'NOTICE Hello all Just a test Don\'t mind me-ALVAS');
 
             /*$xml="<?xml version='1.0' encoding='UTF-8'?><xmlapi>
             	<sender>RRRRRR</sender>
@@ -58,7 +54,7 @@
 
             //$obj = $sms->smsStatusPull("xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:1",['formate'=>'json']);
 
-            //$obj = $sms->smsStatusPush("<Mobile_Number>","hi......",$dlr_url);
+            // $obj = $sms->smsStatusPush("8970284736","hi......",$dlr_url);
 
             /*$obj = $sms->smsToOptinGroup("hello","tipusultan",['time'    => '2017-06-11 11:17:55 AM',
                 'unicode' => '1',

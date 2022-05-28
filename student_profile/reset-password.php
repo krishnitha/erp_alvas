@@ -1,6 +1,9 @@
 <?php
 // include("../template/fac-auth.php");
-include("../template/student_sidebar.php");
+include("../template/stud_auth.php");
+error_reporting(0);
+include(
+"../template/student_sidebar.php");
 // echo $_SESSION['username'];
 // Initialize the session
 // session_start();

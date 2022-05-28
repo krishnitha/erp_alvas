@@ -7,7 +7,8 @@ $sec = $_POST["sec"];
 $sem = $_POST["sem"];
 $sub = $_POST["sub"];
 $q = "select * from students where branch = \"" . $branch . "\" and section = \"" . $sec . "\" and semester = \"" . $sem . "\"" ;
-$q4="select * from lab_marks where branch = \"" . $branch . "\" and sec = \"" . $sec . "\" and sem = \"" . $sem . "\"" ;
+$q4="select * from lab_marks where branch = \"" . $branch . "\" and sec = \"" . $sec . "\" and sem = \"" . $sem . "\" and sub=\"". $sub . "\"" ;
+// echo $q;
 // echo $q4;
 $result = $con->query($q);
 $result1=$con->query($q4);
@@ -16,6 +17,7 @@ $_SESSION["branch"] = $_POST["branch"];
 $_SESSION["sec"] = $_POST["sec"];
 $_SESSION["sem"] = $_POST["sem"];
 $_SESSION["sub"] = $_POST["sub"];
+$sub_code=explode(" - ",$sub);
 
 // print_r($result1);
 
@@ -37,12 +39,15 @@ foreach($result as $r){
     $con -> query($q1);
     // $con -> query($q2);
     // $con -> query($q3);
-    }
+    }  
    
 
 
    
 
 }
+$q2="insert into lab_co_mapping (`subcode`,`dept`) values(\"" . $sub . "\",\"" . $branch . "\");";
+// echo $q2;
+    $con->query($q2);
 header("Location: lab_marks.php");
 ?>

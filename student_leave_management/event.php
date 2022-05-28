@@ -25,6 +25,7 @@ include("../template/student_sidebar.php");
                     <th>Event Date</th>
                     <th>Time From</th>
                     <th>Time To</th>
+                    <th>Status</th>
                     <th>Document</th>
                 </tr>
             <?php
@@ -37,36 +38,34 @@ include("../template/student_sidebar.php");
                     <td><?php echo $row["event_date"] ?></td>
                     <td><?php echo $row["from_time"] ?></td>
                     <td><?php echo $row["to_time"] ?></td>
+                    <td>
+                            <?php 
+                                if($row["status"]==1)
+                                {
+                                    echo "Accepted";
+                                }
+                                else if($row["status"]==2)
+                                {
+                                    echo "Rejected"; 
+                                }
+                                else
+                                {
+                                    echo "Pending";
+                                }
+                            ?>
+                        </td>
                     <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a>
                 </tr>
             <?php
                     }
                 }
-                else
-                {
-            ?>
-                <tr style="text-align:center">
-                    <th>Applied On</th>
-                    <th>Event Name</th>
-                    <th>Event Date</th>
-                    <th>Time From</th>
-                    <th>Time To</th>
-                    <th>Document</th>
-                </tr>
-                <tr style="text-align:center;font-size:30px">
-                    <td> - </td>
-                    <td> - </td>
-                    <td> - </td>
-                    <td> - </td>
-                    <td> - </td>
-                    <td> - </td>
-                </tr>
-            <?php
-                }
-            ?>
+                else{
+                echo '<h5><center> No Leave Applied </center></h5>';
+            }
+            ?> 
             </table>
         </div>
-        <div class="text-center" style="margin-top:30px">
+        <div class="text-center" style="margin-top:50px">
             <a href="../student_leave_management/eventapply.php"><button  type="button" class="btn btn-info"> Apply New</button></a>
         </div>
 <?php

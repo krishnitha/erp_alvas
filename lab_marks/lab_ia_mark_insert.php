@@ -10,8 +10,12 @@ $r = mysqli_fetch_assoc($con->query('select distinct total_ia from lab_marks whe
 // echo $_POST["1a"];
 // echo $_POST["usn"];
 for($i = 1; $i <= $_POST['count']; $i++){
-$total1 = ($_POST["ia1_mark" . $i]+$_POST["ia2_marks" . $i]);
-$ia_avg=round($total1/$r, 2);
+    $ia2 = $_POST["ia2_marks" . $i];
+    if($r == 1){
+        $ia2 = 0;
+    }
+$total1 = ($_POST["ia1_mark" . $i]+$ia2);
+$ia_avg=ceil($total1/$r);
 
 //$total2 = (($_POST["3a"]+$_POST["3b"]+$_POST["3c"])>($_POST["4a"]+$_POST["4b"]+$_POST["4c"]))?($_POST["3a"]+$_POST["3b"]+$_POST["3c"]):($_POST["4a"]+$_POST["4b"]+$_POST["4c"]);
 $q2="update lab_marks set ia1_expno=\"" . $_POST["ia1_expno" . $i]  . "\"

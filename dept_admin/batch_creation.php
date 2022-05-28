@@ -1,6 +1,8 @@
 <?php
     require_once "config.php";
-    include("../template/fac-auth.php");
+error_reporting(0);
+    include(
+"../template/fac-auth.php");
 
 include("../template/sidebar-fac.php");
     // echo $_SESSION['view_flag'];

@@ -1,8 +1,10 @@
 <?php
 require_once "../config.php";
 include("../template/admin-auth.php");
+                                                                                                            error_reporting(0);
 
 include("../template/sidebar-admin.php");
+
 
 ?>
 
@@ -17,10 +19,10 @@ include("../template/sidebar-admin.php");
             <form action="faculty_workshop_data.php" method="POST">
                 <div class="form-row form-inline mb-4">
                     <div class="col-md-4">
-                        <label for="faculty_id" class="col-form-label" value="<?php echo $_SESSION["faculty_id"] ?>"> Faculty ID :</label>
+                        <label for="faculty_id" class="col-form-label" > Faculty ID :</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" name="faculty_id" id="faculty_id" class="form-control" required>
+                        <input type="text" name="faculty_id" id="faculty_id" class="form-control" value="<?php echo $_SESSION["faculty_id"]?? "" ?>"required>
                     </div>
                 </div>
                 <div class="form-row form-inline mb-4">

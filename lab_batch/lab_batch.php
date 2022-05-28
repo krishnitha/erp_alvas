@@ -1,4 +1,5 @@
 <?php include("../template/sidebar-admin.php");
+error_reporting(0);
 require_once "../config.php";
 $q = "select distinct batch from students";
 $q2 = "select distinct branch from students";

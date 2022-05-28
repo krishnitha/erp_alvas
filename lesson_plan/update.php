@@ -7,9 +7,9 @@ $con2=0;
 $sem=$_SESSION["sem"];
 $subid=$_SESSION["subid"];
 $sec=$_SESSION["sec"];
-$q1 = "select * from lessonpanl where sem=\"" . $sem . "\" and subid =\"" . $subid . "\" and section =\"" . $sec . "\"";
-
+$q1 = "select * from lessonpanl where sem=\"" . $sem . "\" and subid =\"" . $subid . "\" and section =\"" . $sec . "\" and branch = \"" . $_SESSION['branch'] . "\"";
 $result = $con -> query($q1);
+// echo $q1 . '<br><br>';
 $r = mysqli_fetch_assoc($result);
 // echo $_POST['dop_Plan1'];
 // foreach($result as $r){
@@ -17,7 +17,6 @@ $r = mysqli_fetch_assoc($result);
 //     echo "<br>";
 //     echo "<br>";
 //     echo "<br>";
-
 // }
 foreach($result as $r)
 {
@@ -30,15 +29,11 @@ foreach($result as $r)
     $lvl_select=$_POST["lvl_select$con2"];
     $q3 = "update lessonpanl set dop_Plan=\"" . $date . "\", pending =\"" . $topic . "\", textbook =\"" . $textbook . "\", co =\"" . $co_select . "\", bt_evel =\"" . $lvl_select . "\" where sr_no=\"" . $sl_no . "\"";
     $r1 = $con -> query($q3);
+    // echo $q3 . '<br>';
   
 
 }
 header("Location: display.php");
-
-
-
-
-
 // for($i=1;$i<=$con1;$i++)
 // {
 //     $date=$_POST["dop_plan$con1"];
@@ -48,7 +43,4 @@ header("Location: display.php");
 //     $lvl_select=$_POST["lvl_select$con1"];
 //     $q="update lessonpanl set dop_Plan =\"" .  
 // }
-
-
-
 ?>

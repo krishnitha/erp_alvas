@@ -7,6 +7,7 @@ include("../template/student_sidebar.php");
 <div>
     <h4 style="text-align:center">Medical Leave Details</h4><br>
 </div>
+
 <div style="margin-left:5%;margin-right:5%">
     <table class="table table-responsive table-borderless">
         <?php
@@ -40,38 +41,34 @@ include("../template/student_sidebar.php");
                         <td><?php echo $row["reason"] ?></td>
                         <td><?php echo $row["from_date"] ?></td>
                         <td><?php echo $row["to_date"] ?></td>
-                        <td><?php echo $row["status"] ?></td>
-                        <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a>
+                        <td>
+                            <?php 
+                                if($row["status"]==1)
+                                {
+                                    echo "Accepted";
+                                }
+                                else if($row["status"]==2)
+                                {
+                                    echo "Rejected"; 
+                                }
+                                else
+                                {
+                                    echo "Pending";
+                                }
+                            ?>
+                        </td>
+                        <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
                     </tr>
         <?php
                 }
             }
-            else
-            {
-        ?>
-
-                    <tr style="text-align:center">
-                        <th>Applied On</th>
-                        <th>Reason</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Status</th>
-                        <th>Document</th>
-                    </tr>
-                    <tr style="text-align:center;font-size:30px">
-                        <td> - </td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td> - </td>
-                    </tr>
-        <?php
+            else{
+                echo '<h5><center> No Leave Applied </center></h5>';
             }
-        ?>
+            ?> 
     </table>
 </div>
-<div class="text-center" style="margin-top:30px">
+<div class="text-center" style="margin-top:50px">
     <a href="../student_leave_management/medicalapply.php"><button  type="button" class="btn btn-info">Apply New</button></a>
 </div>
 <?php

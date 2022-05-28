@@ -1,9 +1,8 @@
 <?php
 
-$con = mysqli_connect("localhost", "root", "", "erp_alvas");
-if (mysqli_connect_error()) {
-	echo " database Error";
-} else {
+require_once "../config.php";
+$con = $link;
+										error_reporting(0);
 
 	$q1 = "select distinct faculty_dept from faculty_details";
 
@@ -186,7 +185,6 @@ if (mysqli_connect_error()) {
 				});
 			});
 		</script>
-		<?php } ?>
 	</body>
 
 	</html>

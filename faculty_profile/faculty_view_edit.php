@@ -2,7 +2,9 @@
 
 require_once '../config.php';
 include("../template/fac-auth.php");
-include("../template/sidebar-fac.php");
+error_reporting(0);
+include(
+"../template/sidebar-fac.php");
 // session_start();
 ?>
 
@@ -62,7 +64,8 @@ include("../template/sidebar-fac.php");
                 <?php
                 $con = $link;
                     $faculty_id = $_SESSION["username"];
-                    $que = "select * from faculty_details where faculty_id=\"$faculty_id\"";
+                    $que = "select * from faculty_details where faculty_name=\"$faculty_id\"";
+                    // echo $que;
                     $result = $con->query($que);
                     foreach ($result as $row) {
                 ?>
@@ -73,7 +76,7 @@ include("../template/sidebar-fac.php");
                             <div class="mb-3">
                                 <label for="faculty_id" class="form-label">Faculty ID<span
                                         style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="faculty_id" name="faculty_id" required
+                                <input type="text" class="form-control" id="faculty_id" name="faculty_id"  
                                     value="<?php echo $row["faculty_id"] ?>" readonly>
                             </div>
                         </div>
@@ -81,7 +84,7 @@ include("../template/sidebar-fac.php");
                             <div class="mb-3">
                                 <label for="faculty_name" class="form-label">Faculty Name<span
                                         style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="faculty_name" name="faculty_name" required
+                                <input type="text" class="form-control" id="faculty_name" name="faculty_name"  
                                     value="<?php echo $row["faculty_name"] ?>">
                             </div>
                         </div>
@@ -90,7 +93,7 @@ include("../template/sidebar-fac.php");
                             <div class="mb-3">
                                 <label for="faculty_desg" class="form-label">Designation<span
                                         style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="faculty_desg" name="faculty_desg" required
+                                <input type="text" class="form-control" id="faculty_desg" name="faculty_desg"  
                                     value="<?php echo $row["faculty_desg"] ?>">
                             </div>
                         </div>
@@ -100,15 +103,15 @@ include("../template/sidebar-fac.php");
                             <div class="mb-3">
                                 <label for="faculty_dept" class="form-label">Department<span
                                         style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="faculty_dept" name="faculty_dept" required
-                                    value="<?php echo $row["faculty_dept"] ?>">
+                                <input type="text" class="form-control" id="faculty_dept" name="faculty_dept"  
+                                    value="<?php echo $row["faculty_dept"] ?>" readonly>
                             </div>
                         </div>
                         <div class="col col-12  col-lg-4">
                             <div class="mb-3">
                                 <label for="faculty_qulfy" class="form-label">Qualification<span
                                         style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="faculty_qulfy" name="faculty_qulfy" required
+                                <input type="text" class="form-control" id="faculty_qulfy" name="faculty_qulfy"  
                                     value="<?php echo $row["faculty_qulfy"] ?>">
                             </div>
                         </div>
@@ -116,7 +119,7 @@ include("../template/sidebar-fac.php");
                             <div class="mb-3">
                                 <label for="faculty_yoj" class="form-label">Year Of Joining<span
                                         style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="faculty_yoj" name="faculty_yoj" required
+                                <input type="text" class="form-control" id="faculty_yoj" name="faculty_yoj" 
                                     value="<?php echo $row["faculty_yoj"] ?>">
                             </div>
                         </div>
@@ -129,7 +132,7 @@ include("../template/sidebar-fac.php");
 
                                 <label for="faculty_dob" class="form-label">DOB<span
                                         style="color: red;">*</span></label>
-                                <input type="date" class="form-control" name="faculty_dob" id="faculty_dob" required
+                                <input type="date" class="form-control" name="faculty_dob" id="faculty_dob"  
                                     value="<?php echo $row["faculty_dob"] ?>">
                             </div>
                         </div>
@@ -138,7 +141,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_email" class="form-label">Mail Id<span
                                         style="color: red;">*</span></label>
                                 <input class="form-control" type="email" id="faculty_email" name="faculty_email"
-                                    required value="<?php echo $row["faculty_email"] ?>">
+                                      value="<?php echo $row["faculty_email"] ?>" readonly>
                             </div>
                         </div>
                         <div class="col col-12  col-lg-4">
@@ -146,7 +149,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_contact" class="form-label">Contact Number<span
                                         style="color: red;">*</span></label>
                                 <input type="number" class="form-control" name="faculty_contact" id="faculty_contact"
-                                    required value="<?php echo $row["faculty_contact"] ?>">
+                                      value="<?php echo $row["faculty_contact"] ?>">
                             </div>
                         </div>
                     </div>
@@ -158,15 +161,15 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_parmenent_address" class="form-label">Parmanent Address<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_parmenent_address"
-                                    id="faculty_parmenent_address" required value="<?php echo $row["faculty_name"] ?>">
+                                    id="faculty_parmenent_address"   value="<?php echo $row["faculty_parmenent_address"] ?>">
                             </div>
                         </div>
                         <div class="col col-12  col-lg-4">
                             <div class="mb-3">
                                 <label for="faculty_present_address" class="form-label">Correspondence Address</label>
                                 <input type="text" class="form-control" name="faculty_present_address"
-                                    id="faculty_present_address" required
-                                    value="<?php echo $row["faculty_parmenent_address"] ?>">
+                                    id="faculty_present_address"  
+                                    value="<?php echo $row["faculty_present_address"] ?>">
                             </div>
                         </div>
                         <div class="col col-12  col-lg-4">
@@ -174,7 +177,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_teaching_exp" class="form-label">Teaching Experience<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_teaching_exp"
-                                    id="faculty_teaching_exp" required
+                                    id="faculty_teaching_exp"  
                                     value="<?php echo $row["faculty_teaching_exp"] ?>">
                             </div>
                         </div>
@@ -187,7 +190,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_industry_exp" class="form-label">Industry Experience<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_industry_exp"
-                                    id="faculty_industry_exp" required
+                                    id="faculty_industry_exp"  
                                     value="<?php echo $row["faculty_industry_exp"] ?>">
                             </div>
 
@@ -197,7 +200,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_aicte_id" class="form-label">AICTE ID<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_aicte_id" id="faculty_aicte_id"
-                                    required value="<?php echo $row["faculty_aicte_id"] ?>">
+                                      value="<?php echo $row["faculty_aicte_id"] ?>">
                             </div>
                         </div>
                         <div class="col-lg-4 col-4"></div>
@@ -216,7 +219,7 @@ include("../template/sidebar-fac.php");
                                         style="color: red;">*</span></label>
 
                                 <input type="text" class="form-control" id="faculty_ug_dept" name="faculty_ug_dept"
-                                    required value="<?php echo $row["faculty_ug_dept"] ?>" />
+                                      value="<?php echo $row["faculty_ug_dept"] ?>" />
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -224,7 +227,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_ug_year" class="form-label">Year of Passing<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_ug_year" id="faculty_ug_year"
-                                    required value="<?php echo $row["faculty_ug_year"] ?>" />
+                                      value="<?php echo $row["faculty_ug_year"] ?>" />
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -232,7 +235,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_ug_college" class="form-label">College name<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_ug_college"
-                                    id="faculty_ug_college" required value="<?php echo $row["faculty_ug_college"] ?>" />
+                                    id="faculty_ug_college"   value="<?php echo $row["faculty_ug_college"] ?>" />
                             </div>
                         </div>
 
@@ -248,7 +251,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_pg_dept" class="form-label">M Tech,DEPARTMENT<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_pg_dept" id="faculty_pg_dept"
-                                    required value="<?php echo $row["faculty_pg_dept"] ?>" />
+                                      value="<?php echo $row["faculty_pg_dept"] ?>" />
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -256,7 +259,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_pg_year" class="form-label">Year of Passing<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_pg_year" id="faculty_pg_year"
-                                    required value="<?php echo $row["faculty_pg_year"] ?>" />
+                                      value="<?php echo $row["faculty_pg_year"] ?>" />
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -264,7 +267,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_pg_college" class="form-label">College name<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_pg_college"
-                                    id="faculty_pg_college" required value="<?php echo $row["faculty_pg_college"] ?>" />
+                                    id="faculty_pg_college"   value="<?php echo $row["faculty_pg_college"] ?>" />
                             </div>
                         </div>
                     </div>
@@ -278,7 +281,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_phd_reg" class="form-label">Registration date<span
                                         style="color: red;">*</span></label>
                                 <input type="date" class="form-control" id="faculty_phd_reg" name="faculty_phd_reg"
-                                    required value="<?php echo $row["faculty_phd_reg"] ?>" />
+                                      value="<?php echo $row["faculty_phd_reg"] ?>" />
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -286,7 +289,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_phd_status" class="form-label">Current Status<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" id="faculty_phd_status"
-                                    name="faculty_phd_status" required
+                                    name="faculty_phd_status"  
                                     value="<?php echo $row["faculty_phd_status"] ?>" />
                             </div>
                         </div>
@@ -295,7 +298,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_phd_guide" class="form-label">Guide Name<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" id="faculty_phd_guide" name="faculty_phd_guide"
-                                    required value="<?php echo $row["faculty_phd_guide"] ?>" />
+                                      value="<?php echo $row["faculty_phd_guide"] ?>" />
                             </div>
                         </div>
                     </div>
@@ -306,7 +309,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_phd_topic" class="form-label">Topic of research<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" id="faculty_phd_topic" name="faculty_phd_topic"
-                                    required value="<?php echo $row["faculty_phd_topic"] ?>" />
+                                      value="<?php echo $row["faculty_phd_topic"] ?>" />
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -314,7 +317,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_phd_domain" class="form-label">Research Domain<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" id="faculty_phd_domain"
-                                    name="faculty_phd_domain" required
+                                    name="faculty_phd_domain"  
                                     value="<?php echo $row["faculty_phd_domain"] ?>" />
                             </div>
                         </div>
@@ -323,7 +326,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_phd_center" class="form-label">University/research center<span
                                         style="color: red;">*</span></label>
                                 <input type="text" class="form-control" name="faculty_phd_center"
-                                    id="faculty_phd_center" required value="<?php echo $row["faculty_phd_center"] ?>" />
+                                    id="faculty_phd_center"   value="<?php echo $row["faculty_phd_center"] ?>" />
                             </div>
                         </div>
                     </div>
@@ -334,7 +337,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_phd_yoj" class="form-label">Year of joining<span
                                         style="color: red;">*</span></label>
                                 <input type="number" class="form-control" id="faculty_phd_yoj" name="faculty_phd_yoj"
-                                    required value="<?php echo $row["faculty_phd_yoj"] ?>" />
+                                      value="<?php echo $row["faculty_phd_yoj"] ?>" />
                             </div>
                         </div>
                         <div class="col-lg-4 col-12">
@@ -342,7 +345,7 @@ include("../template/sidebar-fac.php");
                                 <label for="faculty_phd_complition" class="form-label">Year of completion<span
                                         style="color: red;">*</span></label>
                                 <input type="number" class="form-control" id="faculty_phd_complition"
-                                    name="faculty_phd_complition" required
+                                    name="faculty_phd_complition"  
                                     value="<?php echo $row["faculty_phd_complition"] ?>" />
                             </div>
                         </div>

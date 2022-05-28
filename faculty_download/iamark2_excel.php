@@ -7,6 +7,8 @@ $con = $link;
 	//$q2 = "select distinct branch from ia_marks2";
 	$q3 = "select distinct sem from ia_marks2";
 	$q4 = "select distinct sec from ia_marks2";
+	$q5 = "select distinct branch from ia_marks1";
+	$result5 = $con->query($q5);
 
 	$result1 = $con->query($q1);
 	//$result2 = $con->query($q2);
@@ -14,7 +16,9 @@ $con = $link;
 	$result4 = $con->query($q4);
 
 	include("../template/fac-auth.php");
-	include("../template/sidebar-fac.php");
+error_reporting(0);
+	include(
+"../template/sidebar-fac.php");
 ?>
 
 
@@ -25,6 +29,15 @@ $con = $link;
 						<form method="post" action="iamark2_excel_extract_data.php" align="center">
 							<div class="row">
 								<div class="col-md-1"></div>
+								<div class=" form-group col-md-2">
+									<select class="form-control" name="branch" id="branch" aria-label="Default select example">
+										<option value="selected">Branch</option>
+										<?php foreach ($result5 as $r5) { ?>
+											<option class="form-control" value="<?php echo $r5["branch"] ?>"><?php echo $r5["branch"] ?></option>
+											<!-- <option class="form-control" value="2019">2019</option> -->
+										<?php } ?>
+									</select>
+								</div>
 
 
 								<div class=" form-group col-md-2">
@@ -49,10 +62,15 @@ $con = $link;
 								<div class=" form-group col-md-2">
 									<select class="form-control" name="sub" id="sub" aria-label="Default select example">
 										<option value="selected">Subject</option>
-										<?php foreach ($result1 as $r) { ?>
-											<option class="form-control" value="<?php echo $r["sub"] ?>"><?php echo $r["sub"] ?></option>
-											<!-- <option class="form-control" value="2019">2019</option> -->
-										<?php } ?>
+											<?php 
+                                    $qt = "select a.sub_name, a.sub_code, a.lab from faculty_mapping b, subjects a where b.faculty_name = \"" . $_SESSION['username'] . "\" and b.sub_name = a.sub_name";
+                                    $resultst = $link->query($qt);
+                                    echo $qt;
+                                    foreach($resultst as $r){
+                                                   if($r['lab'] != 1){                      
+                                    ?>
+                                 <option class="form-control" value="<?php echo $r["sub_code"] . " - " . $r["sub_name"] ?>"><?php echo $r["sub_code"] . " - " . $r["sub_name"] ?></option>
+                                 <?php  } } ?>
 
 
 									</select>

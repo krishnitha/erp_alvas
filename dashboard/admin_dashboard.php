@@ -1,4 +1,5 @@
 <?php 
+error_reporting(0);
 require_once "../config.php";
 include("../template/admin-auth.php");
 include("../template/sidebar-admin.php");
@@ -123,7 +124,7 @@ $no_of_sub = mysqli_fetch_assoc($res3);
             <!-- </a> -->
         </div>
         <div class="four col-md-3 mb-2">
-            <a href="../subject_maping/view_sub.php">
+            <a href="../subject_maping/select_sub_branch.php">
                 <div class="counter-box">
                     <i class="fas fa-book-open orange"></i>
                     <span class="counter text-num" data-target="<?php echo $no_of_sub["s"] ?>">0</span>

@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+error_reporting(0);
 session_start();
 // $_SESSION["branch"]=$_SESSION["branch"];
 // $_SESSION["batch"]=$_SESSION["batch"];

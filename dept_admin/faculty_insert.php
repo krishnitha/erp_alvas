@@ -1,6 +1,8 @@
 <?php 
 require_once "../config.php";
-include("../template/fac-auth.php");
+error_reporting(0);
+include(
+"../template/fac-auth.php");
 include("../template/sidebar-fac.php");
 
 ?>
@@ -27,6 +29,9 @@ else if(isset($_SESSION["popup"]) && $_SESSION["popup"] == 2){
   </div>';
   
 }
+$q="Select dept_name from dept_pso";
+
+$res1=$link->query($q);
 
 ?>
 <style>
@@ -37,17 +42,51 @@ else if(isset($_SESSION["popup"]) && $_SESSION["popup"] == 2){
 
         }
 </style>
-                    <form action="faculty_insert_data.php" method="POST">
-                        <div class="row">
-                            <!-- <div class="col">
+<div class="row">
+            <!-- <div class="col">
                                 <h2>Add Faculty Details</h2>
                             </div> -->
-                            <!-- <div class="col"></div> -->
-                            <div class="col">
-                               <a href="../upload/faculty_upload/examples/04-upload_and_convert_to_html.php" class="btn btn-primary import-btn">Import</a>
-                                 <!-- <button type="file">Upload</button> -->
-                            </div>
-                        </div><br>
+            <!-- <div class="col">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalimport">
+                    New Import
+                </button>
+            </div> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalimport" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Import</h5>
+                            <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                                <span style="font-size: 25px;" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="../upload_ia_marks/faculty.php" method="post" enctype="multipart/form-data">
+                                <input type="file" class="form-control-file" name="xl" id="fileToUpload" accept=".xlsx">
+                                <!-- only xlsx files are accetped -->
+                                <br>
+                                <input class="btn btn-primary" type="submit" value="Upload" name="submit">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalimport">
+                    Import
+                </button>
+                <!-- <button type="file">Upload</button> -->
+            </div>
+        </div><br>
+                    <form action="faculty_insert_data.php" method="POST">
+                        
                         <h2>Add Faculty Details</h2>
                         <div class="row mt-4">
                             
@@ -77,8 +116,17 @@ else if(isset($_SESSION["popup"]) && $_SESSION["popup"] == 2){
                         <div class="row">
                             <div class="col col-12  col-lg-4">
                                 <div class="mb-3">
-                                    <label for="faculty_dept" class="form-label">Department<span style="color: red;">*</span></label>
-                                    <input type="text" class="form-control" id="faculty_dept" name="faculty_dept" required>
+                                    <!-- <label for="faculty_dept" class="form-label">Department<span style="color: red;">*</span></label> -->
+                                    <!-- <input type="text" class="form-control" id="faculty_dept" name="faculty_dept" required> -->
+                                    <label for="department">Department :</label>
+                                    <select name="department" id="department" class="custom-select form-control">
+                                       <option selected disabled>Select department</option>
+                            <?php
+                                foreach($res1 as $r){
+                            ?>
+                            <option value="<?php echo $r["dept_name"] ?>"><?php echo $r["dept_name"] ?></option>
+                            <?php } ?>
+                        </select>
                                 </div>
                             </div>
                             <div class="col col-12  col-lg-4">

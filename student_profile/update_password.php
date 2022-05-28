@@ -1,6 +1,7 @@
 <?php
 
 require_once '../config.php';
+error_reporting(0);
 session_start();
 
 // $q = 'select usn from faculty_details where usn = "' . $_SESSION['username'] . '"';

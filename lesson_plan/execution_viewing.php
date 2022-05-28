@@ -2,6 +2,8 @@
   include("../template/fac-auth.php");
   include("../template/sidebar-fac.php");
   require_once "../config.php";
+error_reporting(0);
+  
   $con = $link;
   // session_start();
   $flag_save = 0;
@@ -11,17 +13,30 @@
     $sem = $_POST["sem"];
     $subid = $_POST["subid"];
     $sec = $_POST["sec"];
-
+    $branch = $_POST['branch'];
     $_SESSION["sem1"] = $sem;
     $_SESSION["sec1"] = $sec;
     $_SESSION["subid1"] = $subid;
+    $_SESSION['branch'] = $branch;
   } else {
     $sem = $_SESSION["sem1"];
     $sec = $_SESSION["sec1"];
     $subid = $_SESSION["subid1"];
+    $branch = $_SESSION['branch'];
   }
+//   echo $subid;
+//   echo $sem;
+  $c=explode("-",$subid);
+    $a=$c[0];
+
+    $z=preg_split("/[A-Za-z]*/", $a);
+// echo $z[4];
+
+    $m=$z[4];
+    // echo gettype($m);
+    if($m==$sem){
   // echo  $_SESSION["vtu"];
-  $q = "select sr_no,module, dop_Plan, pending, textbook, co, bt_evel, vtu_textbook, vtu_co, dop_exe, complet from lessonpanl where sem = \"" . $sem . "\" and subid = \"" . $subid . "\" and section = \"" . $sec . "\" order by module ";
+  $q = "select sr_no,module, dop_Plan, pending, textbook, co, bt_evel, vtu_textbook, vtu_co, dop_exe, complet from lessonpanl where sem = \"" . $sem . "\" and subid = \"" . $subid . "\" and section = \"" . $sec . "\" and branch = \"" . $branch .  "\"order by module ";
   $result = $con->query($q);
 ?>
 <style>
@@ -53,6 +68,9 @@
                 style="border-radius: 50% ">
                 <i class="fas fa-plus"></i>
             </button>
+            
+            <a href="lesson_plan_download.php" target="_blank" class="btn btn-primary" style="float: right;">Download</a>
+            
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -235,7 +253,7 @@
                              <tbody>
                                  <?php 
                                  $count = 1;
-                                 for($i = 1; $i <= 3; $i++)
+                                 for($i = 1; $i <=6; $i++)
                                  {
                                     $s=$rt_c['t' . $i];
                         
@@ -253,7 +271,16 @@
                      </div>
         </div>
         <?php
-  
+}
+else
+{
+
+
+        // header("Location: lesson_plan.php");
+        $_SESSION['check_error']=1;
+        echo '<script>window.location.replace("lesson_plan.php");</script>';
+       
+    }
     ?>
         <!-- page content end -->
     </div>
