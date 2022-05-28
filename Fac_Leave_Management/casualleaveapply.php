@@ -5,7 +5,7 @@ $con=$link;
 
 include("../template/sidebar-fac.php");
 ?>      <style>
-<<<<<<< HEAD
+
             .label2 
             {
                 background-color: rgb(50, 113, 124);
@@ -18,7 +18,7 @@ include("../template/sidebar-fac.php");
         </style>
         <h4 style="text-align:center">Apply for Casual Leave</h4><br>
         <div style="margin-left:20%;margin-right:20%">
-      		<form action="upload_casualleave.php" method="POST">
+      		<form action="casualleaveapply.php" method="POST">
         		<table   class="table table-responsive table-borderless">
         			<tr>
         				<th></th>
@@ -53,20 +53,13 @@ include("../template/sidebar-fac.php");
                             <input type = "date" name="from_date" class="form-control" required>
                         </td>
                     </tr>
-        <tr>
-            <td> From <br></td>
-            <td></td>
-            <td> 
-                <input type = "date" name="from_date" class="form-control" required>
-            </td>
-        </tr>
 
-        <tr>
-            <td>To <br></td>
-            <td></td>
-            <td> <input type = "date" name="to_date" class="form-control" required></td>
-        </tr>
-    
+                    <tr>
+                        <td>To <br></td>
+                        <td></td>
+                        <td> <input type = "date" name="to_date" class="form-control" required></td>
+                    </tr>
+                
     </table>
 
     <div class="text-center">

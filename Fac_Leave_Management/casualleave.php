@@ -69,6 +69,7 @@ include("../template/sidebar-fac.php");
     </table>
 </div>
 <div class="text-center" style="margin-top:30px">
+    
     <a href="../Fac_Leave_Management/casualleaveapply.php"><button  type="button" class="btn btn-info">Apply New</button></a>
 </div>
 <?php
