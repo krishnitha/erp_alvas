@@ -38,7 +38,7 @@ include("../template/sidebar-fac.php");
                 </tr>
 
             <?php
-                foreach ($result as $row) 
+                foreach ($resm as $row) 
                 {                     
                     $st = 'select * from students where usn = "' . $row["usn"] . '"';
                     $s = $link->query($st);
@@ -118,7 +118,7 @@ include("../template/sidebar-fac.php");
                 <th>Document</th>
             </tr>
             <?php
-            foreach ($result as $row) 
+            foreach ($resp as $row) 
                 $st = 'select * from students where usn = "' . $row["usn"] . '"';
                 $s = $link->query($st);
                 $s2 = mysqli_fetch_assoc($s);    
