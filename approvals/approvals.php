@@ -617,7 +617,8 @@ $res3 = $link -> query($q3);
             else{
                 echo '<h5> No Approvals Needed</h5>';
             }
-            ?>   
+            ?>  
+             
             </div>
         </div>
     </div>

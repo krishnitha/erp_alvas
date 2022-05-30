@@ -80,6 +80,17 @@ if (mysqli_num_rows($res9) > 0) {
     box-shadow: 0px 0px 20px 7px #888888;
     background: rgba(255, 255, 255, 0.884);
 }
+body
+{
+  font-family: "Open Sans";
+}
+#wrapper
+{
+  border: 1px solid #888
+  display: inline-block;
+
+  
+}
 </style>
 <!-- <div> -->
 <?php
@@ -216,7 +227,7 @@ foreach ($result as $row) {
             JEE : <span class="value"><?php echo $row["jee"] ?></span>
 
 
-        </div>
+        </div>   
     </div>
     <div class="row mt-4">
         <p style="font-style: italic;font-weight:600;color:black;">Present Address</p>
@@ -279,6 +290,7 @@ foreach ($result as $row) {
         <button type="submit" class="btn" style="float: right;"><i class="fas fa-edit"></i></button>
     </form>
 </div>
+
 
 
 <?php
@@ -636,7 +648,44 @@ foreach ($result as $row) {
 
 
 
-</div>
+<div class="card mt-2" style="padding:3%;">
+
+    <div class="row">
+
+        <p style="font-style: italic;font-weight:600;color:black;">Hostel Details</p>
+
+        
+        <?php
+            $que = 'select * from hostel_details where usn = "' . $_SESSION["username"] . '"';
+            $res =  $link->query($que);
+            $s = mysqli_fetch_assoc($res);
+            if(mysqli_num_rows($res) == 0){
+        ?>
+        <a href="../student_profile/student_login_profile_hostel_add.php"><button type="submit" class="btn btn-primary" style="float: right;">Add Detail</button></a>
+        
+            <?php
+            }
+            else{
+            ?>
+            <div class="col col-lg-4 col-12 label mt-2">
+            Hostel Name: <span class="value"><?php echo $s["hostel_name"] ?></span>
+
+
+        </div>
+
+        <div class="col col-lg-4 col-12 label mt-2">
+            Hostel Block : <span class="value"><?php echo $s["hostel_block"] ?></span>
+
+
+        </div>
+        <form action="student_login_profile_hostel_edit.php" method="post">
+            <button type="submit" class="btn" style="float: right;"><i class="fas fa-edit"></i></button>
+        </form>
+        <?php
+            }
+            ?>
+
+            
 
 <!-- page content end -->
 </div>

@@ -294,6 +294,21 @@
 
                     </ul>
                 </li>
+                <li>
+                    <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Hostel</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu1">
+                        <li>
+                            <a href="../faculty/faculty_insert.php">Add Hostel</a>
+                        </li>
+                        <li>
+                            <a href="../faculty/faculty_department.php">View Faculty</a>
+                        </li>
+                        <li>
+                            <a href="../faculty/register.php">Faculty Register</a>
+                        </li>
+
+                    </ul>
+                </li>
 
                 <li>
                     <a href="#Creation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Creation</a>
