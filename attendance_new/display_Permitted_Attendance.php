@@ -2,9 +2,7 @@
 require_once "../config.php";
 include("../template/fac-auth.php");
 include("../template/sidebar-fac.php");
-?>
-<?php
-    $branch = $_POST["branch"];
+$branch = $_POST["branch"];
     $sem = $_POST["semester"];
     $Date = $_POST["ldate"];        
 
@@ -20,130 +18,147 @@ include("../template/sidebar-fac.php");
     . $branch . '" and sem ="' . $sem . '" and place_date="' . $Date .'"';
     $resp = $link -> query($qp);
 ?>
-<div>
-    <h4 style="text-align:center">Medical Leave</h4><br>
-</div>
-<div style="margin-left:5%;margin-right:5%">
-    <table class="table table-responsive table-borderless">
-        <?php
-            if(mysqli_num_rows($resm)!= 0){
-        ?>
-                <tr>
-                    <th>USN</th>
-                    <th>Name</th>
-                    <th>Reason</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Document</th>
-                </tr>
 
-            <?php
-                foreach ($resm as $row) 
-                {                     
-                    $st = 'select * from students where usn = "' . $row["usn"] . '"';
-                    $s = $link->query($st);
-                    $s2 = mysqli_fetch_assoc($s);     
-            ?>
-                    <tr>
-                        <td><?php echo $row["usn"] ?></td>
-                        <td><?php echo $s2["fname"] ?></td>
-                        <td><?php echo $row["reason"] ?></td>
-                        <td><?php echo $row["from_date"] ?></td>
-                        <td><?php echo $row["to_date"] ?></td>
-                        <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
-                    </tr>
-        <?php
-                }
-            }
-            else{
-                echo '<h5><center> No Leave Applied </center></h5>';
-            }
-            ?> 
-    </table>
-</div>
-<div style="margin-top:40px">
-    <h4 style="text-align:center">Event Leave</h4><br>
-<div style="margin-left:5%;margin-right:5%">
-<table class="table table-responsive table-borderless">
-<?php
-    if(mysqli_num_rows($rese)!= 0){
-        ?>
-            <tr>
-                <th>USN</th>
-                <th>Name</th>
-                <th>Event Name</th>
-                <th>Time From</th>
-                <th>Time To</th>
-                <th>Document</th>
-            </tr>
-        <?php
-            foreach ($rese as $row) 
-            {          
-                $st = 'select * from students where usn = "' . $row["usn"] . '"';
-                $s = $link->query($st);
-                $s2 = mysqli_fetch_assoc($s);            
-        ?>
-            <tr>
-                <td><?php echo $row["usn"] ?></td>
-                <td><?php echo $s2["fname"] ?></td>
-                <td><?php echo $row["event_name"] ?></td>
-                <td><?php echo $row["from_time"] ?></td>
-                <td><?php echo $row["to_time"] ?></td>
-                <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a>
-            </tr>
-        <?php
-                }
-            }
-            else{
-            echo '<h5><center> No Leave Applied </center></h5>';
-        }
-?>
-</table>
-</div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
+<div class="container">
 
-<div style="margin-top:40px">
-    <h4 style="text-align:center">Placement Leave</h4><br>
-<div style="margin-left:5%;margin-right:5%">
-<table class="table table-responsive table-borderless">
-<?php
-    if(mysqli_num_rows($resp)!= 0){
-        ?>
-           <tr>
-                <th>USN</th>
-                <th>Name</th>
-                <th>Company Name</th>
-                <th>Time From</th>
-                <th>Time To</th>
-                <th>Rounds Cleared </th>
-                <th>Document</th>
-            </tr>
-            <?php
-            foreach ($resp as $row) 
-                $st = 'select * from students where usn = "' . $row["usn"] . '"';
-                $s = $link->query($st);
-                $s2 = mysqli_fetch_assoc($s);    
-            {                      
-            ?>
-            <tr>
-                <td><?php echo $row["usn"] ?></td>
-                <td><?php echo $s2["fname"] ?></td>
-                <td><?php echo $row["company_name"] ?></td>
-                <td><?php echo $row["from_time"] ?></td>
-                <td><?php echo $row["to_time"] ?></td>
-                <td><?php echo $row["rounds"] ?></td>
-                <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a>
-            </tr>
-            <?php
-                }
-            }
-            else{
-                echo '<h5><center> No Leave Applied </center></h5>';
-            }
-            ?> 
-    </table>
-</div>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Medical Leave</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Event Leave</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Placement Leave</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+                <table class="table table-responsive table-borderless">
+                    <?php
+                        if(mysqli_num_rows($resm)!= 0){
+                    ?>
+                            <tr>
+                                <th>USN</th>
+                                <th>Name</th>
+                                <th>Reason</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Document</th>
+                            </tr>
 
-<!-- page content end -->
+                        <?php
+                            foreach ($resm as $row) 
+                            {                     
+                                $st = 'select * from students where usn = "' . $row["usn"] . '"';
+                                $s = $link->query($st);
+                                $s2 = mysqli_fetch_assoc($s);     
+                        ?>
+                                <tr>
+                                    <td><?php echo $row["usn"] ?></td>
+                                    <td><?php echo $s2["fname"] ?></td>
+                                    <td><?php echo $row["reason"] ?></td>
+                                    <td><?php echo $row["from_date"] ?></td>
+                                    <td><?php echo $row["to_date"] ?></td>
+                                    <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a></td>
+                                </tr>
+                    <?php
+                            }
+                        }
+                        else{
+                            echo '<h5 style="margin-top:45px"><center> No Leave Applied </center></h5>';
+                        }
+                        ?> 
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row mt-5">
+                <table class="table table-responsive table-borderless">
+                    <?php
+                        if(mysqli_num_rows($rese)!= 0){
+                            ?>
+                                <tr>
+                                    <th>USN</th>
+                                    <th>Name</th>
+                                    <th>Event Name</th>
+                                    <th>Time From</th>
+                                    <th>Time To</th>
+                                    <th>Document</th>
+                                </tr>
+                            <?php
+                                foreach ($rese as $row) 
+                                {          
+                                    $st = 'select * from students where usn = "' . $row["usn"] . '"';
+                                    $s = $link->query($st);
+                                    $s2 = mysqli_fetch_assoc($s);            
+                            ?>
+                                <tr>
+                                    <td><?php echo $row["usn"] ?></td>
+                                    <td><?php echo $s2["fname"] ?></td>
+                                    <td><?php echo $row["event_name"] ?></td>
+                                    <td><?php echo $row["from_time"] ?></td>
+                                    <td><?php echo $row["to_time"] ?></td>
+                                    <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a>
+                                </tr>
+                            <?php
+                                    }
+                                }
+                                else{
+                                echo '<h5><center> No Leave Applied </center></h5>';
+                            }
+                    ?>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="row mt-5">
+                <table class="table table-responsive table-borderless">
+                <?php
+                    if(mysqli_num_rows($resp)!= 0){
+                        ?>
+                        <tr>
+                                <th>USN</th>
+                                <th>Name</th>
+                                <th>Company Name</th>
+                                <th>Time From</th>
+                                <th>Time To</th>
+                                <th>Rounds Cleared </th>
+                                <th>Document</th>
+                            </tr>
+                            <?php
+                            foreach ($resp as $row) 
+                                $st = 'select * from students where usn = "' . $row["usn"] . '"';
+                                $s = $link->query($st);
+                                $s2 = mysqli_fetch_assoc($s);    
+                            {                      
+                            ?>
+                            <tr>
+                                <td><?php echo $row["usn"] ?></td>
+                                <td><?php echo $s2["fname"] ?></td>
+                                <td><?php echo $row["company_name"] ?></td>
+                                <td><?php echo $row["from_time"] ?></td>
+                                <td><?php echo $row["to_time"] ?></td>
+                                <td><?php echo $row["rounds"] ?></td>
+                                <td><a href="<?php echo $row["doc_name"]; ?>" target="_blank" style="color:blue">View</a>
+                            </tr>
+                            <?php
+                                }
+                            }
+                            else{
+                                echo '<h5><center> No Leave Applied </center></h5>';
+                            }
+                            ?> 
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <div>
 <?php include "../template/scroll.php"; ?>
 </div>

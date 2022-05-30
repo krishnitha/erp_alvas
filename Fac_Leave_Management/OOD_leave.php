@@ -15,12 +15,10 @@ include("../template/sidebar-fac.php");
         <?php
 
             $s='select * from faculty_details where faculty_name="' . $_SESSION["username"] . '"';
-            // echo $s;
             $res = $link->query($s);
             $res = mysqli_fetch_assoc($res);
             $name = $_SESSION["username"];
             $que = "select * from faculty_ood where faculty_name=\"" . $name . "\" order by applied_date ASC";
-            // echo $que;
             $result = $con->query($que);
             if($result->num_rows > 0){
         ?>

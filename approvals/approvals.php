@@ -236,7 +236,7 @@ $res4 = $link -> query($q4);
         </div>
         <div class="tab-pane fade" id="student" role="tabpanel" aria-labelledby="student-tab">
             <div class="row">
-            <h4 style="text-align:center;margin-top: 30px;  font-family: 'Gabriela', serif;">Medical Leave</h4>
+            <h4 style="text-align:center; margin-top: 30px;  font-family: 'Gabriela', serif;">Medical Leave</h4>
             <table class="table table-responsive table-borderless" style="margin-top: 20px;">
         <?php
             if(mysqli_num_rows($resm)!= 0){
