@@ -24,6 +24,8 @@ $res2 = $link -> query($q2);
 $q3='select * FROM faculty_scl as f1 WHERE status = 0 and (select faculty_dept from faculty_details where faculty_name = f1.faculty_name) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
 $res3 = $link -> query($q3);
 
+$q4='select * FROM faculty_ood as f2 WHERE status = 0 and (select faculty_dept from faculty_details where faculty_name = f2.faculty_name) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
+$res4 = $link -> query($q4);
 ?>
 
 
@@ -329,7 +331,7 @@ $res3 = $link -> query($q3);
                 if( mysqli_num_rows($rese) != 0){
                     foreach($rese as $r){ 
                         $st = 'select * from students where usn = "' . $r["usn"] . '"';
-                        $s =g$link->query($st);
+                        $s =$link->query($st);
                         $s2 = mysqli_fetch_assoc($s);
                     ?>
                     <div class="row" style="margin-top: 30px;">
@@ -617,7 +619,53 @@ $res3 = $link -> query($q3);
             else{
                 echo '<h5> No Approvals Needed</h5>';
             }
-            ?>   
+            ?>
+            <h4 style="text-align:center;margin-top: 30px;">OOD Leave</h4>
+            <?php  
+                if( mysqli_num_rows($res4) != 0){
+                    foreach($res4 as $r){ 
+                        $st = 'select * from faculty_details where faculty_name = "' . $r["faculty_name"] . '"';
+                        $s = $link->query($st);
+                        $s2 = mysqli_fetch_assoc($s);
+                    ?>
+                    <div class="row" style="margin-top: 30px;">
+                        <div class="col col-lg-4 col-12 label mt-2">
+                            Name : <span class="value"><?php echo $s2["faculty_name"] ?></span>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">
+                        <tbody>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">Reason</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["reason"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">From</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["from_date"] ?></td>
+                            </tr>
+                            <tr class="" >
+                                <td scope="col" style="width: 10%;">To</td>
+                                <td scope="col" style="width: 1%;">:</td>
+                                <td scope="col" style="width: 80%;" ><?php echo $r["to_date"] ?></td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                    <form action="approvals_fac_ood.php" method="post">
+                        <input type="text" name="id" value="<?php echo $r['id'] ?>" hidden>
+                        <input type="submit" class="btn btn-success" name ="approve" value="Approve">
+                        <input type="submit" class="btn btn-danger" style="margin-left: 40px;" name ="reject" value="Reject">
+                    </form>
+                <hr style="margin-top:20px;">
+            <?php
+            }}
+            else{
+                echo '<h5> No Approvals Needed</h5>';
+            }
+            ?>
             </div>
         </div>
     </div>
