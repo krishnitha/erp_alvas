@@ -239,12 +239,14 @@
                     <a href="#attendanceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Attendance</a>
                     <ul class="collapse list-unstyled" id="attendanceSubmenu">
                         <li>
-                            <a href="../attendance/Select%20Attendence_for_Adding_attendence.php">Mark Attendance</a>
+                            <a href="../attendance_new/Select%20Attendence_for_Adding_attendence.php">Mark Attendance</a>
                         </li>
                         <li>
-                            <a href="../attendance/Select%20Attendence_for_viewingattendence.php">View Attendance</a>
+                            <a href="../attendance_new/Select%20Attendence_for_viewingattendence.php">View Attendance</a>
                         </li>
-
+                        <li>
+                            <a href="../attendance_new/Attendence_permitted.php">Permitted Leave</a>
+                        </li>
                     </ul>
                 </li>
                 <li>

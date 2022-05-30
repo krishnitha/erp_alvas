@@ -32,11 +32,18 @@
                             <input type = "text" name="Ename" class = "form-control" id = "name" placeholder = "Enter Event Name" required>   
         				</td>
         			</tr>
+                    <?php
+                        $Date = date('Y-m-d');
+                        $Last_date = date('Y-m-d', strtotime($Date. ' + 7 days'));
+                        echo $Date;
+                        echo $Last_date;
+                        
+                    ?>
                     <tr>
                         <td>Date<br></td>
                         <td></td>
                         <td> 
-                            <input type = "date" name="Edate" class="form-control" required>
+                            <input type = "date" name="Edate" min="<?php echo $Date ?>" max="<?php echo $Last_date ?>" class="form-control" required>
                         </td>
                     </tr>
                     <tr>

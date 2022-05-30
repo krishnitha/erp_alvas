@@ -62,6 +62,10 @@ include("../template/student_sidebar.php");
                 else{
                 echo '<h5><center> No Leave Applied </center></h5>';
             }
+            $q1 = "select * from student_event_leave where usn=\"" . $usn . "\" and sem=\"" . $res["semester"] . "\" and status=1";
+            $res = $con->query($q1);
+            if($res->num_rows < 5)
+            {
             ?> 
             </table>
         </div>
@@ -69,5 +73,6 @@ include("../template/student_sidebar.php");
             <a href="../student_leave_management/eventapply.php"><button  type="button" class="btn btn-info"> Apply New</button></a>
         </div>
 <?php
+            }
 include("../template/student-footer.php");
 ?>
