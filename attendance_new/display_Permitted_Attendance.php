@@ -38,7 +38,7 @@ $branch = $_POST["branch"];
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
-                <table class="table table-responsive table-borderless">
+                <table class="table table-responsive table-striped mt-3">
                     <?php
                         if(mysqli_num_rows($resm)!= 0){
                     ?>
@@ -78,7 +78,7 @@ $branch = $_POST["branch"];
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row mt-5">
-                <table class="table table-responsive table-borderless">
+                <table class="table table-responsive table-striped mt-3">
                     <?php
                         if(mysqli_num_rows($rese)!= 0){
                             ?>
@@ -117,7 +117,7 @@ $branch = $_POST["branch"];
             </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div class="row mt-5">
-                <table class="table table-responsive table-borderless">
+                <table class="table table-responsive table-striped mt-3">
                 <?php
                     if(mysqli_num_rows($resp)!= 0){
                         ?>

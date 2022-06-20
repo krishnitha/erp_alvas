@@ -358,6 +358,42 @@
 
                     </ul>
                 </li>
+                <li>
+                    <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Class Coordinator</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu3">
+                        <li>
+                            <a href="../cordinator/assign.php">Assign Class Coordinator</a>
+                        </li>
+                        <li>
+                            <a href="../cordinator/view_class.php">View Class Coordinator</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">UG Coordinator</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu4">
+                        <li>
+                            <a href="../cordinator/ug_assign.php">Assign UG Coordinator</a>
+                        </li>
+                        <li>
+                            <a href="../cordinator/view_ug.php">View UG Coordnator</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#homeSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Library Admin</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu5">
+                        <li>
+                            <a href="../cordinator/lb_assign.php">Assign Library Admin</a>
+                        </li>
+                        <li>
+                            <a href="../cordinator/view_lb.php">View Library Admin</a>
+                        </li>
+
+                    </ul>
+                </li>
+                
                 <li class="">
                     <a href="../user_privilege/select_dept.php">User Privilege</a>
 

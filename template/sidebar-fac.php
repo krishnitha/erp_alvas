@@ -350,6 +350,20 @@
                 </li>
             </ul>
             </li>
+            <li>
+                        <a href="#leaveSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Leave</a>
+                        <ul class="collapse list-unstyled" id="leaveSubmenu">
+                            <li>
+                                <a href="../Fac_leave_management/casualleave.php">Casual Leave</a>
+                            </li>
+                            <li>
+                                <a href="../Fac_leave_management/OOD_leave.php">OOD Leave</a>
+                            </li>
+                            <li>
+                                <a href="../Fac_leave_management/sclleave.php"">SCL Leave</a>
+                            </li>
+                        </ul>
+                    </li>
             <!-- dept admin list start -->
 
             <?php
@@ -457,20 +471,7 @@
                     <?php } ?>
                     </ul>
                 </li>
-                <li>
-                        <a href="#leaveSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Leave</a>
-                        <ul class="collapse list-unstyled" id="leaveSubmenu">
-                            <li>
-                                <a href="../Fac_leave_management/casualleave.php">Casual Leave</a>
-                            </li>
-                            <li>
-                                <a href="../Fac_leave_management/OOD_leave.php">OOD Leave</a>
-                            </li>
-                            <li>
-                                <a href="../Fac_leave_management/sclleave.php"">SCL Leave</a>
-                            </li>
-                        </ul>
-                    </li>
+                
                 <!-- dept admin list end -->
 
 

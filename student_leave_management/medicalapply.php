@@ -53,65 +53,76 @@
                             <input type="hidden" name="MAX_FILE_SIZE" required value="100000">
                             <span id="file-chosen">No file chosen</span>
                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-                            <?php
+                        </td>
+                    </tr>
+                </table>
+                <?php
                             if(isset($_POST["Submit"]))
                             {
-                            $target_dir="../leave_doc/medical_doc/";
-                            $filename=$_FILES["fileupload"]["name"];
-                            $tmpname=$_FILES["fileupload"]["tmp_name"];
-                            $filetype=$_FILES["fileupload"]["type"];
-                            $errors=[];
-                            $fileextensions=["pdf","jpeg","jpg","png"];
-                            $arr=explode(".",$filename);
-                            $ext=strtolower(end($arr));
-                            $uploadpath=$target_dir.basename($filename);
-                            if(!in_array($ext,$fileextensions))
-                            {
-                                $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
-                            }
-                            if (file_exists($target_dir . $filename)) {
-                                $errors[]= "Sorry, file already exists.";
-                            }
-                            if(empty($errors))
-                            {
-                                if(move_uploaded_file($tmpname,$uploadpath))
+                                $s='select * from students where usn="' . $_SESSION["username"] . '"';
+                                $res = $link->query($s);
+                                $res = mysqli_fetch_assoc($res);
+                                $reason = $_POST["reason"];
+                                $date = date('Y-m-d');
+                                $from = $_POST["from_date"];
+                                $to = $_POST["to_date"];
+                                $target_dir="../leave_doc/medical_doc/";
+                                $filename=$_FILES["fileupload"]["name"];
+                                $tmpname=$_FILES["fileupload"]["tmp_name"];
+                                $filetype=$_FILES["fileupload"]["type"];
+                                $errors=[];
+                                $fileextensions=["pdf","jpeg","jpg","png"];
+                                $arr=explode(".",$filename);
+                                $ext=strtolower(end($arr));
+                                $uploadpath=$target_dir.basename($filename);
+                                $q1 = "select * from student_medical_leave where usn=\"" . $_SESSION['username'] . "\" and sem=\"" . $res["semester"] . "\" and  
+                                from_date=\"" . $from . "\" and to_date=\"" . $to . "\" and (status<>0 or status<>1)";
+                                $r = $con->query($q1);
+                                if(mysqli_num_rows($r) > 0)
                                 {
-                                    $s='select * from students where usn="' . $_SESSION["username"] . '"';
-                                    $res = $link->query($s);
-                                    $res = mysqli_fetch_assoc($res);
-                                    $reason = $_POST["reason"];
-                                    $date = date('Y-m-d');
-                                    $from = $_POST["from_date"];
-                                    $to = $_POST["to_date"];
-                                    $que = "insert into student_medical_leave(usn,sem,reason,applied_date,from_date,to_date,doc_name) values (\"" . $_SESSION['username'] . "\",
-                                    \"" . $res["semester"] . "\",\"" . $reason . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
-                                    $result = $con->query($que);
-                                    //header("Location: ../student_leave_management/medical.php");
-                                    echo '<script>window.location.replace("../student_leave_management/medical.php");</script>';
+                                    $errors[]="Leave already applied for this date.";
+                                }
+                                if(!in_array($ext,$fileextensions))
+                                {
+                                    $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
+                                }
+                                if (file_exists($target_dir . $filename)) {
+                                    $errors[]= "File already exists.";
+                                }
+                                if($to<$from)
+                                {
+                                    $errors[]= "Please enter the correct date.";
+                                }
+                                if(empty($errors))
+                                {
+                                    if(move_uploaded_file($tmpname,$uploadpath))
+                                    {
+                                        $que = "insert into student_medical_leave(usn,sem,reason,applied_date,from_date,to_date,doc_name) values (\"" . $_SESSION['username'] . "\",
+                                        \"" . $res["semester"] . "\",\"" . $reason . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
+                                        $result = $con->query($que);
+                                        //header("Location: ../student_leave_management/medical.php");
+                                        echo '<script>window.location.replace("../student_leave_management/medical.php");</script>';
+                                    }
+                                    else
+                                    {
+                                        ?>
+                                        <p style="color:red;text-align:center;font-family: sans-serif;">upload failed</p>
+                                        <?php
+                                    }
                                 }
                                 else
                                 {
-                                    ?>
-                                        <label for="file-chosen">upload failed</label>
-                                    <?php
+                                    foreach($errors as $value)
+                                    {
+                                ?>
+                                        <br>
+                                        <p style="color:red;text-align:center;font-family: sans-serif;"><?php echo "$value"?></p>
+                                <?php
+                                    }
                                 }
                             }
-                            else
-                            {
-                                foreach($errors as $value)
-                                {
-                            ?>
-                                    <br>
-                                    <label for="actual-btn" style="color:red"><?php echo "$value"?></label>
-                            <?php
-                                }
-                            }
-                        }
-                    ?>
-                        </td>
-                    </tr>
-                
-                </table>
+                        ?>
+
                 <div class="text-center">
                     <input type="Submit" name="Submit" class="btn btn-info" value="Submit">
                 </div>

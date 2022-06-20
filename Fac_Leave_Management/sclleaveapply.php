@@ -36,14 +36,14 @@ include("../template/sidebar-fac.php");
                         <td> From <br></td>
                         <td></td>
                         <td> 
-                            <input type = "date" name="from_date" class="form-control" required>
+                            <input type = "date" name="from_date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
                         </td>
                     </tr>
 
                     <tr>
                         <td>To <br></td>
                         <td></td>
-                        <td> <input type = "date" name="to_date" class="form-control" required></td>
+                        <td> <input type = "date" name="to_date" class="form-control" min="<?php echo date('Y-m-d') ?>" required></td>
                     </tr>
                     <tr>
                         <td>Upload Document<br></td>
@@ -54,9 +54,19 @@ include("../template/sidebar-fac.php");
                             <input type="hidden" name="MAX_FILE_SIZE" required value="100000">
                             <span id="file-chosen">No file chosen</span>
                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-                            <?php
+                        </td>
+                    </tr>
+                </table>
+                <?php
                             if(isset($_POST["Submit"]))
                             {
+                                $s='select * from faculty_details where faculty_name="' . $_SESSION["username"] . '"';
+                                $res = $link->query($s);
+                                $res = mysqli_fetch_assoc($res);
+                                $reason = $_POST["reason"];
+                                $date = date('Y-m-d');
+                                $from = $_POST["from_date"];
+                                $to = $_POST["to_date"];
                                 $target_dir="../leave_doc/scl_doc/";
                                 $filename=$_FILES["fileupload"]["name"];
                                 $tmpname=$_FILES["fileupload"]["tmp_name"];
@@ -66,24 +76,27 @@ include("../template/sidebar-fac.php");
                                 $arr=explode(".",$filename);
                                 $ext=strtolower(end($arr));
                                 $uploadpath=$target_dir.basename($filename);
+                                $q1 = "select * from faculty_scl where faculty_name=\"" . $_SESSION['username'] . "\" and from_date=\"" . $from . "\" and to_date=\"" . $to . "\" and (status<>0 or status<>1)";
+                                $r = $con->query($q1);
+                                if(mysqli_num_rows($r) > 0)
+                                {
+                                    $errors[]="Leave already applied for this date.";
+                                }
+                                if($to<$from)
+                                {
+                                    $errors[]= "Please enter the correct date.";
+                                }
                                 if(!in_array($ext,$fileextensions))
                                 {
                                     $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
                                 }
                                 if (file_exists($target_dir . $filename)) {
-                                    $errors[]= "Sorry, file already exists.";
+                                    $errors[]= "File already exists.";
                                 }
                                 if(empty($errors))
                                 {
                                     if(move_uploaded_file($tmpname,$uploadpath))
                                     {
-                                        $s='select * from faculty_details where faculty_name="' . $_SESSION["username"] . '"';
-                                        $res = $link->query($s);
-                                        $res = mysqli_fetch_assoc($res);
-                                        $reason = $_POST["reason"];
-                                        $date = date('Y-m-d');
-                                        $from = $_POST["from_date"];
-                                        $to = $_POST["to_date"];
                                         $que = "insert into faculty_scl(faculty_name,reason,applied_date,from_date,to_date,doc_name) values (\"" . $_SESSION['username'] . "\",
                                         \"" . $reason . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
                                         $result = $con->query($que);
@@ -92,7 +105,7 @@ include("../template/sidebar-fac.php");
                                     else
                                     {
                                         ?>
-                                            <label for="file-chosen">upload failed</label>
+                                            <p style="color:red;text-align:center;font-family: sans-serif;">upload failed</p>
                                         <?php
                                     }
                                 }
@@ -102,17 +115,12 @@ include("../template/sidebar-fac.php");
                                     {
                                 ?>
                                         <br>
-                                        <label for="actual-btn" style="color:red"><?php echo "$value"?></label>
+                                        <p style="color:red;text-align:center;font-family: sans-serif;"><?php echo "$value"?></label>
                                 <?php
                                     }
                                 }
                             }
                     ?>
-                        </td>
-                    </tr>
-                
-                </table>
-            
                 <div class="text-center">
                     <input type="Submit" name ="Submit" class="btn btn-info" value="Submit">
                 </div>

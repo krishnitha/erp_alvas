@@ -35,8 +35,6 @@
                     <?php
                         $Date = date('Y-m-d');
                         $Last_date = date('Y-m-d', strtotime($Date. ' + 7 days'));
-                        echo $Date;
-                        echo $Last_date;
                         
                     ?>
                     <tr>
@@ -50,16 +48,16 @@
                         <td>Start Time<br></td>
                         <td></td>
                         <td>
-                            <input type="time" name="start" id="inputMDEx1" class="form-control" required>
-                            <label for="inputMDEx1">Choose time</label>
+                            <input type="time" name="start" id="starttime" class="form-control" min="09:00" max="17:00" required>
+                            <label for="starttime">Choose time</label>
                         </td>
                     </tr>
                     <tr>
                         <td>End Time<br></td>
                         <td></td>
                         <td> 
-                            <input type="time" name="end" id="inputMDEx1" class="form-control" required>
-                            <label for="inputMDEx1">Choose time</label>
+                            <input type="time" name="end" id="endtime" class="form-control" min="09:00" max="17:00" required>
+                            <label for="endtime">Choose time</label>
                         </td>
                     </tr>
                     <tr>
@@ -71,9 +69,20 @@
                             <input type="hidden" name="MAX_FILE_SIZE" required value="100000">
                             <span id="file-chosen">No file chosen</span>
                             <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-                            <?php
+                        </td>
+                    </tr>
+                </table>
+                <?php
                             if(isset($_POST["Submit"]))
                             {
+                                $s='select * from students where usn="' . $_SESSION["username"] . '"';
+                                $res = $link->query($s);
+                                $res = mysqli_fetch_assoc($res);
+                                $ename = $_POST["Ename"];
+                                $edate = $_POST["Edate"];
+                                $date = date('Y-m-d');
+                                $from = $_POST["start"];
+                                $to = $_POST["end"];
                                 $target_dir="../leave_doc/event_doc/";
                                 $filename=$_FILES["fileupload"]["name"];
                                 $tmpname=$_FILES["fileupload"]["tmp_name"];
@@ -83,36 +92,38 @@
                                 $arr=explode(".",$filename);
                                 $ext=strtolower(end($arr));
                                 $uploadpath=$target_dir.basename($filename);
+                                $q1 = "select * from student_event_leave where usn=\"" . $_SESSION['username'] . "\" and sem=\"" . $res["semester"] . "\" and 
+                                event_date=\"" . $edate . "\" and from_time=\"" . $from . "\" and to_time=\"" . $to . "\" and (status<>0 or status<>1)";
+                                $r = $con->query($q1);
+                                if(mysqli_num_rows($r) > 0)
+                                {
+                                    $errors[]="Leave already applied for this date.";
+                                }
                                 if(!in_array($ext,$fileextensions))
                                 {
                                     $errors[]="Sorry, only JPG, JPEG, PNG & PDF files are allowed.";
                                 }
-                                if (file_exists($target_dir . $filename)) {
-                                    $errors[]= "Sorry, file already exists.";
+                                if(file_exists($target_dir . $filename)) {
+                                    $errors[]= "File already exists.";
+                                }
+                                if($to<=$from)
+                                {
+                                    $errors[]= "Please enter the correct time.";
                                 }
                                 if(empty($errors))
                                 {
                                     if(move_uploaded_file($tmpname,$uploadpath))
                                     {
-                                        $s='select * from students where usn="' . $_SESSION["username"] . '"';
-                                        $res = $link->query($s);
-                                        $res = mysqli_fetch_assoc($res);
-                                        $ename = $_POST["Ename"];
-                                        $edate = $_POST["Edate"];
-                                        $date = date('Y-m-d');
-                                        $from = $_POST["start"];
-                                        $to = $_POST["end"];
                                         $que = "insert into student_event_leave(usn,sem,event_name,event_date,applied_date,from_time,to_time,doc_name) values (\"" . $_SESSION['username'] . "\",
                                         \"" . $res["semester"] . "\",\"" . $ename . "\",\"" . $edate . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
                                         $result = $con->query($que);
-                                        // header("Location: ../student_leave_management/event.php");
                                         echo '<script>window.location.replace("../student_leave_management/event.php");</script>';
                                         
                                     }
                                     else
                                     {
                                         ?>
-                                            <label for="file-chosen">upload failed</label>
+                                            <p style="color:red;text-align:center;font-family: sans-serif;">upload failed</p>
                                         <?php
                                     }
                                 }
@@ -122,31 +133,45 @@
                                     {
                                 ?>
                                         <br>
-                                        <label for="actual-btn" style="color:red"><?php echo "$value"?></label>
+                                        <p style="color:red;text-align:center;font-family: sans-serif;"><?php echo "$value"?></p>
                                 <?php
                                     }
                                 }
                             }
                     ?>
-                        </td>
-                    </tr>
-                
-                </table>
-            
                 <div class="text-center">
-                    <input type="Submit" name ="Submit" class="btn btn-info" value="Submit">
+                    <!-- <button class="btn btn-info" onclick="validate();"> Submit </button>
+                    <input style="display:none;" type="Submit" id="submit" name ="Submit" class="btn btn-info" value="Submit"> -->
+                    <input type="Submit" id="submit" name ="Submit" class="btn btn-info" value="Submit">
                 </div>
             </form>
         </div>
+        <!-- <script>
+            function validate() {
+                var error = document.getElementById("error");
+                error.textContent = "Please enter a valid number";
+                error.style.color = "red";
+                starttime = document.getElementById("starttime").value;
+                endtime = document.getElementById("endtime").value;
+                console.log(starttime,endtime);
+                if (endtime > starttime){
+                    document.getElementById("submit").click();
+                }
+                else
+                {
+                    alert("enter the correct time");
+                }
+            }
+        </script> -->
+
         <script>
             const actualBtn = document.getElementById('actual-btn');
-
             const fileChosen = document.getElementById('file-chosen');
-
             actualBtn.addEventListener('change', function() {
                 fileChosen.textContent = this.files[0].name
             })
         </script>
+
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
