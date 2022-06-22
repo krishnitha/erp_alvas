@@ -64,10 +64,24 @@ include("../template/sidebar-fac.php");
             else{
                 echo '<h5><center> No Leave Applied </center></h5>';
             }
-            // $q1 =  "select * from faculty_casual_leave where status=1 and faculty_name=\"" . $name . "\" and ";
-            // $res = $con->query($q1);
-            // if($res->num_rows < 12)
-            // {
+            $q1 =  "select * from faculty_casual_leave where faculty_name=\"" . $name . "\" and (status=0 or status=1)";
+            $res = $con->query($q1);
+            $year = date("Y");
+            $count = 0; 
+            foreach ($res as $row) 
+            {
+                $from = new DateTime($row["from_date"]);
+                $to = new DateTime($row["to_date"]);
+                for ($date = $from; $date <= $to; $date->modify('+1 day')) {
+                    $current = $date->format("Y");
+                    if($year == $current)
+                    {
+                        $count = $count + 1;
+                    }
+                }
+            }
+            if($count < 12)
+            {
         ?> 
     </table>
 </div>
@@ -75,6 +89,6 @@ include("../template/sidebar-fac.php");
     <a href="../Fac_Leave_Management/casualleaveapply.php"><button  type="button" class="btn btn-info">Apply New</button></a>
 </div>
 <?php
-    // }
+    }
     include("../template/footer-fac.php");
 ?>

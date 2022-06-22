@@ -62,7 +62,7 @@ include("../template/student_sidebar.php");
                 else{
                 echo '<h5><center> No Leave Applied </center></h5>';
             }
-            $q1 = "select * from student_event_leave where usn=\"" . $usn . "\" and sem=\"" . $res["semester"] . "\" and status=1";
+            $q1 = "select * from student_event_leave where usn=\"" . $usn . "\" and sem=\"" . $res["semester"] . "\" and (status=1 or status=0)";
             $res = $con->query($q1);
             if($res->num_rows < 5)
             {

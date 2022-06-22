@@ -2,9 +2,28 @@
 // require_once "../config.php";
 include("../template/fac-auth.php");
 $con=$link;
-
 include("../template/sidebar-fac.php");
-?>      <style>
+$q1 =  "select * from faculty_casual_leave where faculty_name=\"" .  $_SESSION["username"] . "\" and (status=0 or status=1)";
+        $res = $con->query($q1);
+        $year = date("Y");
+        $count = 0; 
+        $day = 0;
+        foreach ($res as $row) 
+        {
+            $from = new DateTime($row["from_date"]);
+            $to = new DateTime($row["to_date"]);
+            for ($date = $from; $date <= $to; $date->modify('+1 day')) {
+                $current = $date->format("Y");
+                if($year == $current)
+                {
+                    $count = $count + 1;
+                }
+            }
+        }
+        $day = 12 - $count;
+        echo $day
+?>      
+        <style>
 
             .label2 
             {
@@ -36,14 +55,13 @@ include("../template/sidebar-fac.php");
                         <td> From <br></td>
                         <td></td>
                         <td> 
-                            <input type = "date" name="from_date" class="form-control"  min="<?php echo date('Y-m-d') ?>" required>
+                            <input type = "date" name="from_date" id="fromdate" class="form-control"  min="<?php echo date('Y-m-d') ?>" onchange="myFunction(this.value)" required>
                         </td>
                     </tr>
-
                     <tr>
                         <td>To <br></td>
                         <td></td>
-                        <td> <input type = "date" name="to_date" class="form-control"  min="<?php echo date('Y-m-d') ?>" required></td>
+                        <td> <input type = "date" name="to_date" id="todate" class="form-control"  min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d') ?>" required></td>
                     </tr>
     </table>
     <?php
@@ -90,6 +108,24 @@ include("../template/sidebar-fac.php");
     </div>
 </form>
 </div>
+<script>
+function myFunction(val) {
+    document.getElementById("todate").min = val;
+    const date = new Date(val);
+    var num = <?php echo $day?>;
+    if(num>=3)
+    {
+        date.setDate(date.getDate()+2);
+        // var newdate = date.toISOString().split('T')[0];
+        // document.getElementById("todate").max = newdate;
+    }
+    else{
+        date.setDate(date.getDate()+ (num-1));
+    }
+    var newdate = date.toISOString().split('T')[0];
+    document.getElementById("todate").max = newdate;
+}
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
