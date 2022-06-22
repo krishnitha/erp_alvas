@@ -2,9 +2,27 @@
 // require_once "../config.php";
 include("../template/fac-auth.php");
 $con=$link;
-
 include("../template/sidebar-fac.php");
-?>      <style>
+$q1 =  "select * from faculty_casual_leave where faculty_name=\"" .  $_SESSION["username"] . "\" and (status=0 or status=1)";
+        $res = $con->query($q1);
+        $year = date("Y");
+        $count = 0; 
+        $day = 0;
+        foreach ($res as $row) 
+        {
+            $from = new DateTime($row["from_date"]);
+            $to = new DateTime($row["to_date"]);
+            for ($date = $from; $date <= $to; $date->modify('+1 day')) {
+                $current = $date->format("Y");
+                if($year == $current)
+                {
+                    $count = $count + 1;
+                }
+            }
+        }
+        $day = 12 - $count;
+?>      
+        <style>
 
             .label2 
             {
@@ -33,56 +51,74 @@ include("../template/sidebar-fac.php");
         				</td>
         			</tr>
                     <tr>
-        				<td>Number of days<br></td>
-                        <td></td>
-                        <td> 
-                            <input type="number" name="r_clear" class="form-control" min="0" required> 
-        				</td>
-        			</tr>
-                    <tr>
-                        <td>Date<br></td>
-                        <td></td>
-                        <td> 
-                            <input type = "date" name="cdate" class="form-control" required>
-                        </td>
-                    </tr>
-                    <tr>
                         <td> From <br></td>
                         <td></td>
                         <td> 
-                            <input type = "date" name="from_date" class="form-control" required>
+                            <input type = "date" name="from_date" id="fromdate" class="form-control"  min="<?php echo date('Y-m-d') ?>" onchange="myFunction(this.value)" required>
                         </td>
                     </tr>
-
                     <tr>
                         <td>To <br></td>
                         <td></td>
-                        <td> <input type = "date" name="to_date" class="form-control" required></td>
+                        <td> <input type = "date" name="to_date" id="todate" class="form-control"  min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d') ?>" required></td>
                     </tr>
-                
     </table>
-
-    <div class="text-center">
-        <input type="Submit" name ="Submit" class="btn btn-info" value="Submit">
-    </div>
-</form>
-<?php
+    <?php
    if(isset($_POST["Submit"]))
    {
-     $s='select * from faculty_details where faculty_name="' . $_SESSION["username"] . '"';
+    $s='select * from faculty_details where faculty_name="' . $_SESSION["username"] . '"';
     $res = $link->query($s);
     $res = mysqli_fetch_assoc($res);
     $reason = $_POST["reason"];
     $date = date('Y-m-d');
     $from = $_POST["from_date"];
     $to = $_POST["to_date"];
-    $que = "insert into faculty_casual_leave(faculty_name,reason,applied_date,from_date,to_date) values (\"" . $_SESSION['username'] . "\",
-    \"" . $reason . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\")";
-    $result = $con->query($que);
-    echo '<script>window.location.replace("../fac_leave_management/casualleave.php");</script>';
-   }
+    $q1 = "select * from faculty_casual_leave where faculty_name=\"" . $_SESSION['username'] . "\" and from_date=\"" . $from . "\" and to_date=\"" . $to . "\" and (status<>0 or status<>1)";
+    $r = $con->query($q1);
+    if(mysqli_num_rows($r) > 0)
+    {
+        $errors[]="Leave already applied for this date.";
+    }
+    if(empty($errors))
+    {                                
+        $que = "insert into faculty_casual_leave(faculty_name,reason,applied_date,from_date,to_date) values (\"" . $_SESSION['username'] . "\",
+        \"" . $reason . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\")";
+        $result = $con->query($que);
+        echo '<script>window.location.replace("../Fac_Leave_Management/casualleave.php");</script>';
+    }
+    else
+    {
+        foreach($errors as $value)
+        {
 ?>
+            <br>
+            <p style="color:red;text-align:center;font-family: sans-serif;"><?php echo "$value"?></p>
+<?php
+        }
+    }
+}
+?>
+    <div class="text-center">
+        <input type="Submit" name ="Submit" class="btn btn-info" value="Submit">
+    </div>
+</form>
 </div>
+<script>
+function myFunction(val) {
+    document.getElementById("todate").min = val;
+    const date = new Date(val);
+    var num = <?php echo $day?>;
+    if(num>=3)
+    {
+        date.setDate(date.getDate()+2);
+    }
+    else{
+        date.setDate(date.getDate()+ (num-1));
+    }
+    var newdate = date.toISOString().split('T')[0];
+    document.getElementById("todate").max = newdate;
+}
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>

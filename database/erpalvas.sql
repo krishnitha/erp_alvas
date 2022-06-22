@@ -1,5 +1,20 @@
 -- phpMyAdmin SQL Dump
+<<<<<<< HEAD
 -- version 5.0.4
+=======
+<<<<<<< HEAD
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 26, 2022 at 06:53 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+=======
+-- version 4.9.7
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
@@ -8,6 +23,11 @@
 -- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+<<<<<<< HEAD
+=======
+SET AUTOCOMMIT = 0;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,6 +40,14 @@ SET time_zone = "+00:00";
 --
 -- Database: `erpalvas`
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+CREATE DATABASE IF NOT EXISTS `erpalvas` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `erpalvas`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 
 -- --------------------------------------------------------
 
@@ -27,6 +55,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `add_assignment`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `add_assignment`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `add_assignment` (
   `sub_name` varchar(255) NOT NULL,
   `branch` varchar(255) NOT NULL,
@@ -46,20 +81,461 @@ CREATE TABLE `add_assignment` (
 -- Table structure for table `assignment_marks`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `assignment_marks`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `assignment_marks` (
   `usn` varchar(255) NOT NULL,
   `stud_name` varchar(255) NOT NULL,
   `semester` int(11) DEFAULT NULL,
   `section` varchar(30) DEFAULT NULL,
   `branch` varchar(255) DEFAULT NULL,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `a1` int(11) DEFAULT 0,
   `a2` int(11) DEFAULT 0,
   `a3` int(11) DEFAULT 0,
   `a4` int(11) DEFAULT 0,
   `a5` int(11) DEFAULT 0,
   `max_marks` int(11) DEFAULT 10,
+<<<<<<< HEAD
+=======
+=======
+  `a1` int(11) DEFAULT '0',
+  `a2` int(11) DEFAULT '0',
+  `a3` int(11) DEFAULT '0',
+  `a4` int(11) DEFAULT '0',
+  `a5` int(11) DEFAULT '0',
+  `max_marks` int(11) DEFAULT '10',
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `fac_name` varchar(255) DEFAULT NULL,
   `sub_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+<<<<<<< HEAD
+-- Table structure for table `attendance_new`
+--
+
+=======
+<<<<<<< HEAD
+-- Table structure for table `attendance_new`
+--
+
+=======
+-- Table structure for table `attendance`
+--
+
+DROP TABLE IF EXISTS `attendance`;
+CREATE TABLE `attendance` (
+  `adm_no` varchar(30) DEFAULT NULL,
+  `usn` varchar(15) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `branch` varchar(255) NOT NULL,
+  `sem` varchar(20) DEFAULT NULL,
+  `section` varchar(20) DEFAULT NULL,
+  `period` varchar(30) DEFAULT NULL,
+  `subject` varchar(400) DEFAULT NULL,
+  `2021_10_23_2` int(11) DEFAULT NULL,
+  `2021_10_27_2` int(11) DEFAULT NULL,
+  `2021_10_27_3` int(11) DEFAULT NULL,
+  `2021_11_17_2` int(11) DEFAULT NULL,
+  `2021_11_26_1` int(11) DEFAULT NULL,
+  `2021_10_28_1` int(11) DEFAULT NULL,
+  `2021_11_29_1` int(11) DEFAULT NULL,
+  `2021_10_01_select` int(11) DEFAULT NULL,
+  `2021_11_15_1` int(11) DEFAULT NULL,
+  `2021_11_04_1` int(11) DEFAULT NULL,
+  `2021_10_07_1` int(11) DEFAULT NULL,
+  `2021_10_11_1` int(11) DEFAULT NULL,
+  `2021_10_12_1` int(11) DEFAULT NULL,
+  `2021_10_04_select` int(11) DEFAULT NULL,
+  `2021_10_21_1` int(11) DEFAULT NULL,
+  `2021_11_22_1` int(11) DEFAULT NULL,
+  `2021_11_22_3` int(11) DEFAULT NULL,
+  `2021_11_18_select` int(11) DEFAULT NULL,
+  `_select` int(11) DEFAULT NULL,
+  `2021_11_18_1` int(11) DEFAULT NULL,
+  `2021_11_16_1` int(11) DEFAULT NULL,
+  `2021_10_01_1` int(11) DEFAULT NULL,
+  `_` int(11) DEFAULT NULL,
+  `2021_10_05_1` int(11) DEFAULT NULL,
+  `2021_11_11_1` int(11) DEFAULT NULL,
+  `2021_10_08_1` int(11) DEFAULT NULL,
+  `2021_10_13_1` int(11) DEFAULT NULL,
+  `2021_10_16_1` int(11) DEFAULT NULL,
+  `2021_10_18_1` int(11) DEFAULT NULL,
+  `2021_10_18_2` int(11) DEFAULT NULL,
+  `2021_10_20_1` int(11) DEFAULT NULL,
+  `2021_10_22_1` int(11) DEFAULT NULL,
+  `2021_10_23_1` int(11) DEFAULT NULL,
+  `2021_10_25_1` int(11) DEFAULT NULL,
+  `2021_10_26_1` int(11) DEFAULT NULL,
+  `2021_10_27_1` int(11) DEFAULT NULL,
+  `2021_10_29_1` int(11) DEFAULT NULL,
+  `2021_10_30_1` int(11) DEFAULT NULL,
+  `2021_11_09_1` int(11) DEFAULT NULL,
+  `2021_11_10_1` int(11) DEFAULT NULL,
+  `2021_11_17_1` int(11) DEFAULT NULL,
+  `2021_11_19_1` int(11) DEFAULT NULL,
+  `2021_11_20_1` int(11) DEFAULT NULL,
+  `2021_11_20_2` int(11) DEFAULT NULL,
+  `2021_11_30_1` int(11) DEFAULT NULL,
+  `2021_11_13_1` int(11) DEFAULT NULL,
+  `2021_10_04_1` int(11) DEFAULT NULL,
+  `2021_11_23_1` int(11) DEFAULT NULL,
+  `2021_11_24_1` int(11) DEFAULT NULL,
+  `2021_11_25_1` int(11) DEFAULT NULL,
+  `2021_11_27_1` int(11) DEFAULT NULL,
+  `2021_09_30_1` int(11) DEFAULT NULL,
+  `2021_10_09_2` int(11) DEFAULT NULL,
+  `2021_10_14_1` int(11) DEFAULT NULL,
+  `2021_10_19_1` int(11) DEFAULT NULL,
+  `2021_11_23_2` int(11) DEFAULT NULL,
+  `2021_10_02_1` int(11) DEFAULT NULL,
+  `_1` int(11) DEFAULT NULL,
+  `2021_11_24_2` int(11) DEFAULT NULL,
+  `2021_11_24_3` int(11) DEFAULT NULL,
+  `2021_11_23_select` int(11) DEFAULT NULL,
+  `2021_12_04_1` int(11) DEFAULT NULL,
+  `2021_12_06_1` int(11) DEFAULT NULL,
+  `2021_12_07_1` int(11) DEFAULT NULL,
+  `2021_12_07_2` int(11) DEFAULT NULL,
+  `2021_12_08_1` int(11) DEFAULT NULL,
+  `2021_12_01_2` int(11) DEFAULT NULL,
+  `2021_12_10_3` int(11) DEFAULT NULL,
+  `2021_09_22_1` int(11) DEFAULT NULL,
+  `2021_09_29_1` int(11) DEFAULT NULL,
+  `2021_10_13_3` int(11) DEFAULT NULL,
+  `2021_12_10_1` int(11) DEFAULT NULL,
+  `2021_12_08_select` int(11) DEFAULT NULL,
+  `2021_12_01_select` int(11) DEFAULT NULL,
+  `2021_12_03_select` int(11) DEFAULT NULL,
+  `2021_12_11_select` int(11) DEFAULT NULL,
+  `2021_12_04_select` int(11) DEFAULT NULL,
+  `2021_12_06_select` int(11) DEFAULT NULL,
+  `2021_11_10_select` int(11) DEFAULT NULL,
+  `2021_11_17_select` int(11) DEFAULT NULL,
+  `2021_11_27_select` int(11) DEFAULT NULL,
+  `2021_11_29_select` int(11) DEFAULT NULL,
+  `2021_10_18_select` int(11) DEFAULT NULL,
+  `2021_10_20_select` int(11) DEFAULT NULL,
+  `2021_12_22_1` int(11) DEFAULT NULL,
+  `2021_11_26_2` int(11) DEFAULT NULL,
+  `2021_12_02_1` int(11) DEFAULT NULL,
+  `2021_12_03_1` int(11) DEFAULT NULL,
+  `2021_12_09_1` int(11) DEFAULT NULL,
+  `2021_12_09_2` int(11) DEFAULT NULL,
+  `2021_11_19_2` int(11) DEFAULT NULL,
+  `2021_12_11_1` int(11) DEFAULT NULL,
+  `2021_12_01_1` int(11) DEFAULT NULL,
+  `2021_12_10_2` int(11) DEFAULT NULL,
+  `2021_10_30_select` int(11) DEFAULT NULL,
+  `2021_12_20_1` int(11) DEFAULT NULL,
+  `2021_12_29_1` int(11) DEFAULT NULL,
+  `2021_12_03_2` int(11) DEFAULT NULL,
+  `2021_12_12_1` int(11) DEFAULT NULL,
+  `2021_10_23_select` int(11) DEFAULT NULL,
+  `2021_11_16_2` int(11) DEFAULT NULL,
+  `2021_12_16_1` int(11) DEFAULT NULL,
+  `2021_11_30_2` int(11) DEFAULT NULL,
+  `2021_10_25_2` int(11) DEFAULT NULL,
+  `2021_10_25_3` int(11) DEFAULT NULL,
+  `2021_12_13_1` int(11) DEFAULT NULL,
+  `2021_12_13_2` int(11) DEFAULT NULL,
+  `2021_12_14_1` int(11) DEFAULT NULL,
+  `2021_10_06_1` int(11) DEFAULT NULL,
+  `2021_12_18_1` int(11) DEFAULT NULL,
+  `2021_12_15_1` int(11) DEFAULT NULL,
+  `2021_12_15_3` int(11) DEFAULT NULL,
+  `2021_12_06_3` int(11) DEFAULT NULL,
+  `2021_12_14_3` int(11) DEFAULT NULL,
+  `2021_10_09_1` int(11) DEFAULT NULL,
+  `2021_11_08_1` int(11) DEFAULT NULL,
+  `2021_12_20_2` int(11) DEFAULT NULL,
+  `2021_12_24_1` int(11) DEFAULT NULL,
+  `2021_12_27_1` int(11) DEFAULT NULL,
+  `2021_12_28_1` int(11) DEFAULT NULL,
+  `2021_12_30_1` int(11) DEFAULT NULL,
+  `_3` int(11) DEFAULT NULL,
+  `2022_01_01_1` int(11) DEFAULT NULL,
+  `2022_01_03_1` int(11) DEFAULT NULL,
+  `2022_01_03_2` int(11) DEFAULT NULL,
+  `2022_01_04_1` int(11) DEFAULT NULL,
+  `2022_01_05_1` int(11) DEFAULT NULL,
+  `2022_01_05_2` int(11) DEFAULT NULL,
+  `2022_01_08_1` int(11) DEFAULT NULL,
+  `2022_01_07_1` int(11) DEFAULT NULL,
+  `_2` int(11) DEFAULT NULL,
+  `2022_01_11_1` int(11) DEFAULT NULL,
+  `2022_01_10_1` int(11) DEFAULT NULL,
+  `2022_01_12_1` int(11) DEFAULT NULL,
+  `2021_10_20_2` int(11) DEFAULT NULL,
+  `2021_11_15_2` int(11) DEFAULT NULL,
+  `2021_11_18_2` int(11) DEFAULT NULL,
+  `2021_11_25_2` int(11) DEFAULT NULL,
+  `2021_11_26_3` int(11) DEFAULT NULL,
+  `2021_11_27_2` int(11) DEFAULT NULL,
+  `2022_01_14_1` int(11) DEFAULT NULL,
+  `2022_01_17_1` int(11) DEFAULT NULL,
+  `2022_01_18_1` int(11) DEFAULT NULL,
+  `2022_01_19_1` int(11) DEFAULT NULL,
+  `2022_01_20_1` int(11) DEFAULT NULL,
+  `2022_01_24_1` int(11) DEFAULT NULL,
+  `2022_01_24_2` int(11) DEFAULT NULL,
+  `2022_01_27_1` int(11) DEFAULT NULL,
+  `2021_01_04_1` int(11) DEFAULT NULL,
+  `2021_01_06_2` int(11) DEFAULT NULL,
+  `2021_01_06_1` int(11) DEFAULT NULL,
+  `2022_01_21_1` int(11) DEFAULT NULL,
+  `2022_01_21_2` int(11) DEFAULT NULL,
+  `2022_01_22_1` int(11) DEFAULT NULL,
+  `2022_01_25_1` int(11) DEFAULT NULL,
+  `2021_10_01_3` int(11) DEFAULT NULL,
+  `2021_10_22_3` int(11) DEFAULT NULL,
+  `2022_01_28_1` int(11) DEFAULT NULL,
+  `2022_02_01_1` int(11) DEFAULT NULL,
+  `2021_11_02_1` int(11) DEFAULT NULL,
+  `2022_02_01_3` int(11) DEFAULT NULL,
+  `2021_10_03_1` int(11) DEFAULT NULL,
+  `2022_02_04_1` int(11) DEFAULT NULL,
+  `2022_01_31_1` int(11) DEFAULT NULL,
+  `2022_02_08_3` int(11) DEFAULT NULL,
+  `2022_02_12_1` int(11) DEFAULT NULL,
+  `2021_11_29_2` int(11) DEFAULT NULL,
+  `2021_12_23_1` int(11) DEFAULT NULL,
+  `2021_12_31_1` int(11) DEFAULT NULL,
+  `2022_01_06_1` int(11) DEFAULT NULL,
+  `2022_01_13_1` int(11) DEFAULT NULL,
+  `2021_12_17_2` int(11) DEFAULT NULL,
+  `2022_02_03_1` int(11) DEFAULT NULL,
+  `2022_02_07_1` int(11) DEFAULT NULL,
+  `2022_02_08_1` int(11) DEFAULT NULL,
+  `2022_02_10_1` int(11) DEFAULT NULL,
+  `2022_02_15_1` int(11) DEFAULT NULL,
+  `2022_01_29_1` int(11) DEFAULT NULL,
+  `2021_12_17_1` int(11) DEFAULT NULL,
+  `2021_12_21_1` int(11) DEFAULT NULL,
+  `2022_02_05_1` int(11) DEFAULT NULL,
+  `2021_10_04_3` int(11) DEFAULT NULL,
+  `2021_10_09_3` int(11) DEFAULT NULL,
+  `2021_10_11_3` int(11) DEFAULT NULL,
+  `2021_10_13_2` int(11) DEFAULT NULL,
+  `2021_10_16_3` int(11) DEFAULT NULL,
+  `2021_10_18_3` int(11) DEFAULT NULL,
+  `2022_01_26_1` int(11) DEFAULT NULL,
+  `2021_11_03_1` int(11) DEFAULT NULL,
+  `2022_02_11_1` int(11) DEFAULT NULL,
+  `2022_02_17_1` int(11) DEFAULT NULL,
+  `2022_02_20_1` int(11) DEFAULT NULL,
+  `0222_01_12_1` int(11) DEFAULT NULL,
+  `2022_02_09_1` int(11) DEFAULT NULL,
+  `2022_02_02_1` int(11) DEFAULT NULL,
+  `2021_11_06_1` int(11) DEFAULT NULL,
+  `2021_11_12_1` int(11) DEFAULT NULL,
+  `2022_02_05_3` int(11) DEFAULT NULL,
+  `2021_10_05_3` int(11) DEFAULT NULL,
+  `2021_10_06_3` int(11) DEFAULT NULL,
+  `2022_02_13_2` int(11) DEFAULT NULL,
+  `2022_02_14_3` int(11) DEFAULT NULL,
+  `2022_02_15_2` int(11) DEFAULT NULL,
+  `2022_02_14_2` int(11) DEFAULT NULL,
+  `2021_10_14_3` int(11) DEFAULT NULL,
+  `2021_11_25_3` int(11) DEFAULT NULL,
+  `2021_02_26_1` int(11) DEFAULT NULL,
+  `2021_12_09_3` int(11) DEFAULT NULL,
+  `2021_12_19_1` int(11) DEFAULT NULL,
+  `2021_12_23_2` int(11) DEFAULT NULL,
+  `2021_12_23_3` int(11) DEFAULT NULL,
+  `2022_02_14_1` int(11) DEFAULT NULL,
+  `2021_12_30_2` int(11) DEFAULT NULL,
+  `2021_12_26_2` int(11) DEFAULT NULL,
+  `0022_12_04_1` int(11) DEFAULT NULL,
+  `2021_12_22_2` int(11) DEFAULT NULL,
+  `2022_01_06_2` int(11) DEFAULT NULL,
+  `2021_12_27_2` int(11) DEFAULT NULL,
+  `2021_12_27_3` int(11) DEFAULT NULL,
+  `2022_01_20_2` int(11) DEFAULT NULL,
+  `2021_12_28_2` int(11) DEFAULT NULL,
+  `2021_12_29_2` int(11) DEFAULT NULL,
+  `2021_12_31_2` int(11) DEFAULT NULL,
+  `2022_02_02_2` int(11) DEFAULT NULL,
+  `2021_11_21_1` int(11) DEFAULT NULL,
+  `2022_02_26_1` int(11) DEFAULT NULL,
+  `2022_02_25_2` int(11) DEFAULT NULL,
+  `2022_02_28_1` int(11) DEFAULT NULL,
+  `0001_02_28_1` int(11) DEFAULT NULL,
+  `0021_02_28_1` int(11) DEFAULT NULL,
+  `2022_03_02_2` int(11) DEFAULT NULL,
+  `2021_10_21_2` int(11) DEFAULT NULL,
+  `2021_11_29_3` int(11) DEFAULT NULL,
+  `2021_12_01_3` int(11) DEFAULT NULL,
+  `2021_12_02_2` int(11) DEFAULT NULL,
+  `2021_12_24_2` int(11) DEFAULT NULL,
+  `2022_01_07_2` int(11) DEFAULT NULL,
+  `2021_12_07_3` int(11) DEFAULT NULL,
+  `2022_01_07_3` int(11) DEFAULT NULL,
+  `2022_03_03_1` int(11) DEFAULT NULL,
+  `2022_01_27_2` int(11) DEFAULT NULL,
+  `2022_01_27_3` int(11) DEFAULT NULL,
+  `2022_01_28_2` int(11) DEFAULT NULL,
+  `2022_02_04_2` int(11) DEFAULT NULL,
+  `2021_10_10_2` int(11) DEFAULT NULL,
+  `2022_03_09_2` int(11) DEFAULT NULL,
+  `2021_12_06_2` int(11) DEFAULT NULL,
+  `2021_12_15_2` int(11) DEFAULT NULL,
+  `2021_12_16_2` int(11) DEFAULT NULL,
+  `2022_02_03_2` int(11) DEFAULT NULL,
+  `2022_02_07_2` int(11) DEFAULT NULL,
+  `2022_02_23_1` int(11) DEFAULT NULL,
+  `2022_02_26_2` int(11) DEFAULT NULL,
+  `2022_03_02_1` int(11) DEFAULT NULL,
+  `2022_03_03_2` int(11) DEFAULT NULL,
+  `2022_03_05_1` int(11) DEFAULT NULL,
+  `2022_03_07_1` int(11) DEFAULT NULL,
+  `2022_03_08_1` int(11) DEFAULT NULL,
+  `2022_03_08_2` int(11) DEFAULT NULL,
+  `2022_03_09_1` int(11) DEFAULT NULL,
+  `2022_03_11_1` int(11) DEFAULT NULL,
+  `2021_11_05_1` int(11) DEFAULT NULL,
+  `2021_12_24_3` int(11) DEFAULT NULL,
+  `2022_02_16_1` int(11) DEFAULT NULL,
+  `2022_02_18_1` int(11) DEFAULT NULL,
+  `2022_02_01_2` int(11) DEFAULT NULL,
+  `2022_02_09_2` int(11) DEFAULT NULL,
+  `2022_02_12_2` int(11) DEFAULT NULL,
+  `2022_02_16_2` int(11) DEFAULT NULL,
+  `2022_02_21_1` int(11) DEFAULT NULL,
+  `2022_02_21_2` int(11) DEFAULT NULL,
+  `2022_02_22_1` int(11) DEFAULT NULL,
+  `2022_02_24_1` int(11) DEFAULT NULL,
+  `2022_03_10_1` int(11) DEFAULT NULL,
+  `2022_03_15_1` int(11) DEFAULT NULL,
+  `2022_03_17_1` int(11) DEFAULT NULL,
+  `2022_03_27_1` int(11) DEFAULT NULL,
+  `2022_03_21_1` int(11) DEFAULT NULL,
+  `2022_03_01_1` int(11) DEFAULT NULL,
+  `2022_03_02_3` int(11) DEFAULT NULL,
+  `2022_03_04_3` int(11) DEFAULT NULL,
+  `2022_03_08_3` int(11) DEFAULT NULL,
+  `2022_03_10_3` int(11) DEFAULT NULL,
+  `2022_03_11_3` int(11) DEFAULT NULL,
+  `2022_03_14_1` int(11) DEFAULT NULL,
+  `2022_03_15_3` int(11) DEFAULT NULL,
+  `2022_03_16_2` int(11) DEFAULT NULL,
+  `2022_03_17_3` int(11) DEFAULT NULL,
+  `2022_03_18_3` int(11) DEFAULT NULL,
+  `2022_03_22_3` int(11) DEFAULT NULL,
+  `2022_03_23_2` int(11) DEFAULT NULL,
+  `2022_03_24_3` int(11) DEFAULT NULL,
+  `2022_03_25_3` int(11) DEFAULT NULL,
+  `2022_03_03_3` int(11) DEFAULT NULL,
+  `2022_02_04_3` int(11) DEFAULT NULL,
+  `2022_02_10_3` int(11) DEFAULT NULL,
+  `2022_02_11_3` int(11) DEFAULT NULL,
+  `2022_02_15_3` int(11) DEFAULT NULL,
+  `2022_02_17_3` int(11) DEFAULT NULL,
+  `2022_02_18_3` int(11) DEFAULT NULL,
+  `2022_02_22_3` int(11) DEFAULT NULL,
+  `2022_02_23_2` int(11) DEFAULT NULL,
+  `2022_02_24_3` int(11) DEFAULT NULL,
+  `2022_02_25_3` int(11) DEFAULT NULL,
+  `2022_01_04_3` int(11) DEFAULT NULL,
+  `2022_01_06_3` int(11) DEFAULT NULL,
+  `2022_01_11_3` int(11) DEFAULT NULL,
+  `2022_01_12_2` int(11) DEFAULT NULL,
+  `2022_01_13_3` int(11) DEFAULT NULL,
+  `2022_01_14_3` int(11) DEFAULT NULL,
+  `2022_03_04_1` int(11) DEFAULT NULL,
+  `2022_03_10_2` int(11) DEFAULT NULL,
+  `2022_03_12_1` int(11) DEFAULT NULL,
+  `2022_03_15_2` int(11) DEFAULT NULL,
+  `2022_03_17_2` int(11) DEFAULT NULL,
+  `2022_03_18_1` int(11) DEFAULT NULL,
+  `2022_03_19_1` int(11) DEFAULT NULL,
+  `2022_03_24_2` int(11) DEFAULT NULL,
+  `2022_03_25_1` int(11) DEFAULT NULL,
+  `2022_03_26_1` int(11) DEFAULT NULL,
+  `2022_02_03_3` int(11) DEFAULT NULL,
+  `2022_02_08_2` int(11) DEFAULT NULL,
+  `2022_02_10_2` int(11) DEFAULT NULL,
+  `2022_02_17_2` int(11) DEFAULT NULL,
+  `2022_02_19_1` int(11) DEFAULT NULL,
+  `2022_02_22_2` int(11) DEFAULT NULL,
+  `2022_02_24_2` int(11) DEFAULT NULL,
+  `2022_02_25_1` int(11) DEFAULT NULL,
+  `2022_01_04_2` int(11) DEFAULT NULL,
+  `2022_01_18_2` int(11) DEFAULT NULL,
+  `2022_01_20_3` int(11) DEFAULT NULL,
+  `2022_01_25_2` int(11) DEFAULT NULL,
+  `2021_12_21_2` int(11) DEFAULT NULL,
+  `2021_12_25_1` int(11) DEFAULT NULL,
+  `2021_12_14_2` int(11) DEFAULT NULL,
+  `2021_12_16_3` int(11) DEFAULT NULL,
+  `2021_12_02_3` int(11) DEFAULT NULL,
+  `2022_01_18_3` int(11) DEFAULT NULL,
+  `2022_01_19_2` int(11) DEFAULT NULL,
+  `2022_01_21_3` int(11) DEFAULT NULL,
+  `2022_01_25_3` int(11) DEFAULT NULL,
+  `2022_01_28_3` int(11) DEFAULT NULL,
+  `2021_11_01_1` int(11) DEFAULT NULL,
+  `2021_10_12_3` int(11) DEFAULT NULL,
+  `2021_10_19_3` int(11) DEFAULT NULL,
+  `2021_10_26_3` int(11) DEFAULT NULL,
+  `2021_11_02_3` int(11) DEFAULT NULL,
+  `2021_11_09_3` int(11) DEFAULT NULL,
+  `2021_11_16_3` int(11) DEFAULT NULL,
+  `2021_11_23_3` int(11) DEFAULT NULL,
+  `2021_11_30_3` int(11) DEFAULT NULL,
+  `2021_12_21_3` int(11) DEFAULT NULL,
+  `2021_10_06_2` int(11) DEFAULT NULL,
+  `2021_11_03_2` int(11) DEFAULT NULL,
+  `2021_11_10_2` int(11) DEFAULT NULL,
+  `2021_12_08_2` int(11) DEFAULT NULL,
+  `2021_10_07_3` int(11) DEFAULT NULL,
+  `2021_10_21_3` int(11) DEFAULT NULL,
+  `2021_10_28_3` int(11) DEFAULT NULL,
+  `2021_11_04_3` int(11) DEFAULT NULL,
+  `2021_11_11_3` int(11) DEFAULT NULL,
+  `2021_11_18_3` int(11) DEFAULT NULL,
+  `2021_10_05_2` int(11) DEFAULT NULL,
+  `2021_10_12_2` int(11) DEFAULT NULL,
+  `2021_10_19_2` int(11) DEFAULT NULL,
+  `2021_10_26_2` int(11) DEFAULT NULL,
+  `2021_11_02_2` int(11) DEFAULT NULL,
+  `2021_11_09_2` int(11) DEFAULT NULL,
+  `2021_10_07_2` int(11) DEFAULT NULL,
+  `2021_10_14_2` int(11) DEFAULT NULL,
+  `2021_10_28_2` int(11) DEFAULT NULL,
+  `2021_11_04_2` int(11) DEFAULT NULL,
+  `2021_11_11_2` int(11) DEFAULT NULL,
+  `2021_10_15_1` int(11) DEFAULT NULL,
+  `2022_01_09_1` int(11) DEFAULT NULL,
+  `2022_04_04_1` int(11) DEFAULT NULL,
+  `2022_04_21_1` int(11) DEFAULT NULL,
+  `2022_04_25_1` int(11) DEFAULT NULL,
+  `2021_11_22_2` int(11) DEFAULT NULL,
+  `2021_12_20_3` int(11) DEFAULT NULL,
+  `2022_05_09_1` int(11) DEFAULT NULL,
+  `2022_05_04_1` int(11) DEFAULT NULL,
+  `2022_03_16_1` int(11) DEFAULT NULL,
+  `2022_05_12_1` int(11) DEFAULT NULL,
+  `2022_03_24_1` int(11) DEFAULT NULL,
+  `2022_03_30_1` int(11) DEFAULT NULL,
+  `2022_03_30_2` int(11) DEFAULT NULL,
+  `2022_03_31_1` int(11) DEFAULT NULL,
+  `2022_04_01_1` int(11) DEFAULT NULL,
+  `2022_04_06_1` int(11) DEFAULT NULL,
+  `2022_05_05_1` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -68,6 +544,9 @@ CREATE TABLE `assignment_marks` (
 -- Table structure for table `attendance_new`
 --
 
+DROP TABLE IF EXISTS `attendance_new`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `attendance_new` (
   `adm_no` varchar(20) NOT NULL,
   `usn` varchar(20) NOT NULL,
@@ -330,6 +809,13 @@ INSERT INTO `attendance_new` (`adm_no`, `usn`, `name`, `sem`, `sec`, `branch`, `
 -- Table structure for table `att_avg`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `att_avg`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `att_avg` (
   `adm_no` varchar(30) DEFAULT NULL,
   `usn` varchar(30) DEFAULT NULL,
@@ -347,6 +833,13 @@ CREATE TABLE `att_avg` (
 -- Table structure for table `book`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `book`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `book` (
   `bookid` varchar(20) NOT NULL,
   `title` varchar(100) DEFAULT NULL,
@@ -364,6 +857,13 @@ CREATE TABLE `book` (
 -- Table structure for table `co`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `co`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `co` (
   `faculty_id` varchar(30) NOT NULL,
   `sub` varchar(100) NOT NULL,
@@ -477,6 +977,13 @@ INSERT INTO `coordinator` (`id`, `faculty_id`, `name`, `branch`, `class_cordinat
 -- Table structure for table `course_end`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `course_end`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `course_end` (
   `id` varchar(20) NOT NULL,
   `question` varchar(500) DEFAULT NULL
@@ -497,10 +1004,21 @@ INSERT INTO `course_end` (`id`, `question`) VALUES
 -- Table structure for table `course_end_mapping`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `course_end_mapping`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `course_end_mapping` (
   `usn` varchar(50) DEFAULT NULL,
   `branch` varchar(50) DEFAULT NULL,
   `batch` varchar(50) DEFAULT NULL,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `g1` int(11) DEFAULT 0,
   `g2` int(11) DEFAULT 0,
   `g3` int(11) DEFAULT 0,
@@ -510,6 +1028,20 @@ CREATE TABLE `course_end_mapping` (
   `co4` int(11) DEFAULT 0,
   `co5` int(11) DEFAULT 0,
   `co6` int(11) DEFAULT 0,
+<<<<<<< HEAD
+=======
+=======
+  `g1` int(11) DEFAULT '0',
+  `g2` int(11) DEFAULT '0',
+  `g3` int(11) DEFAULT '0',
+  `co1` int(11) DEFAULT '0',
+  `co2` int(11) DEFAULT '0',
+  `co3` int(11) DEFAULT '0',
+  `co4` int(11) DEFAULT '0',
+  `co5` int(11) DEFAULT '0',
+  `co6` int(11) DEFAULT '0',
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `sub` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -519,6 +1051,13 @@ CREATE TABLE `course_end_mapping` (
 -- Table structure for table `co_po`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `co_po`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `co_po` (
   `faculty_id` varchar(10) NOT NULL,
   `sub` varchar(700) NOT NULL,
@@ -582,6 +1121,13 @@ INSERT INTO `co_po` (`faculty_id`, `sub`, `dept`, `co`, `po1`, `po2`, `po3`, `po
 -- Table structure for table `co_pso`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `co_pso`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `co_pso` (
   `faculty_id` varchar(40) NOT NULL,
   `sub` varchar(500) NOT NULL,
@@ -638,6 +1184,13 @@ INSERT INTO `co_pso` (`faculty_id`, `sub`, `dept`, `co`, `pso1`, `pso2`, `pso3`,
 -- Table structure for table `dept_pso`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `dept_pso`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `dept_pso` (
   `id` int(10) NOT NULL,
   `dept_name` varchar(1000) NOT NULL,
@@ -670,6 +1223,13 @@ INSERT INTO `dept_pso` (`id`, `dept_name`, `pso1`, `pso2`, `pso3`, `pso4`, `pso5
 -- Table structure for table `display_pic`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `display_pic`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `display_pic` (
   `username` varchar(255) NOT NULL,
   `dp` varchar(255) NOT NULL
@@ -1076,6 +1636,13 @@ INSERT INTO `display_pic` (`username`, `dp`) VALUES
 -- Table structure for table `elective_maping`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `elective_maping`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `elective_maping` (
   `usn` varchar(200) NOT NULL,
   `sub_name` varchar(400) NOT NULL,
@@ -1085,6 +1652,10 @@ CREATE TABLE `elective_maping` (
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Table structure for table `faculty_casual_leave`
 --
 
@@ -1098,6 +1669,7 @@ CREATE TABLE `faculty_casual_leave` (
   `status` int(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `faculty_casual_leave`
 --
@@ -1112,6 +1684,20 @@ INSERT INTO `faculty_casual_leave` (`id`, `faculty_name`, `reason`, `applied_dat
 -- Table structure for table `faculty_details`
 --
 
+=======
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty_details`
+--
+
+=======
+-- Table structure for table `faculty_details`
+--
+
+DROP TABLE IF EXISTS `faculty_details`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `faculty_details` (
   `faculty_id` varchar(30) NOT NULL,
   `faculty_name` varchar(50) DEFAULT NULL,
@@ -1246,6 +1832,13 @@ INSERT INTO `faculty_details` (`faculty_id`, `faculty_name`, `faculty_desg`, `fa
 -- Table structure for table `faculty_mapping`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `faculty_mapping`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `faculty_mapping` (
   `faculty_name` varchar(100) NOT NULL,
   `sub_name` varchar(100) NOT NULL
@@ -1364,6 +1957,13 @@ INSERT INTO `faculty_ood` (`id`, `faculty_name`, `reason`, `applied_date`, `from
 -- Table structure for table `faculty_ppr_details`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `faculty_ppr_details`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `faculty_ppr_details` (
   `paper_id` int(11) NOT NULL,
   `faculty_id` varchar(30) DEFAULT NULL,
@@ -1444,6 +2044,10 @@ INSERT INTO `faculty_ppr_details` (`paper_id`, `faculty_id`, `faculty_ppr_type`,
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Table structure for table `faculty_scl`
 --
 
@@ -1463,15 +2067,31 @@ CREATE TABLE `faculty_scl` (
 --
 
 INSERT INTO `faculty_scl` (`id`, `faculty_name`, `reason`, `applied_date`, `from_date`, `to_date`, `doc_name`, `status`) VALUES
+<<<<<<< HEAD
 (1, 'Shilpa', 'fever', '2022-05-07', '2022-05-06', '2022-05-08', '../leave_doc/scl_doc/Isha cv.pdf', 1),
 (2, 'Shilpa', 'abc', '2022-06-19', '2022-06-19', '2022-06-20', '../leave_doc/scl_doc/__ BillDesk Payment Gateway __ (1).pdf', 0);
+=======
+(1, 'Shilpa', 'fever', '2022-05-07', '2022-05-06', '2022-05-08', '../leave_doc/scl_doc/Isha cv.pdf', 0);
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `faculty_workshop_details`
 --
 
+=======
+-- Table structure for table `faculty_workshop_details`
+--
+
+=======
+-- Table structure for table `faculty_workshop_details`
+--
+
+DROP TABLE IF EXISTS `faculty_workshop_details`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `faculty_workshop_details` (
   `faculty_id` varchar(30) DEFAULT NULL,
   `faculty_workshop_name` varchar(50) DEFAULT NULL,
@@ -1539,6 +2159,13 @@ INSERT INTO `faculty_workshop_details` (`faculty_id`, `faculty_workshop_name`, `
 -- Table structure for table `feedback_all`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `feedback_all`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `feedback_all` (
   `id` int(11) NOT NULL,
   `feedback_name` varchar(300) DEFAULT NULL,
@@ -1590,6 +2217,13 @@ INSERT INTO `feedback_all` (`id`, `feedback_name`, `q1`, `q2`, `q3`, `q4`, `q5`,
 -- Table structure for table `feedback_notification`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `feedback_notification`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `feedback_notification` (
   `id` int(11) NOT NULL,
   `feedback_name` varchar(300) DEFAULT NULL,
@@ -1606,6 +2240,13 @@ CREATE TABLE `feedback_notification` (
 -- Table structure for table `feedback_response`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `feedback_response`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `feedback_response` (
   `id` int(11) NOT NULL,
   `usn` varchar(300) DEFAULT NULL,
@@ -1703,6 +2344,13 @@ INSERT INTO `feedback_response` (`id`, `usn`, `name`, `branch`, `sem`, `section`
 -- Table structure for table `hod`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `hod`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `hod` (
   `id` int(11) NOT NULL,
   `faculty_id` varchar(30) NOT NULL,
@@ -1775,6 +2423,13 @@ INSERT INTO `hostel_info` (`hostel_name`, `hostel_block`) VALUES
 -- Table structure for table `ia1_co_mapping`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `ia1_co_mapping`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `ia1_co_mapping` (
   `sub_code` varchar(50) DEFAULT NULL,
   `dept` varchar(100) DEFAULT NULL,
@@ -1843,6 +2498,13 @@ INSERT INTO `ia1_co_mapping` (`sub_code`, `dept`, `1a`, `1b`, `1c`, `2a`, `2b`, 
 -- Table structure for table `ia1_max_marks`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `ia1_max_marks`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `ia1_max_marks` (
   `sub_code` varchar(100) DEFAULT NULL,
   `dept` varchar(100) DEFAULT NULL,
@@ -1917,6 +2579,13 @@ INSERT INTO `ia1_max_marks` (`sub_code`, `dept`, `1a`, `1b`, `1c`, `2a`, `2b`, `
 -- Table structure for table `ia2_co_mapping`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `ia2_co_mapping`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `ia2_co_mapping` (
   `sub_code` varchar(50) DEFAULT NULL,
   `dept` varchar(100) DEFAULT NULL,
@@ -1985,6 +2654,13 @@ INSERT INTO `ia2_co_mapping` (`sub_code`, `dept`, `1a`, `1b`, `1c`, `2a`, `2b`, 
 -- Table structure for table `ia2_max_marks`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `ia2_max_marks`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `ia2_max_marks` (
   `sub_code` varchar(100) DEFAULT NULL,
   `dept` varchar(100) DEFAULT NULL,
@@ -2059,6 +2735,13 @@ INSERT INTO `ia2_max_marks` (`sub_code`, `dept`, `1a`, `1b`, `1c`, `2a`, `2b`, `
 -- Table structure for table `ia3_co_mapping`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `ia3_co_mapping`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `ia3_co_mapping` (
   `sub_code` varchar(50) DEFAULT NULL,
   `dept` varchar(100) DEFAULT NULL,
@@ -2127,6 +2810,13 @@ INSERT INTO `ia3_co_mapping` (`sub_code`, `dept`, `1a`, `1b`, `1c`, `2a`, `2b`, 
 -- Table structure for table `ia3_max_marks`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `ia3_max_marks`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `ia3_max_marks` (
   `sub_code` varchar(100) DEFAULT NULL,
   `dept` varchar(100) DEFAULT NULL,
@@ -2201,9 +2891,22 @@ INSERT INTO `ia3_max_marks` (`sub_code`, `dept`, `1a`, `1b`, `1c`, `2a`, `2b`, `
 -- Table structure for table `ia_marks1`
 --
 
+<<<<<<< HEAD
 CREATE TABLE `ia_marks1` (
   `adm_no` varchar(20) NOT NULL,
   `att` int(11) DEFAULT 1,
+=======
+<<<<<<< HEAD
+CREATE TABLE `ia_marks1` (
+  `adm_no` varchar(20) NOT NULL,
+  `att` int(11) DEFAULT 1,
+=======
+DROP TABLE IF EXISTS `ia_marks1`;
+CREATE TABLE `ia_marks1` (
+  `adm_no` varchar(20) NOT NULL,
+  `att` int(11) DEFAULT '1',
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `usn` varchar(30) NOT NULL,
   `name` varchar(60) NOT NULL,
   `branch` varchar(60) NOT NULL,
@@ -2248,9 +2951,22 @@ INSERT INTO `ia_marks1` (`adm_no`, `att`, `usn`, `name`, `branch`, `sem`, `sec`,
 -- Table structure for table `ia_marks2`
 --
 
+<<<<<<< HEAD
 CREATE TABLE `ia_marks2` (
   `adm_no` varchar(20) NOT NULL,
   `att` int(11) DEFAULT 1,
+=======
+<<<<<<< HEAD
+CREATE TABLE `ia_marks2` (
+  `adm_no` varchar(20) NOT NULL,
+  `att` int(11) DEFAULT 1,
+=======
+DROP TABLE IF EXISTS `ia_marks2`;
+CREATE TABLE `ia_marks2` (
+  `adm_no` varchar(20) NOT NULL,
+  `att` int(11) DEFAULT '1',
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `usn` varchar(30) NOT NULL,
   `name` varchar(60) NOT NULL,
   `branch` varchar(60) NOT NULL,
@@ -2295,9 +3011,22 @@ INSERT INTO `ia_marks2` (`adm_no`, `att`, `usn`, `name`, `branch`, `sem`, `sec`,
 -- Table structure for table `ia_marks3`
 --
 
+<<<<<<< HEAD
 CREATE TABLE `ia_marks3` (
   `adm_no` varchar(20) NOT NULL,
   `att` int(11) DEFAULT 1,
+=======
+<<<<<<< HEAD
+CREATE TABLE `ia_marks3` (
+  `adm_no` varchar(20) NOT NULL,
+  `att` int(11) DEFAULT 1,
+=======
+DROP TABLE IF EXISTS `ia_marks3`;
+CREATE TABLE `ia_marks3` (
+  `adm_no` varchar(20) NOT NULL,
+  `att` int(11) DEFAULT '1',
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `usn` varchar(30) NOT NULL,
   `name` varchar(60) NOT NULL,
   `branch` varchar(60) NOT NULL,
@@ -2342,6 +3071,13 @@ INSERT INTO `ia_marks3` (`adm_no`, `att`, `usn`, `name`, `branch`, `sem`, `sec`,
 -- Table structure for table `issue_fac`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `issue_fac`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `issue_fac` (
   `bookid` varchar(20) DEFAULT NULL,
   `fac_id` varchar(15) DEFAULT NULL,
@@ -2356,6 +3092,13 @@ CREATE TABLE `issue_fac` (
 -- Table structure for table `issue_student`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `issue_student`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `issue_student` (
   `bookid` varchar(20) DEFAULT NULL,
   `usn` varchar(15) DEFAULT NULL,
@@ -2372,6 +3115,13 @@ CREATE TABLE `issue_student` (
 -- Table structure for table `lab_co_mapping`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `lab_co_mapping`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `lab_co_mapping` (
   `subcode` varchar(500) DEFAULT NULL,
   `dept` varchar(200) DEFAULT NULL,
@@ -2417,6 +3167,13 @@ INSERT INTO `lab_co_mapping` (`subcode`, `dept`, `e1`, `e2`, `e3`, `e4`, `e5`, `
 -- Table structure for table `lab_marks`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `lab_marks`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `lab_marks` (
   `adm_no` varchar(20) DEFAULT NULL,
   `usn` varchar(30) DEFAULT NULL,
@@ -2425,6 +3182,10 @@ CREATE TABLE `lab_marks` (
   `sem` varchar(30) DEFAULT NULL,
   `sec` varchar(20) DEFAULT NULL,
   `sub` varchar(100) DEFAULT NULL,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `no_exp` int(11) NOT NULL DEFAULT 16,
   `exp1` int(11) DEFAULT 0,
   `exp2` int(11) DEFAULT 0,
@@ -2443,6 +3204,8 @@ CREATE TABLE `lab_marks` (
   `exp15` int(11) DEFAULT 0,
   `exp16` int(11) DEFAULT 0,
   `exp_total` int(11) DEFAULT 0,
+<<<<<<< HEAD
+=======
   `exp_avg` varchar(20) DEFAULT '0',
   `total_ia` int(11) NOT NULL DEFAULT 1,
   `ia1_expno` int(11) DEFAULT 0,
@@ -2454,6 +3217,44 @@ CREATE TABLE `lab_marks` (
   `final_ia` int(11) DEFAULT 0,
   `exam_mark` int(11) DEFAULT 0,
   `lab_total` int(11) DEFAULT 0
+=======
+  `no_exp` int(11) NOT NULL DEFAULT '16',
+  `exp1` int(11) DEFAULT '0',
+  `exp2` int(11) DEFAULT '0',
+  `exp3` int(11) DEFAULT '0',
+  `exp4` int(11) DEFAULT '0',
+  `exp5` int(11) DEFAULT '0',
+  `exp6` int(11) DEFAULT '0',
+  `exp7` int(11) DEFAULT '0',
+  `exp8` int(11) DEFAULT '0',
+  `exp9` int(11) DEFAULT '0',
+  `exp10` int(11) DEFAULT '0',
+  `exp11` int(11) DEFAULT '0',
+  `exp12` int(11) DEFAULT '0',
+  `exp13` int(11) DEFAULT '0',
+  `exp14` int(11) DEFAULT '0',
+  `exp15` int(11) DEFAULT '0',
+  `exp16` int(11) DEFAULT '0',
+  `exp_total` int(11) DEFAULT '0',
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
+  `exp_avg` varchar(20) DEFAULT '0',
+  `total_ia` int(11) NOT NULL DEFAULT 1,
+  `ia1_expno` int(11) DEFAULT 0,
+  `ia1_mark` int(11) DEFAULT 0,
+  `ia2_expno` int(11) DEFAULT 0,
+  `ia2_marks` int(11) DEFAULT 0,
+  `ia_total` int(11) DEFAULT 0,
+  `ia_avg` varchar(20) DEFAULT NULL,
+<<<<<<< HEAD
+  `final_ia` int(11) DEFAULT 0,
+  `exam_mark` int(11) DEFAULT 0,
+  `lab_total` int(11) DEFAULT 0
+=======
+  `final_ia` int(11) DEFAULT '0',
+  `exam_mark` int(11) DEFAULT '0',
+  `lab_total` int(11) DEFAULT '0'
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -2646,6 +3447,13 @@ INSERT INTO `lab_marks` (`adm_no`, `usn`, `name`, `branch`, `sem`, `sec`, `sub`,
 -- Table structure for table `lessonpanl`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `lessonpanl`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `lessonpanl` (
   `sr_no` int(10) NOT NULL,
   `branch` varchar(500) NOT NULL,
@@ -3089,6 +3897,13 @@ INSERT INTO `lessonpanl` (`sr_no`, `branch`, `sem`, `subid`, `section`, `module`
 -- Table structure for table `lesson_plan_approval`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `lesson_plan_approval`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `lesson_plan_approval` (
   `sem` varchar(500) NOT NULL,
   `sec` varchar(500) NOT NULL,
@@ -3112,6 +3927,13 @@ INSERT INTO `lesson_plan_approval` (`sem`, `sec`, `sub`, `hod`, `status`, `branc
 -- Table structure for table `marks`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `marks`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `marks` (
   `usn` varchar(30) DEFAULT NULL,
   `name` varchar(60) DEFAULT NULL,
@@ -3127,7 +3949,15 @@ CREATE TABLE `marks` (
   `ia_avg` int(11) DEFAULT NULL,
   `assignment_avg` int(11) DEFAULT NULL,
   `total_marks` int(11) DEFAULT NULL,
+<<<<<<< HEAD
   `external` int(11) NOT NULL DEFAULT 0
+=======
+<<<<<<< HEAD
+  `external` int(11) NOT NULL DEFAULT 0
+=======
+  `external` int(11) NOT NULL DEFAULT '0'
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -3153,6 +3983,13 @@ INSERT INTO `marks` (`usn`, `name`, `branch`, `sem`, `sec`, `sub`, `att_avg`, `i
 -- Table structure for table `meeting`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `meeting`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `meeting` (
   `usn` varchar(20) NOT NULL,
   `Date` date NOT NULL,
@@ -3167,6 +4004,13 @@ CREATE TABLE `meeting` (
 -- Table structure for table `mentor_mapping`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `mentor_mapping`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `mentor_mapping` (
   `fac_name` varchar(20) NOT NULL,
   `usn` varchar(20) NOT NULL
@@ -3771,6 +4615,13 @@ INSERT INTO `mentor_mapping` (`fac_name`, `usn`) VALUES
 -- Table structure for table `notification`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `notification`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `notification` (
   `id` int(11) NOT NULL,
   `usn` varchar(50) NOT NULL,
@@ -3781,7 +4632,15 @@ CREATE TABLE `notification` (
   `subject` varchar(100) NOT NULL,
   `content` varchar(255) NOT NULL,
   `redirect` varchar(255) NOT NULL,
+<<<<<<< HEAD
   `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+=======
+<<<<<<< HEAD
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+=======
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -3791,6 +4650,13 @@ CREATE TABLE `notification` (
 -- Table structure for table `parents_details`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `parents_details`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `parents_details` (
   `adm_no` varchar(30) DEFAULT NULL,
   `usn` varchar(15) DEFAULT NULL,
@@ -5026,6 +5892,13 @@ INSERT INTO `parents_details` (`adm_no`, `usn`, `mother_name`, `mother_mob_no`, 
 -- Table structure for table `post`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `post`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `post` (
   `post_id` int(11) NOT NULL,
   `post_pic` varchar(255) NOT NULL,
@@ -5046,6 +5919,13 @@ INSERT INTO `post` (`post_id`, `post_pic`, `username`, `caption`) VALUES
 -- Table structure for table `project_phase`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `project_phase`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `project_phase` (
   `adm_no` varchar(20) DEFAULT NULL,
   `att` int(11) DEFAULT NULL,
@@ -5067,6 +5947,13 @@ CREATE TABLE `project_phase` (
 -- Table structure for table `puc_details`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `puc_details`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `puc_details` (
   `adm_no` varchar(30) DEFAULT NULL,
   `puc_school` varchar(50) DEFAULT NULL,
@@ -6308,6 +7195,13 @@ INSERT INTO `puc_details` (`adm_no`, `puc_school`, `puc_board_university`, `puc_
 -- Table structure for table `sem_start_end`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `sem_start_end`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `sem_start_end` (
   `sem` varchar(10) NOT NULL,
   `start` varchar(100) NOT NULL,
@@ -6328,6 +7222,13 @@ INSERT INTO `sem_start_end` (`sem`, `start`, `end`) VALUES
 -- Table structure for table `shedule`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `shedule`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `shedule` (
   `usn` varchar(20) NOT NULL,
   `Date` date NOT NULL,
@@ -6370,6 +7271,13 @@ INSERT INTO `shedule` (`usn`, `Date`, `time`, `agenda`, `any_issue`, `Remark`) V
 -- Table structure for table `sslc_details`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `sslc_details`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `sslc_details` (
   `adm_no` varchar(30) DEFAULT NULL,
   `sslc_school` varchar(50) DEFAULT NULL,
@@ -7600,6 +8508,13 @@ INSERT INTO `sslc_details` (`adm_no`, `sslc_school`, `sslc_board_university`, `s
 -- Table structure for table `students`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `students`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `students` (
   `adm_no` varchar(30) NOT NULL,
   `usn` varchar(15) DEFAULT NULL,
@@ -8675,6 +9590,10 @@ INSERT INTO `students` (`adm_no`, `usn`, `batch`, `semester`, `section`, `lab_ba
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Table structure for table `student_event_leave`
 --
 
@@ -8696,6 +9615,7 @@ CREATE TABLE `student_event_leave` (
 --
 
 INSERT INTO `student_event_leave` (`id`, `usn`, `sem`, `event_name`, `event_date`, `applied_date`, `from_time`, `to_time`, `doc_name`, `status`) VALUES
+<<<<<<< HEAD
 (1, '4AL18CS039', '7', 'abc', '2021-12-01', '2021-12-02', '02:45:00', '02:44:00', '../leave_doc/event_doc/filipe2021.pdf', 1),
 (2, '4AL18CS039', '8', 'a', '2022-05-04', '2022-05-28', '10:53:00', '09:55:00', '../leave_doc/event_doc/ICOEI.2019.8862553.pdf', 1),
 (3, '4AL18CS039', '8', 'b', '2022-05-11', '2022-05-28', '11:53:00', '00:55:00', '../leave_doc/event_doc/sensors-21-04208.pdf', 1),
@@ -8705,6 +9625,9 @@ INSERT INTO `student_event_leave` (`id`, `usn`, `sem`, `event_name`, `event_date
 (7, '4AL18CS039', '8', 'g', '2022-05-03', '2022-05-28', '11:55:00', '09:59:00', '../leave_doc/event_doc/70ef74263d7547167f80c42e414ec25e95de15a7a58b8615e6d151ddea51194d2022-01-28-10', 0),
 (8, '4AL18CS029', '8', 'fest', '2022-06-15', '2022-05-30', '00:20:00', '02:20:00', '../leave_doc/event_doc/EIT48999.2020.9208240.pdf', 0),
 (22, '4AL18CS029', '8', 'fest', '2022-06-21', '2022-06-19', '16:57:00', '16:59:00', '../leave_doc/event_doc/internship.pdf', 0);
+=======
+(1, '4AL18CS039', '7', 'abc', '2021-12-01', '2021-12-02', '02:45:00', '02:44:00', '../leave_doc/event_doc/filipe2021.pdf', 0);
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 
 -- --------------------------------------------------------
 
@@ -8736,8 +9659,12 @@ INSERT INTO `student_medical_leave` (`id`, `usn`, `sem`, `reason`, `applied_date
 (5, '4AL18CS039', '7', 'headache', '2022-05-07', '2022-05-05', '2022-05-16', '../leave_doc/medical_doc/alturkistani2014.pdf', 1),
 (7, '4AL18CS039', '7', 'headache', '2022-05-14', '2022-05-02', '2022-05-03', '../leave_doc/medical_doc/AI Programs.pdf', 2),
 (8, '4AL18CS006', '6', 'headache', '2022-05-26', '2022-05-16', '2022-05-17', '../leave_doc/medical_doc/A2878-4.pdf', 0),
+<<<<<<< HEAD
 (9, '4AL18CS039', '8', 'headache', '2022-05-26', '2022-05-11', '2022-05-12', '../leave_doc/medical_doc/A2878-3.pdf', 1),
 (10, '4AL18CS029', '8', 'headache', '2022-06-19', '2022-06-19', '2022-06-19', '../leave_doc/medical_doc/__ BillDesk Payment Gatew', 0);
+=======
+(9, '4AL18CS039', '8', 'headache', '2022-05-26', '2022-05-11', '2022-05-12', '../leave_doc/medical_doc/A2878-3.pdf', 1);
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 
 -- --------------------------------------------------------
 
@@ -8764,21 +9691,46 @@ CREATE TABLE `student_placement_leave` (
 --
 
 INSERT INTO `student_placement_leave` (`id`, `usn`, `sem`, `company_name`, `rounds`, `place_date`, `applied_date`, `from_time`, `to_time`, `doc_name`, `status`) VALUES
+<<<<<<< HEAD
 (1, '4AL18CS039', '8', 'n  ', 5, '2021-12-17', '2021-12-02', '02:10:00', '02:13:00', '../leave_doc/placement_doc/filipe2021.pdf', 1),
 (2, '4AL18CS039', '7', 'xyz', 2, '2021-12-02', '2021-12-02', '02:43:00', '02:44:00', '../leave_doc/placement_doc/duangwongsa2021.pdf', 0),
 (3, '4AL18CS029', '8', 'abc', 2, '2022-06-19', '2022-06-19', '15:06:00', '16:06:00', '../leave_doc/placement_doc/SAN important questions.pdf', 0);
+=======
+(1, '4AL18CS039', '7', 'n  ', 5, '2021-12-17', '2021-12-02', '02:10:00', '02:13:00', '../leave_doc/placement_doc/filipe2021.pdf', 0),
+(2, '4AL18CS039', '7', 'xyz', 2, '2021-12-02', '2021-12-02', '02:43:00', '02:44:00', '../leave_doc/placement_doc/duangwongsa2021.pdf', 0);
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `subjects`
 --
 
+=======
+-- Table structure for table `subjects`
+--
+
+=======
+-- Table structure for table `subjects`
+--
+
+DROP TABLE IF EXISTS `subjects`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `subjects` (
   `sub_name` varchar(200) DEFAULT NULL,
   `sub_code` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
   `elective` int(1) NOT NULL,
+<<<<<<< HEAD
   `lab` int(11) NOT NULL DEFAULT 0,
+=======
+<<<<<<< HEAD
+  `lab` int(11) NOT NULL DEFAULT 0,
+=======
+  `lab` int(11) NOT NULL DEFAULT '0',
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `branch` varchar(50) DEFAULT NULL,
   `sem` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -8789,12 +9741,27 @@ CREATE TABLE `subjects` (
 -- Table structure for table `subjects_new`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `subjects_new`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `subjects_new` (
   `branch` varchar(100) NOT NULL,
   `sem` varchar(10) NOT NULL,
   `sub_name` varchar(400) NOT NULL,
   `sub_code` varchar(20) NOT NULL,
+<<<<<<< HEAD
   `sub_id` int(11) NOT NULL DEFAULT 0
+=======
+<<<<<<< HEAD
+  `sub_id` int(11) NOT NULL DEFAULT 0
+=======
+  `sub_id` int(11) NOT NULL DEFAULT '0'
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -8869,6 +9836,13 @@ INSERT INTO `subjects_new` (`branch`, `sem`, `sub_name`, `sub_code`, `sub_id`) V
 -- Table structure for table `targets`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `targets`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `targets` (
   `id` int(11) NOT NULL,
   `dept` varchar(500) NOT NULL,
@@ -8898,12 +9872,27 @@ INSERT INTO `targets` (`id`, `dept`, `set_target`, `f_percentage`, `s_percentage
 -- Table structure for table `users`
 --
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `users`;
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `identity` int(10) NOT NULL,
+<<<<<<< HEAD
   `created_at` datetime DEFAULT current_timestamp(),
+=======
+<<<<<<< HEAD
+  `created_at` datetime DEFAULT current_timestamp(),
+=======
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
   `dept` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -10042,6 +11031,19 @@ ALTER TABLE `add_assignment`
   ADD UNIQUE KEY `sub_name` (`sub_name`,`branch`,`semester`,`section`,`assignment_no`,`fac_name`);
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD UNIQUE KEY `adm_no` (`adm_no`,`usn`,`branch`,`sem`,`section`,`subject`),
+  ADD KEY `attendance_ibfk_2` (`usn`);
+
+--
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Indexes for table `attendance_new`
 --
 ALTER TABLE `attendance_new`
@@ -10117,12 +11119,21 @@ ALTER TABLE `elective_maping`
   ADD PRIMARY KEY (`usn`,`sub_name`);
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Indexes for table `faculty_casual_leave`
 --
 ALTER TABLE `faculty_casual_leave`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Indexes for table `faculty_details`
 --
 ALTER TABLE `faculty_details`
@@ -10148,12 +11159,21 @@ ALTER TABLE `faculty_ppr_details`
   ADD KEY `faculty_id` (`faculty_id`);
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Indexes for table `faculty_scl`
 --
 ALTER TABLE `faculty_scl`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Indexes for table `faculty_workshop_details`
 --
 ALTER TABLE `faculty_workshop_details`
@@ -10257,6 +11277,10 @@ ALTER TABLE `students`
   ADD UNIQUE KEY `UC_usn` (`usn`);
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Indexes for table `student_event_leave`
 --
 ALTER TABLE `student_event_leave`
@@ -10278,6 +11302,11 @@ ALTER TABLE `student_placement_leave`
   ADD KEY `usn` (`usn`);
 
 --
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- Indexes for table `subjects_new`
 --
 ALTER TABLE `subjects_new`
@@ -10300,6 +11329,7 @@ ALTER TABLE `users`
 --
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `coordinator`
 --
 ALTER TABLE `coordinator`
@@ -10318,18 +11348,41 @@ ALTER TABLE `faculty_ood`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+=======
+<<<<<<< HEAD
+-- AUTO_INCREMENT for table `faculty_casual_leave`
+--
+ALTER TABLE `faculty_casual_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+=======
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- AUTO_INCREMENT for table `faculty_ppr_details`
 --
 ALTER TABLE `faculty_ppr_details`
   MODIFY `paper_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `faculty_scl`
 --
 ALTER TABLE `faculty_scl`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+=======
+<<<<<<< HEAD
+-- AUTO_INCREMENT for table `faculty_scl`
+--
+ALTER TABLE `faculty_scl`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+=======
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- AUTO_INCREMENT for table `faculty_workshop_details`
 --
 ALTER TABLE `faculty_workshop_details`
@@ -10360,24 +11413,44 @@ ALTER TABLE `post`
   MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `student_event_leave`
 --
 ALTER TABLE `student_event_leave`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+=======
+<<<<<<< HEAD
+-- AUTO_INCREMENT for table `student_event_leave`
+--
+ALTER TABLE `student_event_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 
 --
 -- AUTO_INCREMENT for table `student_medical_leave`
 --
 ALTER TABLE `student_medical_leave`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 
 --
 -- AUTO_INCREMENT for table `student_placement_leave`
 --
 ALTER TABLE `student_placement_leave`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+=======
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 -- AUTO_INCREMENT for table `targets`
 --
 ALTER TABLE `targets`
@@ -10392,6 +11465,10 @@ ALTER TABLE `targets`
 --
 ALTER TABLE `course_end_mapping`
   ADD CONSTRAINT `course_end_mapping_ibfk_1` FOREIGN KEY (`usn`) REFERENCES `students` (`usn`);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 
 --
 -- Constraints for table `student_event_leave`
@@ -10410,6 +11487,11 @@ ALTER TABLE `student_medical_leave`
 --
 ALTER TABLE `student_placement_leave`
   ADD CONSTRAINT `student_placement_leave_ibfk_1` FOREIGN KEY (`usn`) REFERENCES `students` (`usn`);
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d8b093217eaac63bd2778816f7708b3cc3304018
+>>>>>>> b67078722259d8a10da4d748de041328c28ea300
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

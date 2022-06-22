@@ -239,12 +239,14 @@
                     <a href="#attendanceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Attendance</a>
                     <ul class="collapse list-unstyled" id="attendanceSubmenu">
                         <li>
-                            <a href="../attendance/Select%20Attendence_for_Adding_attendence.php">Mark Attendance</a>
+                            <a href="../attendance_new/Select%20Attendence_for_Adding_attendence.php">Mark Attendance</a>
                         </li>
                         <li>
-                            <a href="../attendance/Select%20Attendence_for_viewingattendence.php">View Attendance</a>
+                            <a href="../attendance_new/Select%20Attendence_for_viewingattendence.php">View Attendance</a>
                         </li>
-
+                        <li>
+                            <a href="../attendance_new/Attendence_permitted.php">Permitted Leave</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -348,6 +350,20 @@
                 </li>
             </ul>
             </li>
+            <li>
+                        <a href="#leaveSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Leave</a>
+                        <ul class="collapse list-unstyled" id="leaveSubmenu">
+                            <li>
+                                <a href="../Fac_leave_management/casualleave.php">Casual Leave</a>
+                            </li>
+                            <li>
+                                <a href="../Fac_leave_management/OOD_leave.php">OOD Leave</a>
+                            </li>
+                            <li>
+                                <a href="../Fac_leave_management/sclleave.php"">SCL Leave</a>
+                            </li>
+                        </ul>
+                    </li>
             <!-- dept admin list start -->
 
             <?php
@@ -455,20 +471,7 @@
                     <?php } ?>
                     </ul>
                 </li>
-                <li>
-                        <a href="#leaveSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Leave</a>
-                        <ul class="collapse list-unstyled" id="leaveSubmenu">
-                            <li>
-                                <a href="../Fac_leave_management/casualleave.php">Casual Leave</a>
-                            </li>
-                            <li>
-                                <a href="../Fac_leave_management/OOD_leave.php">OOD Leave</a>
-                            </li>
-                            <li>
-                                <a href="../Fac_leave_management/sclleave.php"">SCL Leave</a>
-                            </li>
-                        </ul>
-                    </li>
+                
                 <!-- dept admin list end -->
 
 

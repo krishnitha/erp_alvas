@@ -65,7 +65,7 @@ $res2=$link->query($q1);
 <?php
 if(isset($_POST["submit"]))
 {
-    if($_POST["choice"]=="yes"){
+    if($_POST["choice"]=="yes" && $_POST["block"]!="" && $_POST["hostel"]!=""){
         $hostel_block = $_POST["block"];
         $hostel_name =  $_POST["hostel"];
         $que = "insert into hostel_details(usn,hostel_name,hostel_block) values (\"" . $_SESSION['username'] . "\",\"" . $hostel_block. "\",\"" . $hostel_name .  "\")";
