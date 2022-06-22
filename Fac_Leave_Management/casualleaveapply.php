@@ -21,7 +21,6 @@ $q1 =  "select * from faculty_casual_leave where faculty_name=\"" .  $_SESSION["
             }
         }
         $day = 12 - $count;
-        echo $day
 ?>      
         <style>
 
@@ -80,10 +79,6 @@ $q1 =  "select * from faculty_casual_leave where faculty_name=\"" .  $_SESSION["
     {
         $errors[]="Leave already applied for this date.";
     }
-    if($to<$from)
-    {
-        $errors[]= "Please enter the correct date.";
-    }
     if(empty($errors))
     {                                
         $que = "insert into faculty_casual_leave(faculty_name,reason,applied_date,from_date,to_date) values (\"" . $_SESSION['username'] . "\",
@@ -116,8 +111,6 @@ function myFunction(val) {
     if(num>=3)
     {
         date.setDate(date.getDate()+2);
-        // var newdate = date.toISOString().split('T')[0];
-        // document.getElementById("todate").max = newdate;
     }
     else{
         date.setDate(date.getDate()+ (num-1));

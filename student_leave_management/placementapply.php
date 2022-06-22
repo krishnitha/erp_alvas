@@ -42,8 +42,8 @@
                         <td>Start Time<br></td>
                         <td></td>
                         <td>
-                            <input type="time" name="start" id="inputMDEx1" class="form-control" min="09:00" max="17:00" required>
-                            <label for="inputMDEx1">Choose time</label>
+                            <input type="time" name="start" id="starttime" class="form-control" min="09:00" max="17:00"  required>
+                            <label for="starttime">Choose time</label>
                         </td>
                        
                     </tr>
@@ -51,8 +51,8 @@
                         <td>End Time<br></td>
                         <td></td>
                         <td> 
-                            <input type="time" name="end" id="inputMDEx1" class="form-control" min="09:00" max="17:00" required>
-                            <label for="inputMDEx1">Choose time</label>
+                            <input type="time" name="end" id="endtime" class="form-control" min="09:00" max="17:00"  onchange="myFunction(this.value)" required>
+                            <label for="endtime">Choose time</label>
                         </td>
                     </tr>
                     <tr>
@@ -147,7 +147,15 @@
                 </div>
             </form>
         </div>
-        
+        <script>
+            function myFunction(val) {
+                var x = document.getElementById("starttime").value;
+                if(val<=x)
+                {
+                    alert("Please enter the correct time.");
+                }
+            }
+        </script>     
         <script>
             const actualBtn = document.getElementById('actual-btn');
 

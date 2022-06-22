@@ -36,14 +36,14 @@ include("../template/sidebar-fac.php");
                         <td> From <br></td>
                         <td></td>
                         <td> 
-                            <input type = "date" name="from_date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
+                            <input type = "date" name="from_date" id="startdate" class="form-control" min="<?php echo date('Y-m-d') ?>" onchange="myFunction(this.value)" required>
                         </td>
                     </tr>
 
                     <tr>
                         <td>To <br></td>
                         <td></td>
-                        <td> <input type = "date" name="to_date" class="form-control" min="<?php echo date('Y-m-d') ?>" required></td>
+                        <td> <input type = "date" name="to_date" id="todate" class="form-control" min="<?php echo date('Y-m-d') ?>" required></td>
                     </tr>
                     <tr>
                         <td>Upload Document<br></td>
@@ -81,10 +81,6 @@ include("../template/sidebar-fac.php");
                                 if(mysqli_num_rows($r) > 0)
                                 {
                                     $errors[]="Leave already applied for this date.";
-                                }
-                                if($to<$from)
-                                {
-                                    $errors[]= "Please enter the correct date.";
                                 }
                                 if(!in_array($ext,$fileextensions))
                                 {
@@ -126,6 +122,14 @@ include("../template/sidebar-fac.php");
                 </div>
             </form>
         </div>
+
+        <script>
+            function myFunction(val) {
+                document.getElementById("todate").min = val;
+            }
+        </script>                   
+
+
         <script>
             const actualBtn = document.getElementById('actual-btn');
 

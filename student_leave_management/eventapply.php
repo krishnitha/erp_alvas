@@ -56,7 +56,7 @@
                         <td>End Time<br></td>
                         <td></td>
                         <td> 
-                            <input type="time" name="end" id="endtime" class="form-control" min="09:00" max="17:00" required>
+                            <input type="time" name="end" id="endtime" class="form-control" min="09:00" max="17:00" onchange="myFunction(this.value)" required>
                             <label for="endtime">Choose time</label>
                         </td>
                     </tr>
@@ -140,29 +140,19 @@
                             }
                     ?>
                 <div class="text-center">
-                    <!-- <button class="btn btn-info" onclick="validate();"> Submit </button>
-                    <input style="display:none;" type="Submit" id="submit" name ="Submit" class="btn btn-info" value="Submit"> -->
                     <input type="Submit" id="submit" name ="Submit" class="btn btn-info" value="Submit">
                 </div>
             </form>
         </div>
-        <!-- <script>
-            function validate() {
-                var error = document.getElementById("error");
-                error.textContent = "Please enter a valid number";
-                error.style.color = "red";
-                starttime = document.getElementById("starttime").value;
-                endtime = document.getElementById("endtime").value;
-                console.log(starttime,endtime);
-                if (endtime > starttime){
-                    document.getElementById("submit").click();
-                }
-                else
+        <script>
+            function myFunction(val) {
+                var x = document.getElementById("starttime").value;
+                if(val<=x)
                 {
-                    alert("enter the correct time");
+                    alert("Please enter the correct time.");
                 }
             }
-        </script> -->
+        </script>
 
         <script>
             const actualBtn = document.getElementById('actual-btn');

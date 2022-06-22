@@ -35,14 +35,14 @@
                         <td> From <br></td>
                         <td></td>
                         <td> 
-                            <input type = "date" name="from_date" class="form-control" required>
+                            <input type = "date" name="from_date" id="startdate" class="form-control" onchange="myFunction(this.value)" required>
                         </td>
                     </tr>
 
                     <tr>
                         <td>To <br></td>
                         <td></td>
-                        <td> <input type = "date" name="to_date" class="form-control" required></td>
+                        <td> <input type = "date" name="to_date" id="todate" class="form-control"  min="" required></td>
                     </tr>
                     <tr>
                         <td>Upload Document<br></td>
@@ -89,10 +89,6 @@
                                 if (file_exists($target_dir . $filename)) {
                                     $errors[]= "File already exists.";
                                 }
-                                if($to<$from)
-                                {
-                                    $errors[]= "Please enter the correct date.";
-                                }
                                 if(empty($errors))
                                 {
                                     if(move_uploaded_file($tmpname,$uploadpath))
@@ -100,7 +96,6 @@
                                         $que = "insert into student_medical_leave(usn,sem,reason,applied_date,from_date,to_date,doc_name) values (\"" . $_SESSION['username'] . "\",
                                         \"" . $res["semester"] . "\",\"" . $reason . "\",\"" . $date . "\",\"" . $from . "\",\"" . $to . "\",\"" . $uploadpath . "\")";
                                         $result = $con->query($que);
-                                        //header("Location: ../student_leave_management/medical.php");
                                         echo '<script>window.location.replace("../student_leave_management/medical.php");</script>';
                                     }
                                     else
@@ -128,6 +123,13 @@
                 </div>
             </form>
         </div>
+
+        <script>
+            function myFunction(val) {
+                document.getElementById("todate").min = val;
+            }
+        </script>                 
+
         <script>
             const actualBtn = document.getElementById('actual-btn');
 
