@@ -58,7 +58,7 @@ $res2=$link->query($q1);
                 </div>
             </div>
         </div>
-        <button type="submit" name="submit" class="btn btn-primary" style="float: left;">Submit</button>
+        <button type="submit" name="submit" class="btn btn-primary" style="float: left=;">Submit</button>
     </div>
 </form>
 
