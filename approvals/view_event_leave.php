@@ -62,7 +62,7 @@ error_reporting(0);
                             <?php
                                 }
                             ?>
-                            </tr>k
+                            </tr>
                         </tbody>
                     </table> -->
                     <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">

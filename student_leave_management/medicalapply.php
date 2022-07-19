@@ -76,7 +76,7 @@
                                 $ext=strtolower(end($arr));
                                 $uploadpath=$target_dir.basename($filename);
                                 $q1 = "select * from student_medical_leave where usn=\"" . $_SESSION['username'] . "\" and sem=\"" . $res["semester"] . "\" and  
-                                from_date=\"" . $from . "\" and to_date=\"" . $to . "\" and (status<>0 or status<>1)";
+                                from_date=\"" . $from . "\" and to_date=\"" . $to . "\" and (coordinator_status<>0 or coordinator_status<>1) and (hod_status<>0 or hod_status<>1)";
                                 $r = $con->query($q1);
                                 if(mysqli_num_rows($r) > 0)
                                 {

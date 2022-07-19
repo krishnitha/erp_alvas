@@ -525,9 +525,9 @@ $res = mysqli_fetch_assoc($res);
                     <a href="#leaveSubmenu" data-toggle="collapse" style="color: black" aria-expanded="false"
                         class="dropdown-toggle">Leave</a>
                     <ul class="collapse list-unstyled" id="leaveSubmenu">
-                        <li>
+                        <!-- <li>
                             <a href="../student_leave_management/details.php" style="color: black; background:white">Details</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="../student_leave_management/medical.php" style="color: black; background:white">Medical</a>
                         </li>

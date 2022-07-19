@@ -9,14 +9,11 @@ $res = $link->query($q);
 $qs = 'select distinct sub from co_pso where to_hod="' . $_SESSION["username"] . '" and approval="waiting"';
 $ress = $link->query($qs);
 
-$ql = 'select * FROM student_medical_leave as s WHERE status = 0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
+$ql = 'select * FROM student_medical_leave as s WHERE coordinator_status = 1 and hod_status=0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
 $resm = $link -> query($ql);
 
-$qe = 'select * FROM student_event_leave as s WHERE status = 0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
+$qe = 'select * FROM student_event_leave as s WHERE coordinator_status = 1 and hod_status=0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
 $rese = $link -> query($qe);
-
-$qp = 'select * FROM student_placement_leave as s WHERE status = 0 and (select branch from students where usn = s.usn) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
-$resp = $link -> query($qp);
 
 $q2='select * FROM faculty_casual_leave as f WHERE status = 0 and (select faculty_dept from faculty_details where faculty_name = f.faculty_name) = (select branch from hod WHERE name = "' . $_SESSION["username"] . '")';
 $res2 = $link -> query($q2);
@@ -303,40 +300,6 @@ $res4 = $link -> query($q4);
                     }
             ?>
             </table>
-            
-            <h4 style="text-align:center; margin-top: 40px; font-family: 'Gabriela', serif;">Placement Leave</h4>
-            <table class="table table-responsive table-striped mt-3" style="margin-top: 20px;">
-            <?php
-                if(mysqli_num_rows($resp)!= 0){
-                ?>
-                    <tr>
-                        <th scope="col" style="width: 10%;">USN</th>
-                        <th scope="col" style="width: 10%;">Name</th>
-                        <th scope="col" style="width: 10%;">Company Name</th>
-                        <th scope="col" style="width: 10%;">View</th>
-                    </tr>
-                    <?php
-                    foreach ($resp as $row) 
-                        $st = 'select * from students where usn = "' . $row["usn"] . '"';
-                        $s = $link->query($st);
-                        $s2 = mysqli_fetch_assoc($s);    
-                    {                      
-                    ?>
-                    <tr>
-                        <td><?php echo $row["usn"] ?></td>
-                        <td><?php echo $s2["fname"] ?></td>
-                        <td><?php echo $row["company_name"] ?></td>
-                        <td><a href="../approvals/view_placement_leave.php?id=<?php echo $row["id"]; ?>">
-                            <button type="button" class="btn btn-info">View</button></td>
-                    </tr>
-                    <?php
-                        }
-                    }
-                    else{
-                        echo '<h5><center> No Leave Applied </center></h5>';
-                    }
-                    ?> 
-                </table>
             </div>
         </div>
 

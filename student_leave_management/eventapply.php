@@ -93,7 +93,7 @@
                                 $ext=strtolower(end($arr));
                                 $uploadpath=$target_dir.basename($filename);
                                 $q1 = "select * from student_event_leave where usn=\"" . $_SESSION['username'] . "\" and sem=\"" . $res["semester"] . "\" and 
-                                event_date=\"" . $edate . "\" and from_time=\"" . $from . "\" and to_time=\"" . $to . "\" and (status<>0 or status<>1)";
+                                event_date=\"" . $edate . "\" and from_time=\"" . $from . "\" and to_time=\"" . $to . "\" and (coordinator_status<>0 or coordinator_status<>1) and (hod_status<>0 or hod_status<>1)";
                                 $r = $con->query($q1);
                                 if(mysqli_num_rows($r) > 0)
                                 {

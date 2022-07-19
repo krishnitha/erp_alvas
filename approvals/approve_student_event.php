@@ -4,12 +4,12 @@
     $id = $_POST["id"];
     if(isset($_POST['approve']))
     {
-    	$link -> query('update student_event_leave set status=1 where id=' . $id . '');
+    	$link -> query('update student_event_leave set hod_status=1 where id=' . $id . '');
     }
 
     if(isset($_POST['reject']))
     {
-    	$link -> query('update student_event_leave set status=2 where id=' . $id . '');
+    	$link -> query('update student_event_leave set hod_status=2 where id=' . $id . '');
     }
 
 

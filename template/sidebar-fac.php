@@ -239,14 +239,12 @@
                     <a href="#attendanceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Attendance</a>
                     <ul class="collapse list-unstyled" id="attendanceSubmenu">
                         <li>
-                            <a href="../attendance_new/Select%20Attendence_for_Adding_attendence.php">Mark Attendance</a>
+                            <a href="../attendance/Select%20Attendence_for_Adding_attendence.php">Mark Attendance</a>
                         </li>
                         <li>
-                            <a href="../attendance_new/Select%20Attendence_for_viewingattendence.php">View Attendance</a>
+                            <a href="../attendance/Select%20Attendence_for_viewingattendence.php">View Attendance</a>
                         </li>
-                        <li>
-                            <a href="../attendance_new/Attendence_permitted.php">Permitted Leave</a>
-                        </li>
+
                     </ul>
                 </li>
                 <li>
@@ -350,20 +348,29 @@
                 </li>
             </ul>
             </li>
-            <li>
-                        <a href="#leaveSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Leave</a>
-                        <ul class="collapse list-unstyled" id="leaveSubmenu">
-                            <li>
-                                <a href="../Fac_leave_management/casualleave.php">Casual Leave</a>
-                            </li>
-                            <li>
-                                <a href="../Fac_leave_management/OOD_leave.php">OOD Leave</a>
-                            </li>
-                            <li>
-                                <a href="../Fac_leave_management/sclleave.php"">SCL Leave</a>
-                            </li>
-                        </ul>
-                    </li>
+
+            <?php 
+                    $q1 = 'select * from coordinator where class_cordinator<>0';
+                    $res = $link->query($q1);
+                    $con1=0;
+                    foreach ($res as $row) {
+                        $con1++;
+	                    if($row['name'] == $_SESSION['username'])
+	                    {
+                ?>
+                     		<li>
+			                    <a href="#page1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Class Coordinator</a>
+			                    <ul class="collapse list-unstyled" id="page1">
+		                        	<li>
+		                        		<a href="../approvals/class_coordinator_approvals.php">Student Leave Approval</a>
+		                        	</li>
+			                    </ul>
+			                </li>
+
+                <?php 
+                     	}
+                    }
+                ?>
             <!-- dept admin list start -->
 
             <?php
@@ -400,7 +407,6 @@
 
                             </ul>
                         </li>
-                        
                         <li>
                             <a href="#pageSubmenu1232" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Attainment</a>
                             <ul class="collapse list-unstyled" id="pageSubmenu1232">
@@ -461,7 +467,7 @@
                         </li>
                         <li class="">
                             <a href="../lab_batch_dept/lab_batch.php">Lab Batch</a>
-                        </li>
+                         </li>
                         <li class="">
                             <a href="../feedback/enable.php">Feedback</a>
                         </li>
@@ -471,7 +477,6 @@
                     <?php } ?>
                     </ul>
                 </li>
-                
                 <!-- dept admin list end -->
 
 

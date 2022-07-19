@@ -1,7 +1,7 @@
 <?php
 require_once "../config.php";
 $con=$link;
-
+error_reporting(0);
 include("../template/student_sidebar.php");
 ?>
     <h4 style="text-align:center">Event Details</h4><br>
@@ -40,11 +40,11 @@ include("../template/student_sidebar.php");
                     <td><?php echo $row["to_time"] ?></td>
                     <td>
                             <?php 
-                                if($row["status"]==1)
+                                if($row["coordinator_status"]==1 && $row["hod_status"]==1)
                                 {
                                     echo "Accepted";
                                 }
-                                else if($row["status"]==2)
+                                else if($row["coordinator_status"]=2 || $row["hod_status"]==2)
                                 {
                                     echo "Rejected"; 
                                 }
