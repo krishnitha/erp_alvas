@@ -13,6 +13,6 @@
     }
 
 
-    header("Location: approvals.php");
+    header("Location: class_coordinator_approvals.php");
 
 ?>
