@@ -44,7 +44,7 @@ include("../template/student_sidebar.php");
                                 {
                                     echo "Accepted";
                                 }
-                                else if($row["coordinator_status"]=2 || $row["hod_status"]==2)
+                                else if($row["coordinator_status"]==2 || $row["hod_status"]==2)
                                 {
                                     echo "Rejected"; 
                                 }
@@ -62,7 +62,8 @@ include("../template/student_sidebar.php");
                 else{
                 echo '<h5><center> No Leave Applied </center></h5>';
             }
-            $q1 = "select * from student_event_leave where usn=\"" . $usn . "\" and sem=\"" . $res["semester"] . "\" and (status=1 or status=0)";
+            $q1 = "select * from student_event_leave where usn=\"" . $usn . "\" and sem=\"" . $res["semester"] . "\" and 
+            (coordinator_status=1 or coordinator_status=0) and (hod_status=1 or hod_status=0)";
             $res = $con->query($q1);
             if($res->num_rows < 5)
             {

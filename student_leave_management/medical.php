@@ -9,7 +9,8 @@ include("../template/student_sidebar.php");
 </div>
 
 <div style="margin-left:5%;margin-right:5%">
-    <table class="table table-responsive table-borderless">
+    <table class="table tab
+    le-responsive table-borderless">
         <?php
 
             $s='select * from students where usn="' . $_SESSION["username"] . '"';
@@ -47,7 +48,7 @@ include("../template/student_sidebar.php");
                                 {
                                     echo "Accepted";
                                 }
-                                else if($row["coordinator_status"]=2 || $row["hod_status"]==2)
+                                else if($row["coordinator_status"]==2 || $row["hod_status"]==2)
                                 {
                                     echo "Rejected"; 
                                 }
